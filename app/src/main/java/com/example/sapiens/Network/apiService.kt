@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import com.example.sapiens.Modelo.dataDashboardDocente
 import com.example.sapiens.Modelo.dataProyectosDocente
+import com.example.sapiens.Modelo.dataTareasDocente
 
 interface apiService {
     @POST("login.php")
@@ -19,4 +20,9 @@ interface apiService {
 
     @GET("proyectos_docente.php")
     suspend fun obtenerProyectosDocente(@Query("id_docente") idDocente: Int): List<dataProyectosDocente>
+
+    @GET("tareas_docente.php")
+    suspend fun obtenerTareasDocente(
+        @Query("id_docente") idDocente: Int
+    ): dataTareasDocente
 }
