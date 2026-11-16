@@ -47,8 +47,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:2.11.0")
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    //Gson para leeer el json
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     //http
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     //Glide para imagenes
