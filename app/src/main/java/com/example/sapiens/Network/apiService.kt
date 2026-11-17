@@ -16,6 +16,7 @@ import com.example.sapiens.Modelo.dataBuscarAlumno
 import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import com.example.sapiens.Modelo.dataDetalleTareaDocente
 
 interface apiService {
     @POST("login.php")
@@ -68,4 +69,9 @@ interface apiService {
         @Field("fecha_fin") fechaFin: String,
         @Field("alumnos[]") alumnos: List<Int>
     ): dataGuardarProyecto
+
+    @GET("detalle_tarea.php")
+    suspend fun obtenerDetalleTarea(
+        @Query("id_tarea") idTarea: Int
+    ): dataDetalleTareaDocente
 }
