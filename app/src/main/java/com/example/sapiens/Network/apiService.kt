@@ -3,6 +3,7 @@ package com.example.sapiens.Network
 import com.example.sapiens.Modelo.LoginRequest
 import com.example.sapiens.Modelo.LoginResponse
 import com.example.sapiens.Modelo.dataAlumnosProyecto
+import com.example.sapiens.Modelo.dataProyectosCoordinador
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.GET
@@ -74,4 +75,9 @@ interface apiService {
     suspend fun obtenerDetalleTarea(
         @Query("id_tarea") idTarea: Int
     ): dataDetalleTareaDocente
+
+    @GET("proyectos_coordinador.php")
+    suspend fun obtenerProyectosCoordinador(
+        @Query("id_coordinador") idCoordinador: Int
+    ): dataProyectosCoordinador
 }
