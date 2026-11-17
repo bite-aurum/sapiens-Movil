@@ -1,7 +1,7 @@
 package com.example.sapiens.Modelo
 
 class clsNotificacionesDocente {
-    class clsNotificaciones {
+
 
         suspend fun obtenerNotificaciones(idDocente: Int): dataNotificacionesDocente {
             return RetrofitCliente.apiService.obtenerNotificacionesDocente(idDocente)
@@ -21,4 +21,3 @@ class clsNotificacionesDocente {
             return RetrofitCliente.apiService.enviarNotificacion(idDocente, idAlumno, tipo, mensaje, fecha)
         }
     }
-}
