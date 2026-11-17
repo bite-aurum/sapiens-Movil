@@ -18,6 +18,7 @@ import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import com.example.sapiens.Modelo.dataDetalleTareaDocente
+import com.example.sapiens.Modelo.dataDocentesCoordinador
 
 interface apiService {
     @POST("login.php")
@@ -80,4 +81,9 @@ interface apiService {
     suspend fun obtenerProyectosCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataProyectosCoordinador
+
+    @GET("docentes_Coordinador.php")
+    suspend fun obtenerDocentesCoordinador(
+        @Query("id_coordinador") idCoordinador: Int
+    ): dataDocentesCoordinador
 }
