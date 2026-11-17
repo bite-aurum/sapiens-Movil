@@ -34,12 +34,12 @@ interface apiService {
     ): dataTareasDocente
 
 
-    @GET("obtener_notificaciones_docente.php")
+    @GET("notificaciones_enviadas.php")
     suspend fun obtenerNotificacionesDocente(
         @Query("id_docente") idDocente: Int
     ): dataNotificacionesDocente
 
-    @GET("obtener_alumnos_proyecto.php")
+    @GET("alumnos_proyecto.php")
     suspend fun obtenerAlumnosProyecto(
         @Query("id_proyecto") idProyecto: Int
     ): dataAlumnosProyecto
@@ -51,7 +51,7 @@ interface apiService {
         @Field("id_alumno") idAlumno: Int,
         @Field("tipo") tipo: String,
         @Field("mensaje") mensaje: String,
-        @Field("fecha") fecha: String?
+        @Field("fecha") fecha: String
     ): dataEnviarNotificacionResponse
     @GET("buscar_alumno.php")
     suspend fun buscarAlumno(@Query("correo") correo: String): dataBuscarAlumno
