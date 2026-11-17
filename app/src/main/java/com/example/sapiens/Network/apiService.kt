@@ -12,6 +12,8 @@ import com.example.sapiens.Modelo.dataEnviarNotificacionResponse
 import com.example.sapiens.Modelo.dataNotificacionesDocente
 import com.example.sapiens.Modelo.dataProyectosDocente
 import com.example.sapiens.Modelo.dataTareasDocente
+import com.example.sapiens.Modelo.dataBuscarAlumno
+import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 
@@ -51,4 +53,19 @@ interface apiService {
         @Field("mensaje") mensaje: String,
         @Field("fecha") fecha: String?
     ): dataEnviarNotificacionResponse
+    @GET("buscar_alumno.php")
+    suspend fun buscarAlumno(@Query("correo") correo: String): dataBuscarAlumno
+
+    @FormUrlEncoded
+    @POST("guardar_proyecto.php")
+    suspend fun guardarProyecto(
+        @Field("id_docente") idDocente: Int,
+        @Field("nombre") nombre: String,
+        @Field("descripcion") descripcion: String,
+        @Field("problematica") problematica: String,
+        @Field("objetivos") objetivos: String,
+        @Field("fecha_inicio") fechaInicio: String,
+        @Field("fecha_fin") fechaFin: String,
+        @Field("alumnos[]") alumnos: List<Int>
+    ): dataGuardarProyecto
 }
