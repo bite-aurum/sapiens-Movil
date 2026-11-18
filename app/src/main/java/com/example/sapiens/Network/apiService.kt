@@ -30,6 +30,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Multipart
 import retrofit2.http.Part
+import com.example.sapiens.Modelo.alumno.dataDetalleProyecto
 
 interface apiService {
     @POST("login.php")
@@ -138,4 +139,10 @@ interface apiService {
         @Part("id_subtarea") idSubtarea: RequestBody,
         @Part archivo: MultipartBody.Part
     ): dataSubirArchivoResponse
+
+    @GET("detalle_proyectoAlumno.php")
+    suspend fun obtenerDetalleProyecto(
+        @Query("id_proyecto") idProyecto: Int,
+        @Query("id_alumno") idAlumno: Int
+    ): dataDetalleProyecto
 }
