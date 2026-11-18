@@ -18,8 +18,8 @@ import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import com.example.sapiens.Modelo.dataDetalleTareaDocente
-import com.example.sapiens.Modelo.dataDocentesCoordinador
-import com.example.sapiens.Modelo.dataDashboardCoordinador
+import com.example.sapiens.Modelo.dataTareaRespuesta
+
 interface apiService {
     @POST("login.php")
     suspend fun iniciarSesion(@Body request: LoginRequest): LoginResponse
@@ -36,6 +36,17 @@ interface apiService {
         @Query("id_docente") idDocente: Int
     ): dataTareasDocente
 
+    @FormUrlEncoded
+    @POST("guardar_tarea.php")
+    suspend fun guardarTarea(
+        @Field("id_proyecto") idProyecto: Int,
+        @Field("titulo") titulo: String,
+        @Field("descripcion") descripcion: String,
+        @Field("fecha_limite") fechaLimite: String,
+        @Field("prioridad") prioridad: String,
+        @Field("subtitulos[]") subtitulos: List<String>,
+        @Field("subdescripciones[]") subdescripciones: List<String>
+    ): dataTareaRespuesta
 
     @GET("notificaciones_enviadas.php")
     suspend fun obtenerNotificacionesDocente(
@@ -59,7 +70,6 @@ interface apiService {
     @GET("buscar_alumno.php")
     suspend fun buscarAlumno(@Query("correo") correo: String): dataBuscarAlumno
 
-
     @FormUrlEncoded
     @POST("guardar_proyecto.php")
     suspend fun guardarProyecto(
@@ -82,13 +92,4 @@ interface apiService {
     suspend fun obtenerProyectosCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataProyectosCoordinador
-
-    @GET("docentes_Coordinador.php")
-    suspend fun obtenerDocentesCoordinador(
-        @Query("id_coordinador") idCoordinador: Int
-    ): dataDocentesCoordinador
-    @GET("dashboard_coordinador.php")
-    suspend fun obtenerDashboardCoordinador(
-        @Query("id_coordinador") idCoordinador: Int
-    ): dataDashboardCoordinador
 }
