@@ -3,7 +3,9 @@ package com.example.sapiens.Network
 import com.example.sapiens.Modelo.LoginRequest
 import com.example.sapiens.Modelo.LoginResponse
 import com.example.sapiens.Modelo.alumno.dataDashboardAlumno
+import com.example.sapiens.Modelo.alumno.dataDetalleTareaAlumno
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
+import com.example.sapiens.Modelo.alumno.dataSubirArchivoResponse
 import com.example.sapiens.Modelo.alumno.dataTareaAlumno
 import com.example.sapiens.Modelo.dataAlumnosProyecto
 import com.example.sapiens.Modelo.dataProyectosCoordinador
@@ -24,6 +26,10 @@ import retrofit2.http.FormUrlEncoded
 import com.example.sapiens.Modelo.dataDetalleTareaDocente
 import com.example.sapiens.Modelo.dataDocentesCoordinador
 import com.example.sapiens.Modelo.dataTareaRespuesta
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import retrofit2.http.Part
 
 interface apiService {
     @POST("login.php")
@@ -118,4 +124,18 @@ interface apiService {
     suspend fun obtenerTareasAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataTareaAlumno>
+
+    @GET("detalle_tareaAlumno.php")
+    suspend fun obtenerDetalleTareaAlumno(
+        @Query("id_tarea") idTarea: Int,
+        @Query("id_alumno") idAlumno: Int
+    ): dataDetalleTareaAlumno
+
+    @Multipart
+    @POST("subir_archivoAlumno.php")
+    suspend fun subirArchivoAlumno(
+        @Part("id_alumno") idAlumno: RequestBody,
+        @Part("id_subtarea") idSubtarea: RequestBody,
+        @Part archivo: MultipartBody.Part
+    ): dataSubirArchivoResponse
 }
