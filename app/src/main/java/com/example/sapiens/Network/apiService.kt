@@ -14,10 +14,12 @@ import com.example.sapiens.Modelo.dataNotificacionesDocente
 import com.example.sapiens.Modelo.dataProyectosDocente
 import com.example.sapiens.Modelo.dataTareasDocente
 import com.example.sapiens.Modelo.dataBuscarAlumno
+import com.example.sapiens.Modelo.dataDashboardCoordinador
 import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import com.example.sapiens.Modelo.dataDetalleTareaDocente
+import com.example.sapiens.Modelo.dataDocentesCoordinador
 import com.example.sapiens.Modelo.dataTareaRespuesta
 
 interface apiService {
@@ -87,9 +89,17 @@ interface apiService {
     suspend fun obtenerDetalleTarea(
         @Query("id_tarea") idTarea: Int
     ): dataDetalleTareaDocente
+    @GET("dashboard_coordinador.php")
+    suspend fun obtenerDashboardCoordinador(
+        @Query("id_coordinador") idCoordinador: Int
+    ): dataDashboardCoordinador
 
     @GET("proyectos_coordinador.php")
     suspend fun obtenerProyectosCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataProyectosCoordinador
+    @GET("docentes_coordinador.php")
+    suspend fun obtenerDocentesCoordinador(
+        @Query("id_coordinador") idCoordinador: Int
+    ): dataDocentesCoordinador
 }
