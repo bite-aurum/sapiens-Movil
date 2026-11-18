@@ -1,4 +1,4 @@
-package com.example.sapiens.Modelo.alumno
+package com.example.sapiens.Modelo.docente
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

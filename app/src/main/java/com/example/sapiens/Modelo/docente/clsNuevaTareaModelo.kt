@@ -1,4 +1,6 @@
-package com.example.sapiens.Modelo
+package com.example.sapiens.Modelo.docente
+
+import com.example.sapiens.Modelo.RetrofitCliente
 
 class clsNuevaTareaModelo {
     suspend fun guardarTarea(
@@ -9,7 +11,7 @@ class clsNuevaTareaModelo {
         prioridad: String,
         subtitulos: List<String>,
         subdescripciones: List<String>
-    ): dataTareaRespuesta{
+    ): dataTareaRespuesta {
         return RetrofitCliente.apiService.guardarTarea(idProyecto, titulo, descripcion, fechaLimite, prioridad, subtitulos, subdescripciones)
     }
 }

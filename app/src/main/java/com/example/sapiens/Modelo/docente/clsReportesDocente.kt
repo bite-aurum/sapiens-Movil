@@ -1,9 +1,9 @@
-package com.example.sapiens.Modelo.alumno
+package com.example.sapiens.Modelo.docente
 
 import com.example.sapiens.Modelo.RetrofitCliente
 
 class clsReportesDocente {
-    suspend fun obtenerProyecto(idDocente: Int): dataProyectosReporte{
+    suspend fun obtenerProyecto(idDocente: Int): dataProyectosReporte {
         return RetrofitCliente.apiService.obtenerProyectosReporte(idDocente)
     }
 
