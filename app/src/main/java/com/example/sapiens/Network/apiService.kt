@@ -35,6 +35,8 @@ import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
 import com.example.sapiens.Modelo.alumno.dataReporteGenerado
 import com.example.sapiens.Modelo.alumno.dataReportesDocente
 import com.example.sapiens.Modelo.alumno.dataProyectosReporte
+import com.example.sapiens.Modelo.dataActualizarPerfil
+import com.example.sapiens.Modelo.dataPerfil
 
 interface apiService {
     @POST("login.php")
@@ -172,5 +174,23 @@ interface apiService {
     suspend fun obtenerHistorialReportes(
         @Query("id_docente") idDocente: Int
     ): dataReportesDocente
+    @GET("obtener_perfil.php")
+    suspend fun obtenerPerfil(
+        @Query("rol") rol: String,
+        @Query("id") id: Int
+    ): dataPerfil
+
+    @FormUrlEncoded
+    @POST("actualizar_perfil.php")
+    suspend fun actualizarPerfil(
+        @Field("rol") rol: String,
+        @Field("id") id: Int,
+        @Field("nombre") nombre: String,
+        @Field("apellido_paterno") apellidoPaterno: String,
+        @Field("apellido_materno") apellidoMaterno: String,
+        @Field("correo") correo: String,
+        @Field("contrasena_actual") contrasenaActual: String,
+        @Field("nueva_contrasena") nuevaContrasena: String
+    ): dataActualizarPerfil
 
 }
