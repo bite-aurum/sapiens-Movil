@@ -1,4 +1,6 @@
-package com.example.sapiens.Modelo
+package com.example.sapiens.Modelo.docente
+
+import com.example.sapiens.Modelo.RetrofitCliente
 
 class clsNotificacionesDocente {
 
