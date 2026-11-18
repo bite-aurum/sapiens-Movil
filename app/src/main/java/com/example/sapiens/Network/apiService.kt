@@ -31,6 +31,7 @@ import okhttp3.RequestBody
 import retrofit2.http.Multipart
 import retrofit2.http.Part
 import com.example.sapiens.Modelo.alumno.dataDetalleProyecto
+import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
 
 interface apiService {
     @POST("login.php")
@@ -145,4 +146,9 @@ interface apiService {
         @Query("id_proyecto") idProyecto: Int,
         @Query("id_alumno") idAlumno: Int
     ): dataDetalleProyecto
+
+    @GET("obtener_notificaciones_alumno.php")
+    suspend fun obtenerNotificacionesAlumno(
+        @Query("id_alumno") idAlumno: Int
+    ): List<dataNotificacionesAlumno>
 }
