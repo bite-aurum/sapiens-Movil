@@ -12,22 +12,22 @@ data class dataDocentesCoordinador(
 
 @Serializable
 data class dataCoordinadorClave(
-    @SerialName("id_coordinador") val idCoordinador: Int,
-    @SerialName("codigoVinculo") val codigoVinculo: String
+    @SerialName("id_coordinador") val idCoordinador: Int = 0,
+    @SerialName("codigoVinculo") val codigoVinculo: String = ""
 )
 
 @Serializable
 data class dataResumenDocentes(
-    @SerialName("docentes_registrados") val docentesRegistrados: Int,
-    @SerialName("docentes_activos") val docentesActivos: Int,
-    @SerialName("proyectos_asignados") val proyectosAsignados: Int
+    @SerialName("docentes_registrados") val docentesRegistrados: Int = 0,
+    @SerialName("docentes_activos") val docentesActivos: Int = 0,
+    @SerialName("proyectos_asignados") val proyectosAsignados: Int = 0
 )
 
 @Serializable
 data class dataDocenteLista(
-    @SerialName("id_docente") val idDocente: Int,
-    @SerialName("nombre") val nombre: String,
-    @SerialName("apellido_paterno") val apellidoPaterno: String,
-    @SerialName("apellido_materno") val apellidoMaterno: String,
-    @SerialName("estado") val estado: String
+    @SerialName("id_docente") val idDocente: Int = 0,
+    @SerialName("nombre") val nombre: String = "",
+    @SerialName("apellido_paterno") val apellidoPaterno: String = "",
+    @SerialName("apellido_materno") val apellidoMaterno: String = "",
+    @SerialName("estado") val estado: String = ""
 )

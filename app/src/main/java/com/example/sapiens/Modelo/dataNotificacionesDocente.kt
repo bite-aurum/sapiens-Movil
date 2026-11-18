@@ -10,11 +10,11 @@ data class dataNotificacionesDocente(
 
 @Serializable
 data class dataNotificacionesEnviadas(
-    @SerialName("id_notificacion") val idNotificacion: Int,
-    @SerialName("tipo") val tipo: String,
-    @SerialName("mensaje") val mensaje: String,
-    @SerialName("fecha") val fecha: String,
-    @SerialName("alumno") val alumno: String
+    @SerialName("id_notificacion") val idNotificacion: Int = 0,
+    @SerialName("tipo") val tipo: String = "",
+    @SerialName("mensaje") val mensaje: String  = "",
+    @SerialName("fecha") val fecha: String  = "",
+    @SerialName("alumno") val alumno: String  = ""
 )
 
 @Serializable
@@ -23,13 +23,13 @@ data class dataAlumnosProyecto(
 )
 @Serializable
 data class dataAlumnos(
-    @SerialName("id_alumno") val idAlumno: Int,
-    @SerialName("nombre") val nombre: String
+    @SerialName("id_alumno") val idAlumno: Int = 0,
+    @SerialName("nombre") val nombre: String  = ""
 )
 
 @Serializable
 data class dataEnviarNotificacionResponse(
-    @SerialName("id_notificacion") val idNotificacion: Int
+    @SerialName("id_notificacion") val idNotificacion: Int = 0
 )
 
 
