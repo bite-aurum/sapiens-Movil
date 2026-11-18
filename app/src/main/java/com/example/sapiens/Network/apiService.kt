@@ -151,4 +151,23 @@ interface apiService {
     suspend fun obtenerNotificacionesAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataNotificacionesAlumno>
+
+    @GET("proyectos_docente.php")
+    suspend fun obtenerProyectosReporte(
+        @Query("id_docente") idDocente: Int
+    ): dataProyectosReporte
+
+    @FormUrlEncoded
+    @POST("generar_reporte.php")
+    suspend fun generarReporte(
+        @Field("id_docente") idDocente: Int,
+        @Field("tipo") tipo: String,
+        @Field("id_proyecto") idProyecto: Int
+    ): dataReporteGenerado
+
+    @GET("historial_reportes.php")
+    suspend fun obtenerHistorialReportes(
+        @Query("id_docente") idDocente: Int
+    ): dataReportesDocente
+
 }
