@@ -32,6 +32,9 @@ import retrofit2.http.Multipart
 import retrofit2.http.Part
 import com.example.sapiens.Modelo.alumno.dataDetalleProyecto
 import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
+import com.example.sapiens.Modelo.alumno.dataReporteGenerado
+import com.example.sapiens.Modelo.alumno.dataReportesDocente
+import com.example.sapiens.Modelo.alumno.dataProyectosReporte
 
 interface apiService {
     @POST("login.php")
