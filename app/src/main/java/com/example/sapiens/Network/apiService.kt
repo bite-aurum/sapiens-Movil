@@ -18,6 +18,7 @@ import com.example.sapiens.Modelo.dataGuardarProyecto
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import com.example.sapiens.Modelo.dataDetalleTareaDocente
+import com.example.sapiens.Modelo.dataTareaRespuesta
 
 interface apiService {
     @POST("login.php")
@@ -35,6 +36,17 @@ interface apiService {
         @Query("id_docente") idDocente: Int
     ): dataTareasDocente
 
+    @FormUrlEncoded
+    @POST("guardar_tarea.php")
+    suspend fun guardarTarea(
+        @Field("id_proyecto") idProyecto: Int,
+        @Field("titulo") titulo: String,
+        @Field("descripcion") descripcion: String,
+        @Field("fecha_limite") fechaLimite: String,
+        @Field("prioridad") prioridad: String,
+        @Field("subtitulos[]") subtitulos: List<String>,
+        @Field("subdescripciones[]") subdescripciones: List<String>
+    ): dataTareaRespuesta
 
     @GET("notificaciones_enviadas.php")
     suspend fun obtenerNotificacionesDocente(
