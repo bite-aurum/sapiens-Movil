@@ -4,6 +4,7 @@ import com.example.sapiens.Modelo.LoginRequest
 import com.example.sapiens.Modelo.LoginResponse
 import com.example.sapiens.Modelo.alumno.dataDashboardAlumno
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
+import com.example.sapiens.Modelo.alumno.dataTareaAlumno
 import com.example.sapiens.Modelo.dataAlumnosProyecto
 import com.example.sapiens.Modelo.dataProyectosCoordinador
 import retrofit2.http.Body
@@ -113,4 +114,8 @@ interface apiService {
     suspend fun obtenerMisProyectosAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataProyectosAlumno>
+    @GET("obtener_mis_tareasAlumno.php")
+    suspend fun obtenerTareasAlumno(
+        @Query("id_alumno") idAlumno: Int
+    ): List<dataTareaAlumno>
 }
