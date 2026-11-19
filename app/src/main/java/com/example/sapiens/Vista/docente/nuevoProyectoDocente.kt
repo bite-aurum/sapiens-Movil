@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sapiens.Vista.docente.Adaptador.AdaptadorAlumnosProyecto
+import com.example.sapiens.adaptadores_docente.AdaptadorAlumnosProyecto
 import com.example.sapiens.Modelo.docente.dataAlumno
 import com.example.sapiens.Presentador.docente.pNuevoProyectoDocente
 import com.example.sapiens.R
