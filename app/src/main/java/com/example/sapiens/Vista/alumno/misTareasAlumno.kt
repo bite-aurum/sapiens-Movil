@@ -83,7 +83,7 @@ class misTareasAlumno : AppCompatActivity() {
         presentador.seleccionarProyectos()
     }
 
-    //Salidas
+
     fun mostrarTareas(tareas: List<dataTareaAlumno>) {
         if (tareas.isEmpty()) {
             tvSinTareas.visibility = View.VISIBLE

@@ -41,43 +41,37 @@ class TareasAlumnoAdaptador(private var listaTareas: List<dataTareaAlumno>) : Re
         }
 
 
+        val prioridad = tarea.prioridad.lowercase()
         holder.tvPrioridadTarea.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_prioridad)
-        when (tarea.prioridad.lowercase()) {
-            "alta" -> {
-                holder.tvPrioridadTarea.text = "Alta"
-                holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-                holder.tvPrioridadTarea.setTextColor(Color.parseColor("#C93B3B"))
-            }
-            "media" -> {
-                holder.tvPrioridadTarea.text = "Media"
-                holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-                holder.tvPrioridadTarea.setTextColor(Color.parseColor("#9C7414"))
-            }
-            else -> {
-                holder.tvPrioridadTarea.text = "Baja"
-                holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-                holder.tvPrioridadTarea.setTextColor(Color.parseColor("#1B7F4B"))
-            }
+        if (prioridad == "alta") {
+            holder.tvPrioridadTarea.text = "Alta"
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
+            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#C93B3B"))
+        } else if (prioridad == "media") {
+            holder.tvPrioridadTarea.text = "Media"
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
+            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#9C7414"))
+        } else {
+            holder.tvPrioridadTarea.text = "Baja"
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
+            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#1B7F4B"))
         }
 
 
+        val estado = tarea.estado.lowercase()
         holder.tvEstadoTarea.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_estado)
-        when (tarea.estado.lowercase()) {
-            "completada", "completado" -> {
-                holder.tvEstadoTarea.text = "Completada"
-                holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-                holder.tvEstadoTarea.setTextColor(Color.parseColor("#1B7F4B"))
-            }
-            "en progreso" -> {
-                holder.tvEstadoTarea.text = "En progreso"
-                holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-                holder.tvEstadoTarea.setTextColor(Color.parseColor("#0D7A6B"))
-            }
-            else -> {
-                holder.tvEstadoTarea.text = "Pendiente"
-                holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-                holder.tvEstadoTarea.setTextColor(Color.parseColor("#9C7414"))
-            }
+        if (estado == "completada") {
+            holder.tvEstadoTarea.text = "Completada"
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
+            holder.tvEstadoTarea.setTextColor(Color.parseColor("#1B7F4B"))
+        } else if (estado == "en progreso") {
+            holder.tvEstadoTarea.text = "En progreso"
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
+            holder.tvEstadoTarea.setTextColor(Color.parseColor("#0D7A6B"))
+        } else {
+            holder.tvEstadoTarea.text = "Pendiente"
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
+            holder.tvEstadoTarea.setTextColor(Color.parseColor("#9C7414"))
         }
     }
 
