@@ -5,4 +5,9 @@
         <item>Completado</item>
         <item>Pendiente</item>
     </string-array>
+    <string-array name="roles_registro">
+        <item>Docente</item>
+        <item>Alumno</item>
+        <item>Coordinador</item>
+    </string-array>
 </resources>
