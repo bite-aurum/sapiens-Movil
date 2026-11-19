@@ -1,4 +1,4 @@
-package com.example.sapiens.Vista.docente.Adaptador
+package com.example.sapiens.adaptadores_docente
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.docente.dataAlumno
