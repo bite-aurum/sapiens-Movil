@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Vista.docente.proyectosDocente">
+
+    <!-- BARRA DE ARRIBA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnNotificaciones"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_notificacion" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/logo_sapiens" />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_perfil" />
+    </LinearLayout>
+
+    <!-- CONTENIDO CON SCROLL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mis proyectos"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/btnNuevoProyecto"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/fondo_borde_verde"
+                android:drawableStart="@drawable/ic_agregar"
+                android:drawableTint="@color/verde"
+                android:paddingStart="100dp"
+                android:paddingEnd="100dp"
+                android:text="Nuevo proyecto"
+                android:textAllCaps="false"
+                android:textColor="@color/verde"
+                android:textSize="16sp"
+                app:backgroundTint="@null"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <!-- AQUI SE METEN LAS TARJETAS DESDE EL CODIGO -->
+            <LinearLayout
+                android:id="@+id/contenedorProyectos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- MENU DE ABAJO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/navInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_inicio"
+            android:text="Inicio"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTint="@color/verde"
+            android:text="Proyectos"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde" />
+
+        <TextView
+            android:id="@+id/navTareas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_tareas"
+            android:text="Tareas"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navReportes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_reportes"
+            android:text="Reportes"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+    </LinearLayout>
+</LinearLayout>
