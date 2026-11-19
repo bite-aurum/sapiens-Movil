@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Sapiens</string>
+    <string-array name="estados_proyecto">
+        <item>En proceso</item>
+        <item>Completado</item>
+        <item>Pendiente</item>
+    </string-array>
 </resources>
