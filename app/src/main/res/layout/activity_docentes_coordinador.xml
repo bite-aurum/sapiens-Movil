@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical"
+    tools:context=".Vista.coordinador.docentesCoordinador">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnNotificaciones"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_notificacion" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_perfil" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Docentes"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Docentes registrados"
+                        android:textColor="@color/gris"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvDocentesRegistrados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_icono_estadistica"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_docentes" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Docentes activos"
+                        android:textColor="@color/gris"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvDocentesActivos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_icono_estadistica"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_docentes" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proyectos asignados"
+                        android:textColor="@color/gris"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvProyectosAsignados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_icono_estadistica"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_proyectos" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Clave de vinculación"
+                        android:textColor="@color/gris"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvCodigoVinculo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_icono_estadistica"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_llave" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Docentes registrados"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDocentes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/navDashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_inicio"
+            android:text="Dashboard"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navDocentes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_lista"
+            android:drawableTint="@color/verde"
+            android:text="Docentes"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde" />
+
+        <TextView
+            android:id="@+id/navProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:text="Proyectos"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+    </LinearLayout>
+</LinearLayout>
