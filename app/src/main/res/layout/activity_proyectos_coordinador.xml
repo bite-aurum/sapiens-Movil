@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Vista.coordinador.proyectosCoordinador">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnNotificaciones"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_notificacion" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SAPIENS"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/verde" />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_perfil" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Todos los proyectos"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proyectos totales"
+                        android:textSize="13sp"
+                        android:textColor="@color/gris" />
+
+                    <TextView
+                        android:id="@+id/txtProyectosTotales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:padding="10dp"
+                    android:background="@color/cafeClaro"
+                    android:src="@drawable/ic_proyectos" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Docentes asignados"
+                        android:textSize="13sp"
+                        android:textColor="@color/gris" />
+
+                    <TextView
+                        android:id="@+id/txtDocentesAsignados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:padding="10dp"
+                    android:background="@color/cafeClaro"
+                    android:src="@drawable/ic_docentes" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tasa de entrega"
+                        android:textSize="13sp"
+                        android:textColor="@color/gris" />
+
+                    <TextView
+                        android:id="@+id/txtTasaEntrega"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:padding="10dp"
+                    android:background="@color/cafeClaro"
+                    android:src="@drawable/ic_reportes" />
+            </LinearLayout>
+
+            <!-- TARJETA AVISOS PENDIENTES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="14dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avisos pendientes"
+                        android:textSize="13sp"
+                        android:textColor="@color/gris" />
+
+                    <TextView
+                        android:id="@+id/txtAvisosPendientes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:padding="10dp"
+                    android:background="@color/cafeClaro"
+                    android:src="@drawable/ic_notificacion" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proyectos registrados"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProyectos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/navDashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_inicio"
+            android:text="Dashboard"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navDocentes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_lista"
+            android:text="Docentes"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTint="@color/verde"
+            android:text="Proyectos"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde" />
+    </LinearLayout>
+</LinearLayout>
