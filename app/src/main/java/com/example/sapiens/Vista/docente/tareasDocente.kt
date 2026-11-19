@@ -1,7 +1,9 @@
 package com.example.sapiens.Vista.docente
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -18,11 +20,20 @@ import com.google.android.material.button.MaterialButton
 
 class tareasDocente : AppCompatActivity() {
 
-    private lateinit var presentador: pTareasDocente
-    private lateinit var adapter: TareasDocenteAdapter
+    private lateinit var btnNotificaciones: ImageView
+    private lateinit var btnPerfil: ImageView
+    private lateinit var btnNuevaTarea: MaterialButton
+    private lateinit var navInicio: TextView
+    private lateinit var navProyectos: TextView
+    private lateinit var navReportes: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var tvSinTareas: TextView
+    private lateinit var recyclerTareas: RecyclerView
+    private lateinit var adaptadorTareas: TareasDocenteAdapter
+
     private var idDocente: Int = 1
+    private var idProyectoFiltro: Int = -1
+    private lateinit var presentador: pTareasDocente
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,25 +45,34 @@ class tareasDocente : AppCompatActivity() {
             insets
         }
 
+        btnNotificaciones = findViewById(R.id.btnNotificaciones)
+        btnPerfil = findViewById(R.id.btnPerfil)
+        btnNuevaTarea = findViewById(R.id.btnNuevaTarea)
+        navInicio = findViewById(R.id.navInicio)
+        navProyectos = findViewById(R.id.navProyectos)
+        navReportes = findViewById(R.id.navReportes)
         progressBar = findViewById(R.id.progressBarTareas)
         tvSinTareas = findViewById(R.id.tvSinTareas)
 
-        val btnNuevaTarea = findViewById<MaterialButton>(R.id.btnNuevaTarea)
-        btnNuevaTarea.setOnClickListener {
-            Toast.makeText(this, "Abrir Nueva Tarea", Toast.LENGTH_SHORT).show()
-        }
-
-        val rv = findViewById<RecyclerView>(R.id.rvTareasDocente)
-        rv.layoutManager = LinearLayoutManager(this)
-        adapter = TareasDocenteAdapter(emptyList()) { tarea ->
-            presentador.onTareaSeleccionada(tarea.idTarea)
-        }
-        rv.adapter = adapter
-
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idDocente = intent.getIntExtra("id_docente", prefs.getInt("id_usuario", 1))
+        idProyectoFiltro = intent.getIntExtra("id_proyecto", -1)
+
+        recyclerTareas = findViewById(R.id.rvTareasDocente)
+        recyclerTareas.layoutManager = LinearLayoutManager(this)
+        adaptadorTareas = TareasDocenteAdapter(emptyMap()) { tarea ->
+            presentador.onTareaSeleccionada(tarea.idTarea)
+        }
+        recyclerTareas.adapter = adaptadorTareas
 
         presentador = pTareasDocente(this)
+
+        btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
+        btnPerfil.setOnClickListener(this::ejecutarPerfil)
+        btnNuevaTarea.setOnClickListener(this::ejecutarNuevaTarea)
+        navInicio.setOnClickListener(this::ejecutarInicio)
+        navProyectos.setOnClickListener(this::ejecutarProyectos)
+        navReportes.setOnClickListener(this::ejecutarReportes)
     }
 
     override fun onResume() {
@@ -62,6 +82,32 @@ class tareasDocente : AppCompatActivity() {
         }
     }
 
+    fun ejecutarNotificaciones(v: View) {
+        // startActivity(Intent(this, notificacionesDocente::class.java))  // pantalla pendiente
+    }
+
+    fun ejecutarPerfil(v: View) {
+        // startActivity(Intent(this, perfilDocente::class.java))  // pantalla pendiente
+    }
+
+    fun ejecutarNuevaTarea(v: View) {
+        val intent = Intent(this, nuevaTareaDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
+    }
+
+    fun ejecutarInicio(v: View) {
+        startActivity(Intent(this, dashboardDocente::class.java))
+    }
+
+    fun ejecutarProyectos(v: View) {
+       // startActivity(Intent(this, proyectosDocente::class.java))
+    }
+
+    fun ejecutarReportes(v: View) {
+        // startActivity(Intent(this, reportesDocente::class.java))  // pantalla pendiente
+    }
+
     fun mostrarCargando(mostrar: Boolean) {
         progressBar.visibility = if (mostrar) View.VISIBLE else View.GONE
     }
@@ -69,10 +115,10 @@ class tareasDocente : AppCompatActivity() {
     fun mostrarTareas(tareas: List<dataTarea>) {
         if (tareas.isEmpty()) {
             tvSinTareas.visibility = View.VISIBLE
-            adapter.actualizarLista(emptyList())
+            adaptadorTareas.actualizarTareas(emptyList())
         } else {
             tvSinTareas.visibility = View.GONE
-            adapter.actualizarLista(tareas)
+            adaptadorTareas.actualizarTareas(tareas)
         }
     }
 
