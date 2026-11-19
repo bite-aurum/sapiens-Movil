@@ -27,6 +27,7 @@ import com.example.sapiens.Modelo.docente.dataReporteGenerado
 import com.example.sapiens.Modelo.docente.dataReportesDocente
 import com.example.sapiens.Modelo.docente.dataTareaRespuesta
 import com.example.sapiens.Modelo.docente.dataTareasDocente
+import com.example.sapiens.Modelo.dataRegistroRespuesta
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -41,11 +42,20 @@ import retrofit2.http.Query
 interface apiService {
     @POST("login.php")
     suspend fun iniciarSesion(@Body request: LoginRequest): LoginResponse
+
+    @FormUrlEncoded
+    @POST("registrar_usuario.php")
+    suspend fun registrarUsuario(
+        @Field("rol") rol: String,
+        @Field("nombre_completo") nombreCompleto: String,
+        @Field("correo") correo: String,
+        @Field("contrasena") contrasena: String
+    ): dataRegistroRespuesta
+
     @GET("dashboard_docente.php")
     suspend fun obtenerDashboardDocente(
         @Query("id_docente") idDocente: Int
     ): dataDashboardDocente
-    
 
     @GET("tareas_docente.php")
     suspend fun obtenerTareasDocente(
