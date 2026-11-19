@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvNombreProyectoGrupo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Nombre del proyecto"
+        android:textColor="@color/gris"
+        android:textSize="14sp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E5E2D9"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:id="@+id/containerTareasGrupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="4dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

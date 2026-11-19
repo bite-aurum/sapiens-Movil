@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -12,79 +13,95 @@ import com.example.sapiens.Modelo.docente.dataTarea
 import com.example.sapiens.R
 
 class TareasDocenteAdapter(
-    private var lista: List<dataTarea>,
-    private val onTareaClick: (dataTarea) -> Unit
+    private var tareasAgrupadas: Map<String, List<dataTarea>> = emptyMap(),
+    private val alSeleccionarTarea: (dataTarea) -> Unit
 ) : RecyclerView.Adapter<TareasDocenteAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitulo: TextView = view.findViewById(R.id.tvTituloItemTarea)
-        val tvSubtitulo: TextView = view.findViewById(R.id.tvSubtituloItemTarea)
-        val tvPrioridad: TextView = view.findViewById(R.id.tvPrioridadItemTarea)
-        val tvEstado: TextView = view.findViewById(R.id.tvEstadoItemTarea)
+    private var listaProyectos = tareasAgrupadas.keys.toList()
+
+    class ViewHolder(vista: View) : RecyclerView.ViewHolder(vista) {
+        val tvNombreProyecto: TextView = vista.findViewById(R.id.tvNombreProyectoGrupo)
+        val contenedorTareas: LinearLayout = vista.findViewById(R.id.containerTareasGrupo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_tarea_docente, parent, false)
-        return ViewHolder(v)
+        val vista = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_proyecto_grupo_tareas, parent, false)
+        return ViewHolder(vista)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = lista[position]
-        val context = holder.itemView.context
+        val nombreProyecto = listaProyectos[position]
+        holder.tvNombreProyecto.text = nombreProyecto
 
-        holder.tvTitulo.text = item.titulo
-        holder.tvSubtitulo.text = if (item.fechaLimite.isNotEmpty()) {
-            "${item.proyecto} · Vence ${item.fechaLimite}"
-        } else {
-            item.proyecto
+        val tareasDelProyecto = tareasAgrupadas[nombreProyecto] ?: emptyList()
+        holder.contenedorTareas.removeAllViews()
+
+        val inflador = LayoutInflater.from(holder.itemView.context)
+
+        tareasDelProyecto.forEachIndexed { indice, tarea ->
+            val filaTarea = inflador.inflate(R.layout.item_sub_tarea_simple, holder.contenedorTareas, false)
+
+            val tvTitulo: TextView = filaTarea.findViewById(R.id.tvTituloSub)
+            val tvPrioridad: TextView = filaTarea.findViewById(R.id.tvPrioridadSub)
+            val tvEstado: TextView = filaTarea.findViewById(R.id.tvEstadoSub)
+            val separador: View = filaTarea.findViewById(R.id.dividerSub)
+
+            tvTitulo.text = tarea.titulo
+
+            // Color y texto de Prioridad
+            tvPrioridad.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_prioridad)
+            when (tarea.prioridad.lowercase()) {
+                "alta" -> {
+                    tvPrioridad.text = "Alta"
+                    tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
+                    tvPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+                }
+                "media" -> {
+                    tvPrioridad.text = "Media"
+                    tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
+                    tvPrioridad.setTextColor(Color.parseColor("#9C7414"))
+                }
+                else -> {
+                    tvPrioridad.text = "Baja"
+                    tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
+                    tvPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+                }
+            }
+
+            // Color y texto de Estado
+            tvEstado.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_estado)
+            when (tarea.estado.lowercase()) {
+                "completada", "completado" -> {
+                    tvEstado.text = "Completada"
+                    tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
+                    tvEstado.setTextColor(Color.parseColor("#1B7F4B"))
+                }
+                "en progreso" -> {
+                    tvEstado.text = "En progreso"
+                    tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
+                    tvEstado.setTextColor(Color.parseColor("#0D7A6B"))
+                }
+                else -> {
+                    tvEstado.text = "Pendiente"
+                    tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
+                    tvEstado.setTextColor(Color.parseColor("#9C7414"))
+                }
+            }
+
+            // Ocultar línea divisoria en la última tarea de la tarjeta
+            separador.visibility = if (indice == tareasDelProyecto.size - 1) View.GONE else View.VISIBLE
+
+            filaTarea.setOnClickListener { alSeleccionarTarea(tarea) }
+            holder.contenedorTareas.addView(filaTarea)
         }
-
-        holder.tvPrioridad.background = ContextCompat.getDrawable(context, R.drawable.bg_badge_prioridad)
-        when (item.prioridad.lowercase()) {
-            "alta" -> {
-                holder.tvPrioridad.text = "Alta"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#C93B3B"))
-            }
-            "media" -> {
-                holder.tvPrioridad.text = "Media"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#9C7414"))
-            }
-            else -> {
-                holder.tvPrioridad.text = "Baja"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
-            }
-        }
-
-        holder.tvEstado.background = ContextCompat.getDrawable(context, R.drawable.bg_badge_estado)
-        when (item.estado.lowercase()) {
-            "completada", "completado" -> {
-                holder.tvEstado.text = "Completada"
-                holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-                holder.tvEstado.setTextColor(Color.parseColor("#1B7F4B"))
-            }
-            "en progreso" -> {
-                holder.tvEstado.text = "En progreso"
-                holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-                holder.tvEstado.setTextColor(Color.parseColor("#0D7A6B"))
-            }
-            else -> {
-                holder.tvEstado.text = "Pendiente"
-                holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-                holder.tvEstado.setTextColor(Color.parseColor("#9C7414"))
-            }
-        }
-
-        holder.itemView.setOnClickListener { onTareaClick(item) }
     }
 
-    override fun getItemCount(): Int = lista.size
+    override fun getItemCount(): Int = listaProyectos.size
 
-    fun actualizarLista(nuevaLista: List<dataTarea>) {
-        lista = nuevaLista
+    fun actualizarTareas(tareas: List<dataTarea>) {
+        tareasAgrupadas = tareas.groupBy { it.proyecto }
+        listaProyectos = tareasAgrupadas.keys.toList()
         notifyDataSetChanged()
     }
 }
