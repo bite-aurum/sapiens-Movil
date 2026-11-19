@@ -96,23 +96,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun abrirPanelPorRol(rol: String, idUsuario: Int) {
-        val intent = when (rol.lowercase()) {
-            "alumno", "estudiante" -> Intent(this, dashboardAlumno::class.java).apply {
-                putExtra("id_alumno", idUsuario)
-            }
-            "docente", "profesor" -> Intent(this, dashboardDocente::class.java).apply {
-                putExtra("id_docente", idUsuario)
-            }
-            "coordinador", "admin", "administrador" -> Intent(this, dashboardCoordinador::class.java).apply {
-                putExtra("id_coordinador", idUsuario)
-            }
-            else -> {
-                mostrarError("Rol no reconocido: $rol")
-                return
-            }
+        val rolMinusculas = rol.lowercase()
+
+        if (rolMinusculas == "alumno" || rolMinusculas == "estudiante") {
+            val intent = Intent(this, dashboardAlumno::class.java)
+            intent.putExtra("id_alumno", idUsuario)
+            startActivity(intent)
+            finish()
+        } else if (rolMinusculas == "docente" || rolMinusculas == "profesor") {
+            val intent = Intent(this, dashboardDocente::class.java)
+            intent.putExtra("id_docente", idUsuario)
+            startActivity(intent)
+            finish()
+        } else if (rolMinusculas == "coordinador" || rolMinusculas == "admin" || rolMinusculas == "administrador") {
+            val intent = Intent(this, dashboardCoordinador::class.java)
+            intent.putExtra("id_coordinador", idUsuario)
+            startActivity(intent)
+            finish()
+        } else {
+            mostrarError("Rol no reconocido: " + rol)
         }
-        startActivity(intent)
-        finish()
     }
 
     fun mostrarError(mensaje: String) {
