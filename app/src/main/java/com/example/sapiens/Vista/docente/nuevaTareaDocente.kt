@@ -3,14 +3,12 @@ package com.example.sapiens.Vista.docente
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.RadioButton
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -18,35 +16,36 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sapiens.Modelo.docente.SubtareaTemporal
 import com.example.sapiens.Modelo.docente.dataProyectosDocente
 import com.example.sapiens.Presentador.docente.pNuevaTarea
 import com.example.sapiens.R
 import com.google.android.material.button.MaterialButton
 import java.util.Calendar
 import java.util.Locale
-import java.util.concurrent.TimeUnit
-import kotlin.jvm.java
+import com.example.sapiens.adaptadores_docente.SubtareasAgregadasAdaptador
 
-class nuevaTareaDocente : AppCompatActivity() {
+class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     private lateinit var btnNotificaciones: ImageView
     private lateinit var btnPerfil: ImageView
-    private lateinit var btnVolver: TextView
-    private lateinit var spProyecto: Spinner
-    private lateinit var etNombreTarea: EditText
-    private lateinit var etDescripcion: EditText
-    private lateinit var etFechaLimite: EditText
-    private lateinit var tvPrioridadAuto: TextView
-    private lateinit var tvEstadoAuto: TextView
+    private lateinit var btnVolverTareas: TextView
 
-    private lateinit var etNombreSubtarea: EditText
+    private lateinit var spProyecto: Spinner
+    private lateinit var etTituloTarea: EditText
+    private lateinit var etDescripcionTarea: EditText
+    private lateinit var tvFechaLimite: TextView
+    private lateinit var spPrioridad: Spinner
+
+    private lateinit var etTituloSubtarea: EditText
     private lateinit var etDescripcionSubtarea: EditText
     private lateinit var btnAgregarSubtarea: MaterialButton
-    private lateinit var tvLabelSubtareasAgregadas: TextView
-    private lateinit var containerSubtareasAgregadas: LinearLayout
-    private lateinit var btnQuitarSubtarea: MaterialButton
+    private lateinit var tvContadorSubtareas: TextView
+    private lateinit var rvSubtareas: RecyclerView
+    private lateinit var adaptadorSubtareas: SubtareasAgregadasAdaptador
 
-    private lateinit var btnCancelarTarea: MaterialButton
     private lateinit var btnGuardarTarea: MaterialButton
     private lateinit var navInicio: TextView
     private lateinit var navProyectos: TextView
@@ -55,10 +54,9 @@ class nuevaTareaDocente : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     private var listaProyectos: List<dataProyectosDocente> = emptyList()
-    private val listaSubtareas = mutableListOf<Pair<String, String>>()
-    private var indiceSubtareaSeleccionada: Int = -1
+    private val listaSubtareas = mutableListOf<SubtareaTemporal>()
     private var fechaSeleccionadaApi: String = ""
-    private var idDocente: Int = 1
+    private var idDocente: Int = 0
 
     private lateinit var presentador: pNuevaTarea
 
@@ -74,22 +72,24 @@ class nuevaTareaDocente : AppCompatActivity() {
 
         btnNotificaciones = findViewById(R.id.btnNotificaciones)
         btnPerfil = findViewById(R.id.btnPerfil)
-        btnVolver = findViewById(R.id.btnVolverNuevaTarea)
-        spProyecto = findViewById(R.id.spProyectoTarea)
-        etNombreTarea = findViewById(R.id.etNombreTarea)
-        etDescripcion = findViewById(R.id.etDescripcionTarea)
-        etFechaLimite = findViewById(R.id.etFechaLimiteTarea)
-        tvPrioridadAuto = findViewById(R.id.tvPrioridadAuto)
-        tvEstadoAuto = findViewById(R.id.tvEstadoAuto)
+        btnVolverTareas = findViewById(R.id.btnVolverTareas)
 
-        etNombreSubtarea = findViewById(R.id.etNombreSubtarea)
+        spProyecto = findViewById(R.id.spProyectoTarea)
+        etTituloTarea = findViewById(R.id.etTituloTarea)
+        etDescripcionTarea = findViewById(R.id.etDescripcionTarea)
+        tvFechaLimite = findViewById(R.id.tvFechaLimiteTarea)
+        spPrioridad = findViewById(R.id.spPrioridadTarea)
+
+        etTituloSubtarea = findViewById(R.id.etTituloSubtarea)
         etDescripcionSubtarea = findViewById(R.id.etDescripcionSubtarea)
         btnAgregarSubtarea = findViewById(R.id.btnAgregarSubtarea)
-        tvLabelSubtareasAgregadas = findViewById(R.id.tvLabelSubtareasAgregadas)
-        containerSubtareasAgregadas = findViewById(R.id.containerSubtareasAgregadas)
-        btnQuitarSubtarea = findViewById(R.id.btnQuitarSubtarea)
+        tvContadorSubtareas = findViewById(R.id.tvContadorSubtareas)
 
-        btnCancelarTarea = findViewById(R.id.btnCancelarTarea)
+        rvSubtareas = findViewById(R.id.rvSubtareasAgregadas)
+        rvSubtareas.layoutManager = LinearLayoutManager(this)
+        adaptadorSubtareas = SubtareasAgregadasAdaptador(this, listaSubtareas)
+        rvSubtareas.adapter = adaptadorSubtareas
+
         btnGuardarTarea = findViewById(R.id.btnGuardarTarea)
         navInicio = findViewById(R.id.navInicio)
         navProyectos = findViewById(R.id.navProyectos)
@@ -100,15 +100,15 @@ class nuevaTareaDocente : AppCompatActivity() {
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idDocente = intent.getIntExtra("id_docente", prefs.getInt("id_usuario", 1))
 
+        configurarSpinnerPrioridad()
+
         presentador = pNuevaTarea(this)
 
         btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
         btnPerfil.setOnClickListener(this::ejecutarPerfil)
-        btnVolver.setOnClickListener(this::ejecutarCancelar)
-        btnCancelarTarea.setOnClickListener(this::ejecutarCancelar)
-        etFechaLimite.setOnClickListener(this::ejecutarSeleccionarFecha)
+        btnVolverTareas.setOnClickListener(this::ejecutarVolverTareas)
+        tvFechaLimite.setOnClickListener(this::ejecutarSeleccionarFecha)
         btnAgregarSubtarea.setOnClickListener(this::ejecutarAgregarSubtarea)
-        btnQuitarSubtarea.setOnClickListener(this::ejecutarQuitarSubtarea)
         btnGuardarTarea.setOnClickListener(this::ejecutarGuardarTarea)
 
         navInicio.setOnClickListener(this::ejecutarInicio)
@@ -119,15 +119,24 @@ class nuevaTareaDocente : AppCompatActivity() {
         presentador.cargarProyectos(idDocente)
     }
 
+    private fun configurarSpinnerPrioridad() {
+        val prioridades = listOf("Alta", "Media", "Baja")
+        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, prioridades)
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spPrioridad.adapter = adaptador
+    }
+
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, notificacionesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))  // pantalla pendiente
+        // startActivity(Intent(this, perfilDocente::class.java))
     }
 
-    fun ejecutarCancelar(v: View) {
+    fun ejecutarVolverTareas(v: View) {
         finish()
     }
 
@@ -136,7 +145,7 @@ class nuevaTareaDocente : AppCompatActivity() {
     }
 
     fun ejecutarProyectos(v: View) {
-       // startActivity(Intent(this, proyectosDocente::class.java))
+        startActivity(Intent(this, proyectosDocente::class.java))
     }
 
     fun ejecutarTareas(v: View) {
@@ -144,140 +153,97 @@ class nuevaTareaDocente : AppCompatActivity() {
     }
 
     fun ejecutarReportes(v: View) {
-        // startActivity(Intent(this, reportesDocente::class.java))  // pantalla pendiente
+        startActivity(Intent(this, reportesDocente::class.java))
     }
 
     fun ejecutarSeleccionarFecha(v: View) {
-        val hoy = Calendar.getInstance()
-        DatePickerDialog(
-            this,
-            { _, year, month, dayOfMonth ->
-                val mesReal = month + 1
-                etFechaLimite.setText(String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, mesReal, year))
-                fechaSeleccionadaApi = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, mesReal, dayOfMonth)
+        val calendario = Calendar.getInstance()
+        val anio = calendario.get(Calendar.YEAR)
+        val mes = calendario.get(Calendar.MONTH)
+        val dia = calendario.get(Calendar.DAY_OF_MONTH)
 
-                val fechaObjetivo = Calendar.getInstance().apply {
-                    set(year, month, dayOfMonth, 0, 0, 0)
-                    set(Calendar.MILLISECOND, 0)
-                }
-                val hoyLimpio = Calendar.getInstance().apply {
-                    set(Calendar.HOUR_OF_DAY, 0)
-                    set(Calendar.MINUTE, 0)
-                    set(Calendar.SECOND, 0)
-                    set(Calendar.MILLISECOND, 0)
-                }
-                val diasRestantes = TimeUnit.MILLISECONDS.toDays(fechaObjetivo.timeInMillis - hoyLimpio.timeInMillis)
+        val selector = DatePickerDialog(this, this, anio, mes, dia)
+        selector.show()
+    }
 
-                tvPrioridadAuto.text = when {
-                    diasRestantes <= 3 -> "Alta"
-                    diasRestantes <= 7 -> "Media"
-                    else -> "Baja"
-                }
-            },
-            hoy.get(Calendar.YEAR),
-            hoy.get(Calendar.MONTH),
-            hoy.get(Calendar.DAY_OF_MONTH)
-        ).show()
+    override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
+        val mesReal = month + 1
+        val fechaVisible = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, mesReal, year)
+        fechaSeleccionadaApi = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, mesReal, dayOfMonth)
+        tvFechaLimite.text = fechaVisible
     }
 
     fun ejecutarAgregarSubtarea(v: View) {
-        val titulo = etNombreSubtarea.text.toString().trim()
-        val desc = etDescripcionSubtarea.text.toString().trim()
+        val tituloSub = etTituloSubtarea.text.toString().trim()
+        val descSub = etDescripcionSubtarea.text.toString().trim()
 
-        if (titulo.isEmpty()) {
-            Toast.makeText(this, "Escribe el nombre de la subtarea", Toast.LENGTH_SHORT).show()
+        if (tituloSub.isEmpty()) {
+            mostrarError("Escribe el título de la subtarea")
             return
         }
 
-        listaSubtareas.add(Pair(titulo, desc))
-        if (indiceSubtareaSeleccionada == -1) {
-            indiceSubtareaSeleccionada = 0
-        }
-
-        etNombreSubtarea.text.clear()
+        listaSubtareas.add(SubtareaTemporal(tituloSub, descSub))
+        etTituloSubtarea.text.clear()
         etDescripcionSubtarea.text.clear()
-        renderizarSubtareas()
+        actualizarListaSubtareas()
     }
 
-    fun ejecutarQuitarSubtarea(v: View) {
-        if (indiceSubtareaSeleccionada in listaSubtareas.indices) {
-            listaSubtareas.removeAt(indiceSubtareaSeleccionada)
-            indiceSubtareaSeleccionada = if (listaSubtareas.isNotEmpty()) 0 else -1
-            renderizarSubtareas()
-        } else {
-            Toast.makeText(this, "Selecciona una subtarea para quitar", Toast.LENGTH_SHORT).show()
+    fun eliminarSubtarea(posicion: Int) {
+        if (posicion >= 0 && posicion < listaSubtareas.size) {
+            listaSubtareas.removeAt(posicion)
+            actualizarListaSubtareas()
         }
     }
 
-    private fun renderizarSubtareas() {
-        containerSubtareasAgregadas.removeAllViews()
-
-        if (listaSubtareas.isEmpty()) {
-            tvLabelSubtareasAgregadas.visibility = View.GONE
-            btnQuitarSubtarea.visibility = View.GONE
-            return
-        }
-
-        tvLabelSubtareasAgregadas.visibility = View.VISIBLE
-        btnQuitarSubtarea.visibility = View.VISIBLE
-
-        val inflater = LayoutInflater.from(this)
-        listaSubtareas.forEachIndexed { index, (titulo, desc) ->
-            val itemView = inflater.inflate(R.layout.item_subtarea_agregada, containerSubtareasAgregadas, false)
-            itemView.findViewById<TextView>(R.id.tvSubtareaTituloItem).text = titulo
-
-            val tvDesc = itemView.findViewById<TextView>(R.id.tvSubtareaDescItem)
-            if (desc.isNotEmpty()) {
-                tvDesc.visibility = View.VISIBLE
-                tvDesc.text = desc
-            } else {
-                tvDesc.visibility = View.GONE
-            }
-
-            val rb = itemView.findViewById<RadioButton>(R.id.rbSeleccionarSubtarea)
-            rb.isChecked = (index == indiceSubtareaSeleccionada)
-
-            itemView.setOnClickListener {
-                indiceSubtareaSeleccionada = index
-                renderizarSubtareas()
-            }
-
-            containerSubtareasAgregadas.addView(itemView)
-        }
+    private fun actualizarListaSubtareas() {
+        tvContadorSubtareas.text = "Subtareas agregadas (" + listaSubtareas.size + ")"
+        adaptadorSubtareas.actualizarLista(listaSubtareas)
     }
 
     fun ejecutarGuardarTarea(v: View) {
-        val posProyecto = spProyecto.selectedItemPosition
-        val idProyecto = if (posProyecto > 0 && posProyecto - 1 < listaProyectos.size) {
-            listaProyectos[posProyecto - 1].idProyecto
-        } else {
-            0
+        val posicion = spProyecto.selectedItemPosition
+        var idProyecto = 0
+        if (posicion > 0 && posicion - 1 < listaProyectos.size) {
+            idProyecto = listaProyectos[posicion - 1].idProyecto
         }
 
-        presentador.guardarTarea(
+        val titulo = etTituloTarea.text.toString().trim()
+        val descripcion = etDescripcionTarea.text.toString().trim()
+        val prioridad = spPrioridad.selectedItem.toString().lowercase()
+
+        presentador.guardarNuevaTarea(
             idProyecto = idProyecto,
-            titulo = etNombreTarea.text.toString().trim(),
-            descripcion = etDescripcion.text.toString().trim(),
+            titulo = titulo,
+            descripcion = descripcion,
             fechaLimiteApi = fechaSeleccionadaApi,
-            prioridad = tvPrioridadAuto.text.toString(),
-            subtitulos = listaSubtareas.map { it.first },
-            subdescripciones = listaSubtareas.map { it.second }
+            prioridad = prioridad,
+            subtareas = listaSubtareas
         )
     }
 
     fun llenarSpinnerProyectos(proyectos: List<dataProyectosDocente>) {
         listaProyectos = proyectos
-        val nombres = mutableListOf("Selecciona el proyecto")
-        nombres.addAll(proyectos.map { it.nombre })
-        spProyecto.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, nombres)
+        val nombres = mutableListOf("Selecciona un proyecto")
+        for (proyecto in proyectos) {
+            nombres.add(proyecto.nombre)
+        }
+        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, nombres)
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spProyecto.adapter = adaptador
     }
 
     fun mostrarCargando(mostrar: Boolean) {
-        progressBar.visibility = if (mostrar) View.VISIBLE else View.GONE
+        if (mostrar) {
+            progressBar.visibility = View.VISIBLE
+            btnGuardarTarea.isEnabled = false
+        } else {
+            progressBar.visibility = View.GONE
+            btnGuardarTarea.isEnabled = true
+        }
     }
 
     fun tareaGuardadaExito(mensaje: String) {
-        Toast.makeText(this, mensaje.ifEmpty { "Tarea guardada" }, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
         finish()
     }
 

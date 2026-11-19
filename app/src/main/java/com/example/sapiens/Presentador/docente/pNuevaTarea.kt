@@ -1,20 +1,26 @@
 package com.example.sapiens.Presentador.docente
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Modelo.docente.SubtareaTemporal
+import com.example.sapiens.Modelo.docente.clsNuevaTareaModelo
+import com.example.sapiens.Modelo.docente.clsProyectoDocenteModelo
 import com.example.sapiens.Vista.docente.nuevaTareaDocente
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+
 class pNuevaTarea(private val vista: nuevaTareaDocente) {
+
+    private val modeloNuevaTarea = clsNuevaTareaModelo()
+    private val modeloProyectos = clsProyectoDocenteModelo()
 
     fun cargarProyectos(idDocente: Int) {
         vista.mostrarCargando(true)
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                val respuesta = RetrofitCliente.apiService.obtenerProyectosDocente(idDocente)
+                val listaProyectos = modeloProyectos.obtenerProyectosDocente(idDocente)
                 vista.mostrarCargando(false)
-                vista.llenarSpinnerProyectos(respuesta.proyectos)
+                vista.llenarSpinnerProyectos(listaProyectos)
             } catch (e: Exception) {
                 vista.mostrarCargando(false)
                 vista.mostrarError("Error al cargar proyectos: " + e.localizedMessage)
@@ -22,21 +28,20 @@ class pNuevaTarea(private val vista: nuevaTareaDocente) {
         }
     }
 
-    fun guardarTarea(
+    fun guardarNuevaTarea(
         idProyecto: Int,
         titulo: String,
         descripcion: String,
         fechaLimiteApi: String,
         prioridad: String,
-        subtitulos: List<String>,
-        subdescripciones: List<String>
+        subtareas: List<SubtareaTemporal>
     ) {
         if (idProyecto <= 0) {
             vista.mostrarError("Selecciona un proyecto")
             return
         }
         if (titulo.isEmpty()) {
-            vista.mostrarError("Ingresa el nombre de la tarea")
+            vista.mostrarError("Escribe el título de la tarea")
             return
         }
         if (fechaLimiteApi.isEmpty()) {
@@ -44,20 +49,27 @@ class pNuevaTarea(private val vista: nuevaTareaDocente) {
             return
         }
 
+        val subtitulos = mutableListOf<String>()
+        val subdescripciones = mutableListOf<String>()
+        for (sub in subtareas) {
+            subtitulos.add(sub.titulo)
+            subdescripciones.add(sub.descripcion)
+        }
+
         vista.mostrarCargando(true)
         CoroutineScope(Dispatchers.Main).launch {
             try {
-                val respuesta = RetrofitCliente.apiService.guardarTarea(
+                val respuesta = modeloNuevaTarea.guardarTarea(
                     idProyecto = idProyecto,
                     titulo = titulo,
                     descripcion = descripcion,
                     fechaLimite = fechaLimiteApi,
-                    prioridad = prioridad.lowercase(),
+                    prioridad = prioridad,
                     subtitulos = subtitulos,
                     subdescripciones = subdescripciones
                 )
                 vista.mostrarCargando(false)
-                vista.tareaGuardadaExito(respuesta.mensaje)
+                vista.tareaGuardadaExito("Tarea guardada correctamente")
             } catch (e: Exception) {
                 vista.mostrarCargando(false)
                 vista.mostrarError("Error al guardar tarea: " + e.localizedMessage)

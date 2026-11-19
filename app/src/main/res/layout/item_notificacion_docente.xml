@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBadgeTipoNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_prioridad"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:text="Recordatorio"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvEstadoNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enviado"
+                android:textColor="@color/gris"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvMensajeNotif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Entrega del avance este viernes"
+            android:textColor="#1F2421"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetalleNotif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Para: Said Meza · 10 nov"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separadorNotif"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#EFECE4" />
+
+</LinearLayout>

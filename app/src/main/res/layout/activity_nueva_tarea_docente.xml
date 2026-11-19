@@ -17,12 +17,12 @@
 
         <ImageView
             android:id="@+id/btnNotificaciones"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Notificaciones"
-            android:padding="4dp"
-            android:src="@android:drawable/ic_popup_reminder"
+            android:padding="6dp"
+            android:src="@drawable/ic_notificacion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,11 +43,12 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Perfil"
-            android:src="@android:drawable/ic_menu_myplaces"
+            android:padding="6dp"
+            android:src="@drawable/ic_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,28 +69,37 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/btnVolverNuevaTarea"
+                android:id="@+id/btnVolverTareas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="4dp"
-                android:text="← Volver"
+                android:text="← Volver a tareas"
                 android:textColor="@color/verde"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Nueva tarea"
+                android:layout_marginTop="6dp"
+                android:text="Nueva Tarea"
                 android:textColor="#1F2421"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Asigna una actividad y define sus subtareas de entrega."
+                android:textColor="@color/gris"
+                android:textSize="13sp" />
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
@@ -105,23 +115,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.06"
-                        android:text="DATOS DE LA TAREA"
-                        android:textColor="@color/gris"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#EFECE4" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Proyecto"
+                        android:text="Proyecto *"
                         android:textColor="#1F2421"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -138,18 +132,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="Nombre de la tarea"
+                        android:text="Título de la tarea *"
                         android:textColor="#1F2421"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/etNombreTarea"
+                        android:id="@+id/etTituloTarea"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/bg_input_sapiens"
-                        android:hint="Ingresa el nombre de la tarea"
+                        android:hint="Ej. Diseño de base de datos"
                         android:inputType="textCapSentences"
                         android:paddingHorizontal="14dp"
                         android:textColor="#1F2421"
@@ -172,274 +166,137 @@
                         android:layout_marginTop="6dp"
                         android:background="@drawable/bg_input_sapiens"
                         android:gravity="top|start"
-                        android:hint="Detalles de la tarea"
+                        android:hint="Instrucciones detalladas para los alumnos..."
                         android:inputType="textMultiLine|textCapSentences"
                         android:padding="14dp"
                         android:textColor="#1F2421"
                         android:textColorHint="#9A9E99"
                         android:textSize="14sp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:baselineAligned="false"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Fecha límite"
-                                android:textColor="#1F2421"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <EditText
-                                android:id="@+id/etFechaLimiteTarea"
-                                android:layout_width="match_parent"
-                                android:layout_height="48dp"
-                                android:layout_marginTop="6dp"
-                                android:background="@drawable/bg_input_sapiens"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:hint="dd/mm/aaaa"
-                                android:paddingHorizontal="14dp"
-                                android:textColor="#1F2421"
-                                android:textColorHint="#9A9E99"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Prioridad"
-                                android:textColor="#1F2421"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvPrioridadAuto"
-                                android:layout_width="match_parent"
-                                android:layout_height="48dp"
-                                android:layout_marginTop="6dp"
-                                android:background="@drawable/bg_input_sapiens"
-                                android:gravity="center_vertical"
-                                android:paddingHorizontal="14dp"
-                                android:text="Media"
-                                android:textColor="#1F2421"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="Estado"
+                        android:text="Fecha límite *"
                         android:textColor="#1F2421"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvEstadoAuto"
+                        android:id="@+id/tvFechaLimiteTarea"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/bg_input_sapiens"
                         android:gravity="center_vertical"
+                        android:hint="Seleccionar fecha"
                         android:paddingHorizontal="14dp"
-                        android:text="Pendiente"
                         android:textColor="#1F2421"
+                        android:textColorHint="#9A9E99"
                         android:textSize="14sp" />
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#E5E2D9"
-                app:strokeWidth="1dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.06"
-                        android:text="SUBTAREAS DEL EQUIPO"
-                        android:textColor="@color/gris"
-                        android:textSize="11sp"
+                        android:layout_marginTop="14dp"
+                        android:text="Prioridad *"
+                        android:textColor="#1F2421"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spPrioridadTarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/bg_input_sapiens"
+                        android:paddingHorizontal="12dp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginVertical="18dp"
                         android:background="#EFECE4" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_subtarea_box"
-                        android:orientation="vertical"
-                        android:padding="14dp">
+                        android:text="Subtareas"
+                        android:textColor="#1F2421"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nombre"
-                            android:textColor="#1F2421"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/etTituloSubtarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_input_sapiens"
+                        android:hint="Título de la subtarea"
+                        android:inputType="textCapSentences"
+                        android:paddingHorizontal="14dp"
+                        android:textColor="#1F2421"
+                        android:textColorHint="#9A9E99"
+                        android:textSize="14sp" />
 
-                        <EditText
-                            android:id="@+id/etNombreSubtarea"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="6dp"
-                            android:background="@drawable/bg_input_sapiens"
-                            android:hint="Nombre de la subtarea"
-                            android:inputType="textCapSentences"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#1F2421"
-                            android:textColorHint="#9A9E99"
-                            android:textSize="13sp" />
+                    <EditText
+                        android:id="@+id/etDescripcionSubtarea"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_input_sapiens"
+                        android:hint="Descripción corta (opcional)"
+                        android:inputType="textCapSentences"
+                        android:paddingHorizontal="14dp"
+                        android:textColor="#1F2421"
+                        android:textColorHint="#9A9E99"
+                        android:textSize="14sp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="Descripción"
-                            android:textColor="#1F2421"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/etDescripcionSubtarea"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="6dp"
-                            android:background="@drawable/bg_input_sapiens"
-                            android:hint="Descripción breve"
-                            android:inputType="textCapSentences"
-                            android:paddingHorizontal="12dp"
-                            android:textColor="#1F2421"
-                            android:textColorHint="#9A9E99"
-                            android:textSize="13sp" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnAgregarSubtarea"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="12dp"
-                            android:backgroundTint="@color/white"
-                            android:text="+ Agregar subtarea"
-                            android:textAllCaps="false"
-                            android:textColor="#1F2421"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="10dp"
-                            app:strokeColor="#E5E2D9" />
-                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAgregarSubtarea"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="10dp"
+                        android:text="+ Agregar subtarea"
+                        android:textAllCaps="false"
+                        android:textColor="@color/verde"
+                        android:textStyle="bold"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/verde" />
 
                     <TextView
-                        android:id="@+id/tvLabelSubtareasAgregadas"
+                        android:id="@+id/tvContadorSubtareas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="Subtareas agregadas"
-                        android:textColor="#1F2421"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
+                        android:text="Subtareas agregadas (0)"
+                        android:textColor="@color/gris"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:id="@+id/containerSubtareasAgregadas"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSubtareasAgregadas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:orientation="vertical" />
+                        android:nestedScrollingEnabled="false" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnQuitarSubtarea"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/btnGuardarTarea"
                         android:layout_width="match_parent"
-                        android:layout_height="44dp"
-                        android:layout_marginTop="4dp"
-                        android:backgroundTint="@color/white"
-                        android:text="🗑 Quitar subtarea"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="@color/verde"
+                        android:text="Guardar tarea"
                         android:textAllCaps="false"
-                        android:textColor="@color/gris"
-                        android:textSize="13sp"
-                        android:visibility="gone"
-                        app:cornerRadius="10dp"
-                        app:strokeColor="#E5E2D9" />
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="12dp" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCancelarTarea"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="✕ Cancelar"
-                    android:textAllCaps="false"
-                    android:textColor="#1F2421"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="12dp"
-                    app:strokeColor="#E5E2D9" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnGuardarTarea"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/verde"
-                    android:text="Guardar tarea"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="12dp" />
-            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -450,7 +307,6 @@
         android:layout_height="64dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:paddingTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
@@ -459,7 +315,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_inicio"
-            android:drawableTint="@color/gris"
             android:gravity="center"
             android:text="Inicio"
             android:textColor="@color/gris"
@@ -471,7 +326,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_proyectos"
-            android:drawableTint="@color/gris"
             android:gravity="center"
             android:text="Proyectos"
             android:textColor="@color/gris"
@@ -496,7 +350,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_reportes"
-            android:drawableTint="@color/gris"
             android:gravity="center"
             android:text="Reportes"
             android:textColor="@color/gris"
