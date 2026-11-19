@@ -14,7 +14,7 @@ class pNuevaTarea(private val vista: nuevaTareaDocente) {
             try {
                 val respuesta = RetrofitCliente.apiService.obtenerProyectosDocente(idDocente)
                 vista.mostrarCargando(false)
-                vista.llenarSpinnerProyectos(respuesta)
+                vista.llenarSpinnerProyectos(respuesta.proyectos)
             } catch (e: Exception) {
                 vista.mostrarCargando(false)
                 vista.mostrarError("Error al cargar proyectos: " + e.localizedMessage)
