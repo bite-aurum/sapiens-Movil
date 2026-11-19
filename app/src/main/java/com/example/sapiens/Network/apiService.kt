@@ -3,40 +3,40 @@ package com.example.sapiens.Network
 import com.example.sapiens.Modelo.LoginRequest
 import com.example.sapiens.Modelo.LoginResponse
 import com.example.sapiens.Modelo.alumno.dataDashboardAlumno
+import com.example.sapiens.Modelo.alumno.dataDetalleProyecto
 import com.example.sapiens.Modelo.alumno.dataDetalleTareaAlumno
+import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Modelo.alumno.dataSubirArchivoResponse
 import com.example.sapiens.Modelo.alumno.dataTareaAlumno
-import com.example.sapiens.Modelo.docente.dataAlumnosProyecto
-import com.example.sapiens.Modelo.dataProyectosCoordinador
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.GET
-import retrofit2.http.Query
-import com.example.sapiens.Modelo.docente.dataDashboardDocente
-import com.example.sapiens.Modelo.docente.dataEnviarNotificacionResponse
-import com.example.sapiens.Modelo.docente.dataNotificacionesDocente
-import com.example.sapiens.Modelo.docente.dataProyectosDocente
-import com.example.sapiens.Modelo.docente.dataTareasDocente
-import com.example.sapiens.Modelo.docente.dataBuscarAlumno
-import com.example.sapiens.Modelo.dataDashboardCoordinador
-import com.example.sapiens.Modelo.docente.dataGuardarProyecto
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import com.example.sapiens.Modelo.docente.dataDetalleTareaDocente
-import com.example.sapiens.Modelo.dataDocentesCoordinador
-import com.example.sapiens.Modelo.docente.dataTareaRespuesta
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import retrofit2.http.Multipart
-import retrofit2.http.Part
-import com.example.sapiens.Modelo.alumno.dataDetalleProyecto
-import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
-import com.example.sapiens.Modelo.docente.dataReporteGenerado
-import com.example.sapiens.Modelo.docente.dataReportesDocente
-import com.example.sapiens.Modelo.docente.dataProyectosReporte
+import com.example.sapiens.Modelo.coordinador.dataDashboardCoordinador
+import com.example.sapiens.Modelo.coordinador.dataDocentesCoordinador
+import com.example.sapiens.Modelo.coordinador.dataProyectosCoordinador
 import com.example.sapiens.Modelo.dataActualizarPerfil
 import com.example.sapiens.Modelo.dataPerfil
+import com.example.sapiens.Modelo.docente.dataAlumnosProyecto
+import com.example.sapiens.Modelo.docente.dataBuscarAlumno
+import com.example.sapiens.Modelo.docente.dataDashboardDocente
+import com.example.sapiens.Modelo.docente.dataDetalleTareaDocente
+import com.example.sapiens.Modelo.docente.dataEnviarNotificacionResponse
+import com.example.sapiens.Modelo.docente.dataGuardarProyecto
+import com.example.sapiens.Modelo.docente.dataNotificacionesDocente
+import com.example.sapiens.Modelo.docente.dataProyectoRespuesta
+import com.example.sapiens.Modelo.docente.dataProyectosReporte
+import com.example.sapiens.Modelo.docente.dataReporteGenerado
+import com.example.sapiens.Modelo.docente.dataReportesDocente
+import com.example.sapiens.Modelo.docente.dataTareaRespuesta
+import com.example.sapiens.Modelo.docente.dataTareasDocente
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
+import retrofit2.http.Query
 
 interface apiService {
     @POST("login.php")
@@ -45,9 +45,7 @@ interface apiService {
     suspend fun obtenerDashboardDocente(
         @Query("id_docente") idDocente: Int
     ): dataDashboardDocente
-
-    @GET("proyectos_docente.php")
-    suspend fun obtenerProyectosDocente(@Query("id_docente") idDocente: Int): List<dataProyectosDocente>
+    
 
     @GET("tareas_docente.php")
     suspend fun obtenerTareasDocente(
@@ -157,10 +155,11 @@ interface apiService {
         @Query("id_alumno") idAlumno: Int
     ): List<dataNotificacionesAlumno>
 
-    @GET("proyectos_docente.php")
-    suspend fun obtenerProyectosReporte(
-        @Query("id_docente") idDocente: Int
-    ): dataProyectosReporte
+    @GET("docente/proyectos_docente.php")
+    suspend fun obtenerProyectosDocente(@Query("id_docente") idDocente: Int): dataProyectoRespuesta
+
+    @GET("docente/proyectos_docente.php")
+    suspend fun obtenerProyectosReporte(@Query("id_docente") idDocente: Int): dataProyectosReporte
 
     @FormUrlEncoded
     @POST("generar_reporte.php")
