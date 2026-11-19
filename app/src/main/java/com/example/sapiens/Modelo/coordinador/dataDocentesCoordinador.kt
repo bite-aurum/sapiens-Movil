@@ -13,7 +13,7 @@ data class dataDocentesCoordinador(
 @Serializable
 data class dataCoordinadorClave(
     @SerialName("id_coordinador") val idCoordinador: Int = 0,
-    @SerialName("codigoVinculo") val codigoVinculo: String = ""
+    @SerialName("codigo_vinculo") val codigoVinculo: String = ""
 )
 
 @Serializable
