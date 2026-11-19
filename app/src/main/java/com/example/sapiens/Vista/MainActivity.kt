@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Si marcó "Recordar" anteriormente, entra directo a su panel
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         if (prefs.getBoolean("recordar_sesion", false)) {
             val rolGuardado = prefs.getString("rol", "") ?: ""
