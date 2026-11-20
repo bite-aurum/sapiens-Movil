@@ -1,6 +1,6 @@
 package com.example.sapiens.Modelo.coordinador
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Network.RetrofitCliente
 
 class clsDocentesCoordinador {
     suspend fun obtenerDocentesCoordinador (idCoordinador: Int) : dataDocentesCoordinador {
