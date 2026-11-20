@@ -25,6 +25,7 @@ import com.example.sapiens.Modelo.alumno.dataDetalleTareaAlumno
 import com.example.sapiens.Modelo.alumno.dataSubtareaAlumno
 import com.example.sapiens.Presentador.alumno.pDetalleTareaAlumno
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.SubtareasAlumnoAdaptador
 import java.io.File
 
@@ -111,11 +112,11 @@ class detalleTareaAlumno : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // abrir(notificacionesAlumno::class.java)  // pantalla pendiente
+        abrir(notificacionesAlumno::class.java)
     }
 
     fun ejecutarPerfil(v: View) {
-        // abrir(perfilAlumno::class.java)  // pantalla pendiente
+        abrir(perfilUsuario::class.java)
     }
 
     fun ejecutarVolver(v: View) {

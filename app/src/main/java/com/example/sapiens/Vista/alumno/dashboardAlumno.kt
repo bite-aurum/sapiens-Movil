@@ -1,5 +1,6 @@
 package com.example.sapiens.Vista.alumno
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -18,6 +19,7 @@ import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Modelo.alumno.dataProximaEntrega
 import com.example.sapiens.Presentador.alumno.pDashboardAlumno
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.ProyectosDashboardAlumnoAdaptador
 import com.google.android.material.card.MaterialCardView
 
@@ -115,11 +117,15 @@ class dashboardAlumno : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesAlumno::class.java))
+        val intent = Intent(this, notificacionesAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilAlumno::class.java))
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
@@ -127,25 +133,31 @@ class dashboardAlumno : AppCompatActivity() {
     }
 
     fun ejecutarProyectos(v: View) {
-        // startActivity(Intent(this, proyectosAlumno::class.java))
+        val intent = Intent(this, proyectosAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarTareas(v: View) {
-        // startActivity(Intent(this, tareasAlumno::class.java))
+        val intent = Intent(this, misTareasAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarDetalleProximaEntrega(v: View) {
         if (idTareaProxima > 0) {
-            // val intent = Intent(this, detalleTareaAlumno::class.java)
-            // intent.putExtra("id_tarea", idTareaProxima)
-            // startActivity(intent)
+            val intent = Intent(this, detalleTareaAlumno::class.java)
+            intent.putExtra("id_alumno", idAlumno)
+            intent.putExtra("id_tarea", idTareaProxima)
+            startActivity(intent)
         }
     }
 
     fun seleccionarProyecto(proyecto: dataProyectosAlumno) {
-        // val intent = Intent(this, detalleProyectoAlumno::class.java)
-        // intent.putExtra("id_proyecto", proyecto.idProyecto)
-        // startActivity(intent)
+        val intent = Intent(this, detalleProyectoAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        intent.putExtra("id_proyecto", proyecto.idProyecto)
+        startActivity(intent)
     }
 
     fun mostrarDatosAlumno(alumno: dataAlumnoDashboard) {

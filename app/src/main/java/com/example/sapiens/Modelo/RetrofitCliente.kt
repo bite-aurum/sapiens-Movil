@@ -20,7 +20,7 @@ object RetrofitCliente {
             .baseUrl(SERVIDOR)
             .addConverterFactory(jsonConfig.asConverterFactory(contentType))
             .build()
-            .create(apiService::class.java)
+            .create(com.example.sapiens.Network.apiService::class.java)
     }
 
 }

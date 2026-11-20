@@ -22,6 +22,7 @@ import com.example.sapiens.Modelo.docente.dataNotificacionesEnviadas
 import com.example.sapiens.Modelo.docente.dataProyectosDocente
 import com.example.sapiens.Presentador.docente.pNotificacionesDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.Vista.docente.Adaptador.NotificacionesDocenteAdaptador
 import com.google.android.material.button.MaterialButton
 import java.text.SimpleDateFormat
@@ -138,7 +139,9 @@ class notificacionesDocente : AppCompatActivity(), AdapterView.OnItemSelectedLis
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
