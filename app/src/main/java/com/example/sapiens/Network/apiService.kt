@@ -52,18 +52,18 @@ interface apiService {
         @Field("contrasena") contrasena: String
     ): dataRegistroRespuesta
 
-    @GET("dashboard_docente.php")
+    @GET("docente/dashboard_docente.php")
     suspend fun obtenerDashboardDocente(
         @Query("id_docente") idDocente: Int
     ): dataDashboardDocente
 
-    @GET("tareas_docente.php")
+    @GET("docente/tareas_docente.php")
     suspend fun obtenerTareasDocente(
         @Query("id_docente") idDocente: Int
     ): dataTareasDocente
 
     @FormUrlEncoded
-    @POST("guardar_tarea.php")
+    @POST("docente/guardar_tarea.php")
     suspend fun guardarTarea(
         @Field("id_proyecto") idProyecto: Int,
         @Field("titulo") titulo: String,
@@ -74,18 +74,18 @@ interface apiService {
         @Field("subdescripciones[]") subdescripciones: List<String>
     ): dataTareaRespuesta
 
-    @GET("notificaciones_enviadas.php")
+    @GET("docente/notificaciones_enviadas.php")
     suspend fun obtenerNotificacionesDocente(
         @Query("id_docente") idDocente: Int
     ): dataNotificacionesDocente
 
-    @GET("alumnos_proyecto.php")
+    @GET("docente/alumnos_proyecto.php")
     suspend fun obtenerAlumnosProyecto(
         @Query("id_proyecto") idProyecto: Int
     ): dataAlumnosProyecto
 
     @FormUrlEncoded
-    @POST("enviar_notificacion.php")
+    @POST("docente/enviar_notificacion.php")
     suspend fun enviarNotificacion(
         @Field("id_docente") idDocente: Int,
         @Field("id_alumno") idAlumno: Int,
@@ -93,11 +93,11 @@ interface apiService {
         @Field("mensaje") mensaje: String,
         @Field("fecha") fecha: String
     ): dataEnviarNotificacionResponse
-    @GET("buscar_alumno.php")
+    @GET("docente/buscar_alumno.php")
     suspend fun buscarAlumno(@Query("correo") correo: String): dataBuscarAlumno
 
     @FormUrlEncoded
-    @POST("guardar_proyecto.php")
+    @POST("docente/guardar_proyecto.php")
     suspend fun guardarProyecto(
         @Field("id_docente") idDocente: Int,
         @Field("nombre") nombre: String,
@@ -109,58 +109,58 @@ interface apiService {
         @Field("alumnos[]") alumnos: List<Int>
     ): dataGuardarProyecto
 
-    @GET("detalle_tarea.php")
+    @GET("docente/detalle_tarea.php")
     suspend fun obtenerDetalleTarea(
         @Query("id_tarea") idTarea: Int
     ): dataDetalleTareaDocente
-    @GET("dashboard_coordinador.php")
+    @GET("coordinador/dashboard_coordinador.php")
     suspend fun obtenerDashboardCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataDashboardCoordinador
 
-    @GET("proyectos_coordinador.php")
+    @GET("coordinador/proyectos_coordinador.php")
     suspend fun obtenerProyectosCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataProyectosCoordinador
-    @GET("docentes_coordinador.php")
+    @GET("coordinador/docentes_Coordinador.php")
     suspend fun obtenerDocentesCoordinador(
         @Query("id_coordinador") idCoordinador: Int
     ): dataDocentesCoordinador
-    @GET("obtener_dashboard_alumno.php")
+    @GET("alumno/obtener_dashboard_alumno.php")
     suspend fun obtenerDashboardAlumno(
         @Query("id_alumno") idAlumno: Int
     ): dataDashboardAlumno
 
-    @GET("obtener_mis_proyectosAlumno.php")
+    @GET("alumno/obtener_mis_proyectosAlumno.php")
     suspend fun obtenerMisProyectosAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataProyectosAlumno>
-    @GET("obtener_mis_tareasAlumno.php")
+    @GET("alumno/obtener_mis_tareasAlumno.php")
     suspend fun obtenerTareasAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataTareaAlumno>
 
-    @GET("detalle_tareaAlumno.php")
+    @GET("alumno/detalle_tareaAlumno.php")
     suspend fun obtenerDetalleTareaAlumno(
         @Query("id_tarea") idTarea: Int,
         @Query("id_alumno") idAlumno: Int
     ): dataDetalleTareaAlumno
 
     @Multipart
-    @POST("subir_archivoAlumno.php")
+    @POST("alumno/subir_archivoAlumno.php")
     suspend fun subirArchivoAlumno(
         @Part("id_alumno") idAlumno: RequestBody,
         @Part("id_subtarea") idSubtarea: RequestBody,
         @Part archivo: MultipartBody.Part
     ): dataSubirArchivoResponse
 
-    @GET("detalle_proyectoAlumno.php")
+    @GET("alumno/detalle_proyectoAlumno.php")
     suspend fun obtenerDetalleProyecto(
         @Query("id_proyecto") idProyecto: Int,
         @Query("id_alumno") idAlumno: Int
     ): dataDetalleProyecto
 
-    @GET("obtener_notificaciones_alumno.php")
+    @GET("alumno/obtener_notificaciones_alumno.php")
     suspend fun obtenerNotificacionesAlumno(
         @Query("id_alumno") idAlumno: Int
     ): List<dataNotificacionesAlumno>
@@ -172,14 +172,14 @@ interface apiService {
     suspend fun obtenerProyectosReporte(@Query("id_docente") idDocente: Int): dataProyectosReporte
 
     @FormUrlEncoded
-    @POST("generar_reporte.php")
+    @POST("docente/generar_reporte.php")
     suspend fun generarReporte(
         @Field("id_docente") idDocente: Int,
         @Field("tipo") tipo: String,
         @Field("id_proyecto") idProyecto: Int
     ): dataReporteGenerado
 
-    @GET("historial_reportes.php")
+    @GET("docente/historial_reportes.php")
     suspend fun obtenerHistorialReportes(
         @Query("id_docente") idDocente: Int
     ): dataReportesDocente

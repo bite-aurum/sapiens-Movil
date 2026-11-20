@@ -14,6 +14,7 @@ import android.text.method.PasswordTransformationMethod
 import com.example.sapiens.Presentador.pPerfil
 import com.example.sapiens.Vista.alumno.dashboardAlumno
 import com.example.sapiens.Vista.alumno.misTareasAlumno
+import com.example.sapiens.Vista.alumno.notificacionesAlumno
 import com.example.sapiens.Vista.alumno.proyectosAlumno
 import com.example.sapiens.Vista.coordinador.dashboardCoordinador
 import com.example.sapiens.Vista.coordinador.docentesCoordinador
@@ -137,8 +138,8 @@ class perfilUsuario : AppCompatActivity() {
     fun ejecutarNotificaciones(v: View) {
         if (esDocente()) {
             abrir(notificacionesDocente::class.java)
-        } else {
-            Toast.makeText(this, "Notificaciones pendiente", Toast.LENGTH_SHORT).show()
+        } else if (esAlumno()) {
+            abrir(notificacionesAlumno::class.java)
         }
     }
 
