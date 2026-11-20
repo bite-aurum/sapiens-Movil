@@ -17,6 +17,7 @@ import com.example.sapiens.Modelo.docente.dataTarea
 import com.example.sapiens.Presentador.docente.pTareasDocente
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
+import com.example.sapiens.adaptadores_docente.TareasDocenteAdapter
 import com.google.android.material.button.MaterialButton
 
 class tareasDocente : AppCompatActivity() {
