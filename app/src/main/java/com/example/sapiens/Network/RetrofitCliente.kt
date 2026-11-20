@@ -1,8 +1,7 @@
-package com.example.sapiens.Modelo
+package com.example.sapiens.Network
 
 import okhttp3.MediaType.Companion.toMediaType
 import kotlinx.serialization.json.Json
-import com.example.sapiens.Network.apiService
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 

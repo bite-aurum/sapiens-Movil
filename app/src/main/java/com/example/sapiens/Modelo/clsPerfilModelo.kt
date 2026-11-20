@@ -1,5 +1,7 @@
 package com.example.sapiens.Modelo
 
+import com.example.sapiens.Network.RetrofitCliente
+
 class clsPerfilModelo {
 
     suspend fun obtenerPerfil(rol: String, id: Int): dataPerfil {

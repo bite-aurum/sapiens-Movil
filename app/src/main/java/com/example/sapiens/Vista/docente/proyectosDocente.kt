@@ -28,7 +28,6 @@ class proyectosDocente : AppCompatActivity() {
     private lateinit var recyclerProyectos: RecyclerView
     private lateinit var adapterProyectos: ProyectosDocenteAdaptador
     private var idDocente: Int = 0
-    //creamos nuestro objeto presentador
     private lateinit var presentador: pProyectosDocente
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +65,7 @@ class proyectosDocente : AppCompatActivity() {
         navReportes.setOnClickListener(this::ejecutarReportes)
 
         presentador.iniciar(idDocente)
-    }//cierra el oncreate
+    }
 
     fun ejecutarNotificaciones(v: View) {
         val intent = Intent(this, notificacionesDocente::class.java)
@@ -100,7 +99,6 @@ class proyectosDocente : AppCompatActivity() {
         startActivity(intent)
     }
 
-    // Botones de la tarjeta (los llama el adaptador)
     fun seleccionarTareas(proyecto: dataProyectosDocente) {
         presentador.seleccionarTareas(proyecto)
     }
@@ -113,7 +111,6 @@ class proyectosDocente : AppCompatActivity() {
         Toast.makeText(this, "Entregas de " + proyecto.nombre, Toast.LENGTH_SHORT).show()
     }
 
-    //Salidas
     fun mostrarProyectos(proyectos: List<dataProyectosDocente>) {
         adapterProyectos.actualizarLista(proyectos)
     }

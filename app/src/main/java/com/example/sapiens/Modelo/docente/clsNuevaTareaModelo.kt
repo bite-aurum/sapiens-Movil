@@ -1,6 +1,6 @@
 package com.example.sapiens.Modelo.docente
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Network.RetrofitCliente
 
 data class SubtareaTemporal(
     val titulo: String,

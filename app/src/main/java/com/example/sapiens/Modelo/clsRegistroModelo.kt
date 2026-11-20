@@ -1,5 +1,7 @@
 package com.example.sapiens.Modelo
 
+import com.example.sapiens.Network.RetrofitCliente
+
 class clsRegistroModelo {
     suspend fun registrarUsuario(
         rol: String,

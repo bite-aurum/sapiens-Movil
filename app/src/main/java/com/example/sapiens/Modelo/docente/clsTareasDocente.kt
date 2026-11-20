@@ -1,6 +1,6 @@
 package com.example.sapiens.Modelo.docente
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Network.RetrofitCliente
 
 class clsTareasDocente {
     suspend fun obtenerTareasDocente(idDocente: Int): dataTareasDocente {
