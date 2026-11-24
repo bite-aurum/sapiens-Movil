@@ -1,5 +1,6 @@
 package com.example.sapiens.Vista.coordinador
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.coordinador.dataDocenteRendimiento
 import com.example.sapiens.Presentador.coordinador.pDashboardCoordinador
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_coordinador.RendimientoDocentesAdaptador
 
 class dashboardCoordinador : AppCompatActivity() {
@@ -80,7 +82,9 @@ class dashboardCoordinador : AppCompatActivity() {
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilCoordinador::class.java))  //  pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_coordinador", idCoordinador)
+        startActivity(intent)
     }
 
     fun ejecutarDocentes(v: View) {
@@ -113,17 +117,15 @@ class dashboardCoordinador : AppCompatActivity() {
     }
 
     fun abrirDocentes() {
-        // val intent = Intent(this, docentesCoordinador::class.java)
-        // intent.putExtra("id_coordinador", idCoordinador)
-        // startActivity(intent)
-        Toast.makeText(this, "Pantalla de docentes pendiente", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, docentesCoordinador::class.java)
+        intent.putExtra("id_coordinador", idCoordinador)
+        startActivity(intent)
     }
 
     fun abrirProyectos() {
-        // val intent = Intent(this, proyectosCoordinador::class.java)
-        // intent.putExtra("id_coordinador", idCoordinador)
-        // startActivity(intent)
-        Toast.makeText(this, "Pantalla de proyectos pendiente", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, proyectosCoordinador::class.java)
+        intent.putExtra("id_coordinador", idCoordinador)
+        startActivity(intent)
     }
 
     fun mostrarError(mensaje: String) {

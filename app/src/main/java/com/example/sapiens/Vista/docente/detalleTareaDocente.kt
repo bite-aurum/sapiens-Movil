@@ -22,6 +22,7 @@ import com.example.sapiens.Modelo.docente.dataSubtareaDetalle
 import com.example.sapiens.Modelo.docente.dataTareaDetalle
 import com.example.sapiens.Presentador.docente.pDetalleTareaDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_docente.SubtareasDocenteAdaptador
 
 class detalleTareaDocente : AppCompatActivity() {
@@ -90,11 +91,11 @@ class detalleTareaDocente : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // abrir(notificacionesDocente::class.java)  // pantalla pendiente
+        abrir(notificacionesDocente::class.java)
     }
 
     fun ejecutarPerfil(v: View) {
-        // abrir(perfilDocente::class.java)  // pantalla pendiente
+        abrir(perfilUsuario::class.java)
     }
 
     // Regresa a la lista de Tareas
@@ -111,7 +112,7 @@ class detalleTareaDocente : AppCompatActivity() {
     }
 
     fun ejecutarReportes(v: View) {
-        // abrir(reportesDocente::class.java)  // pantalla pendiente
+        abrir(reportesDocente::class.java)
     }
 
     fun seleccionarVer(archivo: dataArchivoEvidencia) {

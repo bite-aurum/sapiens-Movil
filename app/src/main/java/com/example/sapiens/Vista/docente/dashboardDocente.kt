@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.docente.dataTareaReciente
 import com.example.sapiens.Presentador.docente.pDashboardDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_docente.tareasRecientesAdaptador
 
 
@@ -82,11 +83,15 @@ class dashboardDocente : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesDocente::class.java))  // pendiente
+        val intent = Intent(this, notificacionesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))  //  pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarProyectos(v: View) {
@@ -128,10 +133,9 @@ class dashboardDocente : AppCompatActivity() {
     }
 
     fun abrirReportes() {
-        // val intent = Intent(this, reportesDocente::class.java)
-        // intent.putExtra("id_docente", idDocente)
-        // startActivity(intent)
-        Toast.makeText(this, "Pantalla de reportes pendiente", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, reportesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun mostrarError(mensaje: String) {

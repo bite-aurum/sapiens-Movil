@@ -22,6 +22,7 @@ import com.example.sapiens.Modelo.docente.SubtareaTemporal
 import com.example.sapiens.Modelo.docente.dataProyectosDocente
 import com.example.sapiens.Presentador.docente.pNuevaTarea
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.google.android.material.button.MaterialButton
 import java.util.Calendar
 import java.util.Locale
@@ -133,7 +134,9 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarVolverTareas(v: View) {

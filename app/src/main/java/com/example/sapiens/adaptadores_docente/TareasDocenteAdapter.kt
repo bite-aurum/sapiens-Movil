@@ -1,4 +1,4 @@
-package com.example.sapiens.Vista.docente
+package com.example.sapiens.adaptadores_docente
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -49,7 +49,6 @@ class TareasDocenteAdapter(
 
             tvTitulo.text = tarea.titulo
 
-            // Color y texto de Prioridad
             tvPrioridad.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_prioridad)
             when (tarea.prioridad.lowercase()) {
                 "alta" -> {
@@ -69,7 +68,7 @@ class TareasDocenteAdapter(
                 }
             }
 
-            // Color y texto de Estado
+
             tvEstado.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_estado)
             when (tarea.estado.lowercase()) {
                 "completada", "completado" -> {
@@ -89,7 +88,6 @@ class TareasDocenteAdapter(
                 }
             }
 
-            // Ocultar línea divisoria en la última tarea de la tarjeta
             separador.visibility = if (indice == tareasDelProyecto.size - 1) View.GONE else View.VISIBLE
 
             filaTarea.setOnClickListener { alSeleccionarTarea(tarea) }

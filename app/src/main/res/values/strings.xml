@@ -10,4 +10,9 @@
         <item>Alumno</item>
         <item>Coordinador</item>
     </string-array>
+    <string-array name="tipos_reporte">
+        <item>Avance</item>
+        <item>Entregas</item>
+        <item>Alumnos</item>
+    </string-array>
 </resources>

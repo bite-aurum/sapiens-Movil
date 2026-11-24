@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
 import com.example.sapiens.Presentador.alumno.pNotificacionesAlumno
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.NotificacionesAlumnoAdaptador
 
 class notificacionesAlumno : AppCompatActivity() {
@@ -67,7 +68,9 @@ class notificacionesAlumno : AppCompatActivity() {
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilAlumno::class.java))  //  pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
@@ -104,7 +107,6 @@ class notificacionesAlumno : AppCompatActivity() {
         val intent = Intent(this, proyectosAlumno::class.java)
         intent.putExtra("id_alumno", idAlumno)
         startActivity(intent)
-        Toast.makeText(this, "Pantalla de proyectos pendiente", Toast.LENGTH_SHORT).show()
     }
 
     fun abrirTareas() {

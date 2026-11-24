@@ -1,6 +1,6 @@
 package com.example.sapiens.Presentador.docente
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Network.RetrofitCliente
 import com.example.sapiens.Modelo.docente.clsDetalleTareaDocenteModelo
 import com.example.sapiens.Modelo.docente.dataArchivoEvidencia
 import com.example.sapiens.Vista.docente.detalleTareaDocente
