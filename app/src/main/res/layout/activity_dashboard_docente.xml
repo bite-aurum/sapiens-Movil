@@ -14,6 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,6 +23,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Notificaciones"
             android:padding="8dp"
             android:src="@drawable/ic_notificacion"
@@ -49,6 +51,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="20dp"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Perfil"
             android:padding="8dp"
             android:src="@drawable/ic_perfil"
@@ -58,7 +61,6 @@
             app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <View
         android:id="@+id/lineaSuperior"
