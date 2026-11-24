@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import kotlin.jvm.java
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataEquipoProyecto
@@ -111,7 +112,7 @@ class detalleProyectoAlumno : AppCompatActivity() {
     }
 
     fun ejecutarTareas(v: View) {
-         startActivity(Intent(this, tareasAlumno::class.java))
+        startActivity(Intent(this, misTareasAlumno::class.java))
     }
 
 

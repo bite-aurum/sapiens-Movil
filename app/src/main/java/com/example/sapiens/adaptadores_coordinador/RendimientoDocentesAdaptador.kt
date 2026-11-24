@@ -19,7 +19,7 @@ class RendimientoDocentesAdaptador(private var listaDocentes: List<dataDocenteRe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocenteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_docente_coordinador, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rendimiento_docente, parent, false)
         return DocenteViewHolder(view)
     }
 

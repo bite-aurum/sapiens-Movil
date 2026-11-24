@@ -1,6 +1,6 @@
 package com.example.sapiens.Modelo.alumno
 
-import com.example.sapiens.Modelo.RetrofitCliente
+import com.example.sapiens.Network.RetrofitCliente
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody

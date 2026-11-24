@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun ejecutarCrearCuenta(v: View) {
-        Toast.makeText(this, "Pantalla Crear cuenta pendiente", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, registroUsuario::class.java))
     }
 
     fun mostrarCargando(mostrar: Boolean) {

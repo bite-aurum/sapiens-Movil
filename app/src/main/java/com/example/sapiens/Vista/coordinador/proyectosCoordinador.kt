@@ -16,6 +16,7 @@ import com.example.sapiens.Modelo.coordinador.dataProyectoCoordinador
 import com.example.sapiens.Modelo.coordinador.dataResumenCoordinador
 import com.example.sapiens.Presentador.coordinador.pProyectosCordinador
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_coordinador.ProyectosCoordinadorAdaptador
 
 class proyectosCoordinador : AppCompatActivity() {
@@ -73,7 +74,7 @@ class proyectosCoordinador : AppCompatActivity() {
     }
 
     fun ejecutarPerfil(v: View) {
-        // abrir(perfilCoordinador::class.java)  // pantalla pendiente
+        abrir(perfilUsuario::class.java)
     }
 
     fun ejecutarDashboard(v: View) {
@@ -81,7 +82,7 @@ class proyectosCoordinador : AppCompatActivity() {
     }
 
     fun ejecutarDocentes(v: View) {
-        // abrir(docentesCoordinador::class.java)  // pantalla pendiente
+        abrir(docentesCoordinador::class.java)
     }
 
     fun mostrarResumen(resumen: dataResumenCoordinador) {

@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.docente.dataTarea
 import com.example.sapiens.Presentador.docente.pTareasDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
+import com.example.sapiens.adaptadores_docente.TareasDocenteAdapter
 import com.google.android.material.button.MaterialButton
 
 class tareasDocente : AppCompatActivity() {
@@ -83,11 +85,15 @@ class tareasDocente : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, notificacionesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarNuevaTarea(v: View) {
@@ -101,11 +107,15 @@ class tareasDocente : AppCompatActivity() {
     }
 
     fun ejecutarProyectos(v: View) {
-       // startActivity(Intent(this, proyectosDocente::class.java))
+       val intent = Intent(this, proyectosDocente::class.java)
+       intent.putExtra("id_docente", idDocente)
+       startActivity(intent)
     }
 
     fun ejecutarReportes(v: View) {
-        // startActivity(Intent(this, reportesDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, reportesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun mostrarCargando(mostrar: Boolean) {
@@ -123,7 +133,10 @@ class tareasDocente : AppCompatActivity() {
     }
 
     fun navegarADetalleTarea(idTarea: Int) {
-        Toast.makeText(this, "Detalle tarea ID: $idTarea", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, detalleTareaDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        intent.putExtra("id_tarea", idTarea)
+        startActivity(intent)
     }
 
     fun mostrarError(mensaje: String) {

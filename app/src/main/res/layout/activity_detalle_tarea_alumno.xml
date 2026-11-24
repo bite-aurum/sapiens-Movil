@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Vista.alumno.detalleTareaAlumno">
+
+    <!-- BARRA DE ARRIBA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnNotificaciones"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_notificacion" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SAPIENS"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/verde" />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_perfil" />
+    </LinearLayout>
+
+    <!-- CONTENIDO CON SCROLL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Titulo"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/btnVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_regresar"
+                android:drawableTint="@color/verde"
+                android:gravity="center_vertical"
+                android:text="Volver"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/verde" />
+
+            <!-- TARJETA PROYECTO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PROYECTO"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gris" />
+
+                <TextView
+                    android:id="@+id/txtProyecto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Proyecto"
+                    android:textSize="17sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/txtSubtitulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Docente"
+                    android:textSize="13sp"
+                    android:textColor="@color/gris" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/txtPrioridad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge_prioridad"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="Alta"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txtEstado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_badge_estado"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="En progreso"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- TARJETA SUBTAREAS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SUBTAREAS DEL EQUIPO"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gris" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSubtareas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Progreso"
+                        android:textSize="14sp"
+                        android:textColor="@color/black" />
+
+                    <ProgressBar
+                        android:id="@+id/barraProgreso"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressTint="@color/verde"
+                        android:progressBackgroundTint="@color/grisClaro" />
+
+                    <TextView
+                        android:id="@+id/txtProgreso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- TARJETA ENTREGAR ARCHIVO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/fondo_tarjeta">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENTREGAR ARCHIVO"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gris" />
+
+                <Spinner
+                    android:id="@+id/spnSubtareas"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fondo_blanco_borde_grisclaro" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="18dp"
+                    android:background="@drawable/fondo_punteado">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_subir" />
+
+                    <TextView
+                        android:id="@+id/txtArchivo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Selecciona tu archivo"
+                        android:textSize="14sp"
+                        android:textColor="@color/gris" />
+
+                    <Button
+                        android:id="@+id/btnSeleccionar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/fondo_borde_verde"
+                        app:backgroundTint="@null"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="Seleccionar"
+                        android:textAllCaps="false"
+                        android:textStyle="bold"
+                        android:textColor="@color/verde" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSubir"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="14dp"
+                    app:backgroundTint="@color/verde"
+                    android:drawableStart="@drawable/ic_subir"
+                    android:drawableTint="@color/white"
+                    android:paddingStart="80dp"
+                    android:paddingEnd="80dp"
+                    android:text="Subir archivo"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- MENU DE ABAJO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/navInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_inicio"
+            android:text="Inicio"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:text="Proyectos"
+            android:textSize="12sp"
+            android:textColor="@color/gris" />
+
+        <TextView
+            android:id="@+id/navTareas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTint="@color/verde"
+            android:text="Tareas"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/verde" />
+    </LinearLayout>
+</LinearLayout>

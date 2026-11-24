@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.docente.dataProyectosDocente
 import com.example.sapiens.Presentador.docente.pProyectosDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_docente.ProyectosDocenteAdaptador
 
 class proyectosDocente : AppCompatActivity() {
@@ -27,7 +28,6 @@ class proyectosDocente : AppCompatActivity() {
     private lateinit var recyclerProyectos: RecyclerView
     private lateinit var adapterProyectos: ProyectosDocenteAdaptador
     private var idDocente: Int = 0
-    //creamos nuestro objeto presentador
     private lateinit var presentador: pProyectosDocente
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,18 +65,24 @@ class proyectosDocente : AppCompatActivity() {
         navReportes.setOnClickListener(this::ejecutarReportes)
 
         presentador.iniciar(idDocente)
-    }//cierra el oncreate
+    }
 
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, notificacionesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarNuevoProyecto(v: View) {
-        // startActivity(Intent(this, nuevoProyectoDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, nuevoProyectoDocente::class.java)
+        intent.putExtra("ID_DOCENTE", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
@@ -88,10 +94,11 @@ class proyectosDocente : AppCompatActivity() {
     }
 
     fun ejecutarReportes(v: View) {
-        // startActivity(Intent(this, reportesDocente::class.java))  // pantalla pendiente
+        val intent = Intent(this, reportesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
-    // Botones de la tarjeta (los llama el adaptador)
     fun seleccionarTareas(proyecto: dataProyectosDocente) {
         presentador.seleccionarTareas(proyecto)
     }
@@ -104,7 +111,6 @@ class proyectosDocente : AppCompatActivity() {
         Toast.makeText(this, "Entregas de " + proyecto.nombre, Toast.LENGTH_SHORT).show()
     }
 
-    //Salidas
     fun mostrarProyectos(proyectos: List<dataProyectosDocente>) {
         adapterProyectos.actualizarLista(proyectos)
     }

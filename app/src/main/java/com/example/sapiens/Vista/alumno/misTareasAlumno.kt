@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataTareaAlumno
 import com.example.sapiens.Presentador.alumno.pTareasAlumno
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.TareasAlumnoAdaptador
 
 class misTareasAlumno : AppCompatActivity() {
@@ -68,11 +69,15 @@ class misTareasAlumno : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesAlumno::class.java))  // pendiente
+        val intent = Intent(this, notificacionesAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
-        // startActivity(Intent(this, perfilAlumno::class.java))  //pendiente
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
@@ -102,10 +107,9 @@ class misTareasAlumno : AppCompatActivity() {
     }
 
     fun abrirProyectos() {
-        // val intent = Intent(this, proyectosAlumno::class.java)
-        // intent.putExtra("id_alumno", idAlumno)
-        // startActivity(intent)
-        Toast.makeText(this, "Pantalla de proyectos pendiente", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, proyectosAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun mostrarError(mensaje: String) {

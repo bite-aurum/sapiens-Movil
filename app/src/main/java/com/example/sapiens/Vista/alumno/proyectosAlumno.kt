@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Presentador.alumno.pProyectosAlumno
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.ProyectosAlumnoAdaptador
 
 class proyectosAlumno : AppCompatActivity() {
@@ -60,11 +61,11 @@ class proyectosAlumno : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
-        // abrir(notificacionesAlumno::class.java)  // pantalla pendiente
+        abrir(notificacionesAlumno::class.java)
     }
 
     fun ejecutarPerfil(v: View) {
-        // abrir(perfilAlumno::class.java)  // pantalla pendiente
+        abrir(perfilUsuario::class.java)
     }
 
     fun ejecutarInicio(v: View) {
@@ -72,7 +73,7 @@ class proyectosAlumno : AppCompatActivity() {
     }
 
     fun ejecutarTareas(v: View) {
-        // abrir(tareasAlumno::class.java)  // pantalla pendiente
+        abrir(misTareasAlumno::class.java)
     }
 
     fun seleccionarProyecto(proyecto: dataProyectosAlumno) {
@@ -86,10 +87,10 @@ class proyectosAlumno : AppCompatActivity() {
 
     fun abrirDetalleProyecto(idProyecto: Int) {
         // pantalla pendiente
-        // val intent = Intent(this, detalleProyectoAlumno::class.java)
-        // intent.putExtra("id_alumno", idAlumno)
-        // intent.putExtra("id_proyecto", idProyecto)
-        // startActivity(intent)
+        val intent = Intent(this, detalleProyectoAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        intent.putExtra("id_proyecto", idProyecto)
+        startActivity(intent)
     }
 
     fun mostrarError(mensaje: String) {

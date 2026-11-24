@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:orientation="vertical"
+    tools:context=".Vista.perfilUsuario">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnNotificaciones"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_notificacion"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SAPIENS"
+            android:textColor="@color/verde"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_perfil"
+            app:tint="@color/verde" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_tarjeta"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgFotoPerfil"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:background="@drawable/fondo_avatar_perfil"
+                        android:padding="18dp"
+                        android:src="@drawable/ic_perfil"
+                        app:tint="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtNombrePerfil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mi perfil"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtCambiarFoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Cambiar foto"
+                            android:textColor="@color/verde"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <EditText
+                            android:id="@+id/edtNombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/fondo_chip"
+                            android:hint="Nombre"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gris"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apellidos"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <EditText
+                            android:id="@+id/edtApellidos"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/fondo_chip"
+                            android:hint="Apellidos"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gris"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Correo electrónico"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/edtCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/fondo_chip"
+                    android:hint="correo@institucion.edu"
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gris"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Cambiar contraseña"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
+
+                    <EditText
+                        android:id="@+id/edtContrasenaActual"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:background="@drawable/fondo_chip"
+                        android:hint="Contraseña actual"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="44dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gris"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/imgVerActual"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="14dp"
+                        android:src="@drawable/ic_ver"
+                        app:tint="@color/gris" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nueva contraseña"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp">
+
+                            <EditText
+                                android:id="@+id/edtNuevaContrasena"
+                                android:layout_width="match_parent"
+                                android:layout_height="46dp"
+                                android:background="@drawable/fondo_chip"
+                                android:hint="••••••"
+                                android:importantForAutofill="no"
+                                android:inputType="textPassword"
+                                android:paddingStart="14dp"
+                                android:paddingEnd="40dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gris"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/imgVerNueva"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/ic_ver"
+                                app:tint="@color/gris" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Confirmar"
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp">
+
+                            <EditText
+                                android:id="@+id/edtConfirmar"
+                                android:layout_width="match_parent"
+                                android:layout_height="46dp"
+                                android:background="@drawable/fondo_chip"
+                                android:hint="••••••"
+                                android:importantForAutofill="no"
+                                android:inputType="textPassword"
+                                android:paddingStart="14dp"
+                                android:paddingEnd="40dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gris"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/imgVerConfirmar"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/ic_ver"
+                                app:tint="@color/gris" />
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnActualizar"
+                    android:layout_width="130dp"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="14dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Actualizar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/verde"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/verde"
+                    app:strokeWidth="1.5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/fondo_tarjeta"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.06"
+                    android:text="PREFERENCIAS"
+                    android:textColor="@color/gris"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/chkTemaOscuro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:buttonTint="@color/verde"
+                    android:text="Tema oscuro"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCerrarSesion"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/white"
+                    android:text="Cerrar sesión"
+                    android:textAllCaps="false"
+                    android:textColor="@color/rojo"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/rojo"
+                    app:strokeWidth="1.5dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGuardarCambios"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/verde"
+                    android:text="Guardar cambios"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/barraDocente"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/navDocInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_inicio"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Inicio"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navDocProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Proyectos"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navDocTareas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Tareas"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navDocReportes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_reportes"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Reportes"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/barraAlumno"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/navAluInicio"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_inicio"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Inicio"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navAluProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Proyectos"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navAluTareas"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Tareas"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/barraCoordinador"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/navCooDashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_inicio"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Dashboard"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navCooDocentes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_lista"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Docentes"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/navCooProyectos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTint="@color/gris"
+            android:gravity="center"
+            android:text="Proyectos"
+            android:textColor="@color/gris"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
