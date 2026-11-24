@@ -8,4 +8,7 @@
     <color name="gris">#666666</color>
     <color name="grisClaro">#E5E0D5</color>
     <color name="cafeClaro">#F3EFE6</color>
+    <color name="rojo">#D93025</color>
+    <color name="grisMasClarito">#F2EFE7</color>
+
 </resources>
