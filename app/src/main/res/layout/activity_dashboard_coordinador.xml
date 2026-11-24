@@ -21,14 +21,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/sombra_icono"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Notificaciones"
             android:padding="8dp"
             android:src="@drawable/ic_notificacion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/tvLogo"
@@ -48,14 +48,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/sombra_icono"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Perfil"
             android:padding="8dp"
             android:src="@drawable/ic_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -340,7 +340,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dashboard"
+                android:text="Inicio"
                 android:textColor="@color/verde"
                 android:textSize="11sp"
                 android:textStyle="bold" />
