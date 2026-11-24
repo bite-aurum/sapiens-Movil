@@ -28,6 +28,7 @@ import com.example.sapiens.Modelo.docente.dataReportesDocente
 import com.example.sapiens.Modelo.docente.dataTareaRespuesta
 import com.example.sapiens.Modelo.docente.dataTareasDocente
 import com.example.sapiens.Modelo.dataRegistroRespuesta
+import com.example.sapiens.Modelo.dataSubirFoto
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -201,5 +202,12 @@ interface apiService {
         @Field("contrasena_actual") contrasenaActual: String,
         @Field("nueva_contrasena") nuevaContrasena: String
     ): dataActualizarPerfil
+    @Multipart
+    @POST("subir_foto.php")
+    suspend fun subirFoto(
+        @Part("rol") rol: RequestBody,
+        @Part("id") id: RequestBody,
+        @Part foto: MultipartBody.Part
+    ): dataSubirFoto
 
 }

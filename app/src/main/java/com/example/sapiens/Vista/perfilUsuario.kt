@@ -24,6 +24,11 @@ import com.example.sapiens.Vista.docente.notificacionesDocente
 import com.example.sapiens.Vista.docente.proyectosDocente
 import com.example.sapiens.Vista.docente.reportesDocente
 import com.example.sapiens.Vista.docente.tareasDocente
+import android.net.Uri
+import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
+import com.example.sapiens.Network.RetrofitCliente
+import java.io.File
 
 class perfilUsuario : AppCompatActivity() {
     private lateinit var btnNotificaciones: ImageView
@@ -56,6 +61,14 @@ class perfilUsuario : AppCompatActivity() {
     private lateinit var navCooDashboard: TextView
     private lateinit var navCooDocentes: TextView
     private lateinit var navCooProyectos: TextView
+
+    private lateinit var imgFotoPerfil: ImageView
+
+    private val elegirFoto = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        if (uri != null) {
+            copiarYSubir(uri)
+        }
+    }
 
     private var idUsuario: Int = 0
     private var rol: String = ""
@@ -105,6 +118,7 @@ class perfilUsuario : AppCompatActivity() {
         navCooDashboard = findViewById(R.id.navCooDashboard)
         navCooDocentes = findViewById(R.id.navCooDocentes)
         navCooProyectos = findViewById(R.id.navCooProyectos)
+        imgFotoPerfil = findViewById(R.id.imgFotoPerfil)
 
         presentador = pPerfil(this)
 
@@ -141,10 +155,6 @@ class perfilUsuario : AppCompatActivity() {
         } else if (esAlumno()) {
             abrir(notificacionesAlumno::class.java)
         }
-    }
-
-    fun ejecutarCambiarFoto(v: View) {
-        Toast.makeText(this, "Cambiar foto pendiente", Toast.LENGTH_SHORT).show()
     }
 
 
@@ -317,5 +327,30 @@ class perfilUsuario : AppCompatActivity() {
         intent.putExtra("id_docente", idUsuario)
         intent.putExtra("id_coordinador", idUsuario)
         startActivity(intent)
+    }
+    fun ejecutarCambiarFoto(v: View) {
+        elegirFoto.launch("image/*")
+    }
+
+    private fun copiarYSubir(uri: Uri) {
+        val archivo = File(cacheDir, "foto_perfil.jpg")
+        val entrada = contentResolver.openInputStream(uri)
+        val salida = archivo.outputStream()
+        entrada?.copyTo(salida)
+        entrada?.close()
+        salida.close()
+
+        val tipoMime = contentResolver.getType(uri) ?: "image/jpeg"
+        presentador.subirFoto(rol, idUsuario, archivo, tipoMime)
+    }
+
+    fun mostrarFoto(foto: String?) {
+        if (foto.isNullOrEmpty()) return
+        imgFotoPerfil.setPadding(0, 0, 0, 0)
+        imgFotoPerfil.imageTintList = null
+        Glide.with(this)
+            .load(RetrofitCliente.SERVIDOR + foto)
+            .circleCrop()
+            .into(imgFotoPerfil)
     }
 }

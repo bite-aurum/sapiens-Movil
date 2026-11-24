@@ -7,3 +7,9 @@ import kotlinx.serialization.Serializable
 data class dataActualizarPerfil(
     @SerialName("mensaje") val mensaje: String = ""
 )
+@Serializable
+data class dataSubirFoto(
+    @SerialName("ok") val ok: Boolean = false,
+    @SerialName("mensaje") val mensaje: String = "",
+    @SerialName("foto") val foto: String = ""
+)

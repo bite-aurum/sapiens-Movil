@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.sapiens.Vista.perfilUsuario
+import java.io.File
 
 
 class pPerfil (val vista: perfilUsuario) {
@@ -21,6 +22,7 @@ class pPerfil (val vista: perfilUsuario) {
                 val perfil = respuesta.perfil
                 val apellidos = (perfil.apellidoPaterno + " " + perfil.apellidoMaterno).trim()
                 vista.mostrarPerfil(perfil.nombre, apellidos, perfil.correo)
+                vista.mostrarFoto(perfil.foto)
             } catch (e: Exception) {
                 vista.mostrarError("Error: " + e.localizedMessage)
             }
@@ -104,6 +106,19 @@ class pPerfil (val vista: perfilUsuario) {
                 vista.mostrarError("Error: " + e.localizedMessage)
             }
             vista.activarBotones(true)
+        }
+    }
+    fun subirFoto(rol: String, id: Int, archivo: File, tipoMime: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val respuesta = modelo.subirFoto(rol, id, archivo, tipoMime)
+                vista.mostrarError(respuesta.mensaje)
+                if (respuesta.ok) {
+                    vista.mostrarFoto(respuesta.foto)
+                }
+            } catch (e: Exception) {
+                vista.mostrarError("Error al subir: " + e.localizedMessage)
+            }
         }
     }
 }

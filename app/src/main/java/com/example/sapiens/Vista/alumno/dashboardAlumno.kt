@@ -14,9 +14,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sapiens.Modelo.alumno.dataAlumnoDashboard
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Modelo.alumno.dataProximaEntrega
+import com.example.sapiens.Network.RetrofitCliente
 import com.example.sapiens.Presentador.alumno.pDashboardAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
@@ -28,6 +30,7 @@ class dashboardAlumno : AppCompatActivity() {
     private lateinit var btnNotificaciones: ImageView
     private lateinit var btnPerfil: ImageView
     private lateinit var tvBienvenida: TextView
+    private lateinit var imgFotoAlumno: ImageView
 
     private lateinit var cardAccesoProyectos: MaterialCardView
     private lateinit var cardAccesoTareas: MaterialCardView
@@ -67,6 +70,7 @@ class dashboardAlumno : AppCompatActivity() {
         btnNotificaciones = findViewById(R.id.btnNotificacionesAlumno)
         btnPerfil = findViewById(R.id.btnPerfilAlumno)
         tvBienvenida = findViewById(R.id.tvBienvenidaAlumno)
+        imgFotoAlumno = findViewById(R.id.imgFotoAlumno)
 
         cardAccesoProyectos = findViewById(R.id.cardAccesoProyectosAlumno)
         cardAccesoTareas = findViewById(R.id.cardAccesoTareasAlumno)
@@ -167,6 +171,12 @@ class dashboardAlumno : AppCompatActivity() {
             "Alumno"
         }
         tvBienvenida.text = "Bienvenid@, " + nombreMostrar
+        if (!alumno.foto.isNullOrEmpty()) {
+            Glide.with(this)
+                .load(RetrofitCliente.SERVIDOR + alumno.foto)
+                .circleCrop()
+                .into(imgFotoAlumno)
+        }
     }
 
     fun mostrarProximaEntrega(proxima: dataProximaEntrega?) {
