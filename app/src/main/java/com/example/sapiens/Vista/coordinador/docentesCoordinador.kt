@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Modelo.coordinador.dataDocenteLista
 import com.example.sapiens.Modelo.coordinador.dataResumenDocentes
 import com.example.sapiens.adaptadores_coordinador.DocentesCoordinadorAdaptador
@@ -42,6 +43,8 @@ class docentesCoordinador : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
 
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idCoordinador = intent.getIntExtra("id_coordinador", prefs.getInt("id_usuario", 0))

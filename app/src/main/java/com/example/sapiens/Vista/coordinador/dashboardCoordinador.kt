@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Modelo.coordinador.dataDocenteRendimiento
 import com.example.sapiens.Presentador.coordinador.pDashboardCoordinador
 import com.example.sapiens.R
@@ -44,6 +45,8 @@ class dashboardCoordinador : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
 
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idCoordinador = intent.getIntExtra("id_coordinador", prefs.getInt("id_usuario", 0))

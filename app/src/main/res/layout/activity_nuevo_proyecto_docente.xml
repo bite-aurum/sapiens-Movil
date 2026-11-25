@@ -24,11 +24,16 @@
             android:src="@drawable/ic_notificacion" />
 
         <ImageView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-
-             />
+            android:id="@+id/ivLogoSapiens"
+            android:layout_width="325dp"
+            android:layout_height="38dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Sapiens"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btnPerfil"

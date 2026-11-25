@@ -18,13 +18,13 @@ import com.bumptech.glide.Glide
 import com.example.sapiens.Modelo.alumno.dataAlumnoDashboard
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Modelo.alumno.dataProximaEntrega
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Network.RetrofitCliente
 import com.example.sapiens.Presentador.alumno.pDashboardAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_alumno.ProyectosDashboardAlumnoAdaptador
 import com.google.android.material.card.MaterialCardView
-
 
 class dashboardAlumno : AppCompatActivity() {
 
@@ -54,7 +54,6 @@ class dashboardAlumno : AppCompatActivity() {
     private lateinit var navTareas: TextView
     private lateinit var progressBar: ProgressBar
 
-    private lateinit var ivLogoSapiens: ImageView
     private var idAlumno: Int = 0
     private var idTareaProxima: Int = 0
     private lateinit var presentador: pDashboardAlumno
@@ -114,9 +113,8 @@ class dashboardAlumno : AppCompatActivity() {
         navProyectos.setOnClickListener(this::ejecutarProyectos)
         navTareas.setOnClickListener(this::ejecutarTareas)
 
-        ivLogoSapiens = findViewById(R.id.ivLogoSapiens)
-
         presentador.cargarDashboard(idAlumno)
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
 
     override fun onResume() {
@@ -220,13 +218,5 @@ class dashboardAlumno : AppCompatActivity() {
 
     fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
-    }
-
-    fun mostrarLogo(nombreLogo: String) {
-        if (nombreLogo.isNotEmpty()) {
-            Glide.with(this)
-                .load(RetrofitCliente.SERVIDOR + "img/" + nombreLogo)
-                .into(ivLogoSapiens)
-        }
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataEquipoProyecto
 import com.example.sapiens.Modelo.alumno.dataEntregaProyecto
 import com.example.sapiens.Modelo.alumno.dataTareaProyecto
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Presentador.alumno.pDetalleProyectoAlumno
 import com.example.sapiens.adaptadores_alumno.EquipoProyectoAdaptador
 import com.example.sapiens.adaptadores_alumno.EntregasProyectoAdaptador
@@ -57,6 +58,7 @@ class detalleProyectoAlumno : AppCompatActivity() {
             insets
         }
 
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idProyecto = intent.getIntExtra("id_proyecto", 0)
         idAlumno = intent.getIntExtra("id_alumno", prefs.getInt("id_usuario", 0))

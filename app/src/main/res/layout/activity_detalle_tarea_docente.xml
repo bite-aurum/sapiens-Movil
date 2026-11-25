@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,15 +23,17 @@
             android:layout_height="26dp"
             android:src="@drawable/ic_notificacion" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="SAPIENS"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            android:textColor="@color/verde" />
+        <ImageView
+            android:id="@+id/ivLogoSapiens"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="333dp"
+            android:layout_height="38dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Sapiens"
+            android:scaleType="fitCenter" />
 
         <ImageView
             android:id="@+id/btnPerfil"

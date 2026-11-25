@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Modelo.coordinador.dataProyectoCoordinador
 import com.example.sapiens.Modelo.coordinador.dataResumenCoordinador
 import com.example.sapiens.Presentador.coordinador.pProyectosCordinador
@@ -67,6 +68,8 @@ class proyectosCoordinador : AppCompatActivity() {
         navDocentes.setOnClickListener(this::ejecutarDocentes)
 
         presentador.iniciar(idCoordinador)
+
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
 
     fun ejecutarNotificaciones(v: View) {

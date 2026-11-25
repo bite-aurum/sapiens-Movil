@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataNotificacionesAlumno
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Presentador.alumno.pNotificacionesAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
@@ -41,6 +42,7 @@ class notificacionesAlumno : AppCompatActivity() {
             insets
         }
 
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idAlumno = intent.getIntExtra("id_alumno", prefs.getInt("id_usuario", 0))
 
