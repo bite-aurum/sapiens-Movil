@@ -20,7 +20,7 @@ import com.example.sapiens.Modelo.coordinador.dataResumenDocentes
 import com.example.sapiens.adaptadores_coordinador.DocentesCoordinadorAdaptador
 
 class docentesCoordinador : AppCompatActivity() {
-    private lateinit var btnNotificaciones: ImageView
+
     private lateinit var btnPerfil: ImageView
     private lateinit var tvCodigoVinculo: TextView
     private lateinit var tvDocentesRegistrados: TextView
@@ -49,7 +49,6 @@ class docentesCoordinador : AppCompatActivity() {
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idCoordinador = intent.getIntExtra("id_coordinador", prefs.getInt("id_usuario", 0))
 
-        btnNotificaciones = findViewById(R.id.btnNotificaciones)
         btnPerfil = findViewById(R.id.btnPerfil)
         tvCodigoVinculo = findViewById(R.id.tvCodigoVinculo)
         tvDocentesRegistrados = findViewById(R.id.tvDocentesRegistrados)
@@ -65,7 +64,6 @@ class docentesCoordinador : AppCompatActivity() {
 
         presentador = pDocentesCoordinador(this)
 
-        btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
         btnPerfil.setOnClickListener(this::ejecutarPerfil)
         navDashboard.setOnClickListener(this::ejecutarDashboard)
         navProyectos.setOnClickListener(this::ejecutarProyectos)
@@ -73,8 +71,7 @@ class docentesCoordinador : AppCompatActivity() {
         presentador.iniciar(idCoordinador)
     }
 
-    fun ejecutarNotificaciones(v: View) {
-    }
+
 
     fun ejecutarPerfil(v: View) {
     }
