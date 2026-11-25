@@ -9,25 +9,29 @@
     android:orientation="vertical"
     tools:context=".Vista.alumno.detalleProyectoAlumno">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barraSuperior"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:layout_height="64dp"
+        android:background="@color/fondo"
+        android:paddingHorizontal="16dp">
 
         <ImageView
             android:id="@+id/btnNotificaciones"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:background="@drawable/sombra_ic_sup"
+            android:contentDescription="Notificaciones"
+            android:padding="6dp"
             android:src="@drawable/ic_notificacion"
-            app:tint="@color/gris"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/gris" />
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
-            android:layout_width="283dp"
+            android:layout_width="135dp"
             android:layout_height="38dp"
             android:adjustViewBounds="true"
             android:contentDescription="Logo Sapiens"
@@ -39,12 +43,18 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:background="@drawable/sombra_ic_sup"
+            android:contentDescription="Perfil"
+            android:padding="6dp"
             android:src="@drawable/ic_perfil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/gris" />
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
