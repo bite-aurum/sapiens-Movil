@@ -19,15 +19,14 @@
             android:id="@+id/btnNotificaciones"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@drawable/bg_badge_estado"
-            android:backgroundTint="@color/verde"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Notificaciones"
-            android:padding="7dp"
+            android:padding="6dp"
             android:src="@drawable/ic_notificacion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
+            app:tint="@color/gris" />
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
