@@ -19,14 +19,14 @@
             android:id="@+id/btnNotificaciones"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@drawable/sombra_ic_sup"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Notificaciones"
             android:padding="6dp"
             android:src="@drawable/ic_notificacion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/gris" />
+            app:tint="#4A4E4A" />
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
@@ -44,14 +44,14 @@
             android:id="@+id/btnPerfil"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="@drawable/sombra_ic_sup"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Perfil"
             android:padding="6dp"
             android:src="@drawable/ic_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/gris" />
+            app:tint="#4A4E4A" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -194,22 +194,41 @@
                         android:textColorHint="#9A9E99"
                         android:textSize="14sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/layoutPrioridad"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
-                        android:text="Prioridad *"
-                        android:textColor="#1F2421"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    <Spinner
-                        android:id="@+id/spPrioridadTarea"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="6dp"
-                        android:background="@drawable/bg_input_sapiens"
-                        android:paddingHorizontal="12dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Prioridad"
+                            android:textColor="#1F2421"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvPrioridadTarea"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_badge_prioridad"
+                            android:paddingHorizontal="14dp"
+                            android:paddingVertical="6dp"
+                            android:text=""
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:textColor="@color/gris"
+                            android:textSize="12sp" />
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -313,7 +332,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_inicio_footer"
+            android:drawableTop="@drawable/ic_inicio"
             android:gravity="center"
             android:text="Inicio"
             android:textColor="@color/gris"
@@ -324,7 +343,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_proyecto_footer"
+            android:drawableTop="@drawable/ic_proyectos"
             android:gravity="center"
             android:text="Proyectos"
             android:textColor="@color/gris"
@@ -348,7 +367,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_reportes_footer"
+            android:drawableTop="@drawable/ic_reportes"
             android:gravity="center"
             android:text="Reportes"
             android:textColor="@color/gris"
