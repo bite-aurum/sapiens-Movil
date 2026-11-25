@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.Modelo.LoginResponse
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Presentador.sapiensPresentador
 import com.example.sapiens.R
 import com.example.sapiens.Vista.alumno.dashboardAlumno
@@ -63,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         btnIniciarSesion.setOnClickListener(this::ejecutarIniciarSesion)
         tvCrearCuenta.setOnClickListener(this::ejecutarCrearCuenta)
+
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
 
     fun ejecutarIniciarSesion(v: View) {

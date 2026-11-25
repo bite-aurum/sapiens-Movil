@@ -9,6 +9,7 @@ import com.example.sapiens.R
 import com.example.sapiens.Presentador.pRegistro
 import android.widget.*
 import android.view.View
+import com.example.sapiens.Modelo.clsAjustesModelo
 
 class registroUsuario : AppCompatActivity() {
 
@@ -30,6 +31,7 @@ class registroUsuario : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
 
         spnRol = findViewById(R.id.spnRol)
         edtNombre = findViewById(R.id.edtNombreCompleto)

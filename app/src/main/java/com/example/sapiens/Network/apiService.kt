@@ -13,6 +13,7 @@ import com.example.sapiens.Modelo.coordinador.dataDashboardCoordinador
 import com.example.sapiens.Modelo.coordinador.dataDocentesCoordinador
 import com.example.sapiens.Modelo.coordinador.dataProyectosCoordinador
 import com.example.sapiens.Modelo.dataActualizarPerfil
+import com.example.sapiens.Modelo.dataAjustes
 import com.example.sapiens.Modelo.dataPerfil
 import com.example.sapiens.Modelo.docente.dataAlumnosProyecto
 import com.example.sapiens.Modelo.docente.dataBuscarAlumno
@@ -209,5 +210,8 @@ interface apiService {
         @Part("id") id: RequestBody,
         @Part foto: MultipartBody.Part
     ): dataSubirFoto
+
+    @GET("obtener_ajustes.php")
+    suspend fun obtenerAjustes(): dataAjustes
 
 }

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataDetalleTareaAlumno
 import com.example.sapiens.Modelo.alumno.dataSubtareaAlumno
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Presentador.alumno.pDetalleTareaAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
@@ -71,6 +72,7 @@ class detalleTareaAlumno : AppCompatActivity() {
             insets
         }
 
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         idAlumno = intent.getIntExtra("id_alumno", 0)
         idTarea = intent.getIntExtra("id_tarea", 0)
 

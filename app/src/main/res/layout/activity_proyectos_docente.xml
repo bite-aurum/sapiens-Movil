@@ -24,15 +24,17 @@
             android:src="@drawable/ic_notificacion" />
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="SAPIENS"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            android:textColor="@color/verde" />
+        <ImageView
+            android:id="@+id/ivLogoSapiens"
+            android:layout_width="298dp"
+            android:layout_height="38dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Logo Sapiens"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btnPerfil"

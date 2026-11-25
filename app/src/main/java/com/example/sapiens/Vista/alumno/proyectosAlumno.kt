@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Presentador.alumno.pProyectosAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
@@ -38,6 +39,7 @@ class proyectosAlumno : AppCompatActivity() {
             insets
         }
 
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         idAlumno = intent.getIntExtra("id_alumno", 0)
 
         btnNotificaciones = findViewById(R.id.btnNotificaciones)

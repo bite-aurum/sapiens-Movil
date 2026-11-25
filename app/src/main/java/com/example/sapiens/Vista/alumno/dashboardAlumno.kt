@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.sapiens.Modelo.alumno.dataAlumnoDashboard
 import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
 import com.example.sapiens.Modelo.alumno.dataProximaEntrega
+import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Network.RetrofitCliente
 import com.example.sapiens.Presentador.alumno.pDashboardAlumno
 import com.example.sapiens.R
@@ -113,6 +114,7 @@ class dashboardAlumno : AppCompatActivity() {
         navTareas.setOnClickListener(this::ejecutarTareas)
 
         presentador.cargarDashboard(idAlumno)
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
 
     override fun onResume() {
