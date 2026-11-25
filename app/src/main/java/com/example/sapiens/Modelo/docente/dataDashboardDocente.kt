@@ -13,7 +13,8 @@ data class dataDashboardDocente(
 data class dataDocente(
     @SerialName("id_docente") val idDocente: Int,
     @SerialName("nombre") val nombre: String,
-    @SerialName("apellido_paterno") val apellidoPaterno: String
+    @SerialName("apellido_paterno") val apellidoPaterno: String,
+    @SerialName("foto") val foto: String? = null
 )
 
 @Serializable

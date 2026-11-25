@@ -17,6 +17,7 @@ class pDashboardDocente(private val vista: dashboardDocente) {
                 val respuesta = modelo.obtenerDashboard(idDocente)
                 vista.mostrarBienvenida(respuesta.docente.nombre)
                 vista.mostrarTareasRecientes(respuesta.tareasRecientes)
+                vista.mostrarFoto(respuesta.docente.foto)
             } catch (e: Exception) {
                 vista.mostrarError("Error: " + e.localizedMessage)
             }
