@@ -29,15 +29,12 @@
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
-            android:layout_width="306dp"
+            android:layout_width="0dp"
             android:layout_height="38dp"
+            android:layout_weight="1"
             android:adjustViewBounds="true"
             android:contentDescription="Logo Sapiens"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:scaleType="fitCenter" />
 
         <ImageView
             android:id="@+id/btnPerfil"
@@ -209,15 +206,16 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <Spinner
-                    android:id="@+id/spnEstado"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                <TextView
+                    android:id="@+id/tvEstadoProyecto"
+                    android:layout_width="416dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/fondo_chip"
-                    android:entries="@array/estados_proyecto"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp" />
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="8dp"
+                    android:text="Activo"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
