@@ -20,7 +20,7 @@ import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_coordinador.RendimientoDocentesAdaptador
 
 class dashboardCoordinador : AppCompatActivity() {
-    private lateinit var btnNotificaciones: ImageView
+
     private lateinit var btnPerfil: ImageView
     private lateinit var tvBienvenida: TextView
     private lateinit var tvTotalProyectos: TextView
@@ -48,7 +48,7 @@ class dashboardCoordinador : AppCompatActivity() {
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idCoordinador = intent.getIntExtra("id_coordinador", prefs.getInt("id_usuario", 0))
 
-        btnNotificaciones = findViewById(R.id.btnNotificaciones)
+
         btnPerfil = findViewById(R.id.btnPerfil)
         tvBienvenida = findViewById(R.id.tvBienvenida)
         tvTotalProyectos = findViewById(R.id.tvTotalProyectos)
@@ -66,7 +66,7 @@ class dashboardCoordinador : AppCompatActivity() {
 
         presentador = pDashboardCoordinador(this)
 
-        btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
+
         btnPerfil.setOnClickListener(this::ejecutarPerfil)
         navDocentes.setOnClickListener(this::ejecutarDocentes)
         navProyectos.setOnClickListener(this::ejecutarProyectos)
@@ -75,10 +75,6 @@ class dashboardCoordinador : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         presentador.iniciar(idCoordinador)
-    }
-
-    fun ejecutarNotificaciones(v: View) {
-        // startActivity(Intent(this, notificacionesCoordinador::class.java))  //  pendiente
     }
 
     fun ejecutarPerfil(v: View) {
