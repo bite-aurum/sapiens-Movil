@@ -9,17 +9,16 @@
     android:background="@color/fondo"
     tools:context=".Vista.coordinador.proyectosCoordinador">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/barraSuperior"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:layout_height="64dp"
+        android:background="@color/fondo"
+        android:paddingHorizontal="16dp">
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
-            android:layout_width="333dp"
+            android:layout_width="135dp"
             android:layout_height="38dp"
             android:adjustViewBounds="true"
             android:contentDescription="Logo Sapiens"
@@ -31,13 +30,18 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:src="@drawable/ic_perfil"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:padding="6dp"
             android:background="@drawable/sombra_ic_sup"
-            app:tint="@color/gris"/>
-    </LinearLayout>
+            android:contentDescription="Perfil"
+            android:padding="6dp"
+            android:src="@drawable/ic_perfil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/gris" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
