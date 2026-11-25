@@ -21,7 +21,9 @@
             android:id="@+id/btnNotificaciones"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:src="@drawable/ic_notificacion" />
+            android:background="@drawable/sombra_ic_sup"
+            android:src="@drawable/ic_notificacion"
+            app:tint="@color/gris"/>
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
@@ -39,7 +41,9 @@
             android:id="@+id/btnPerfil"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:src="@drawable/ic_perfil" />
+            android:background="@drawable/sombra_ic_sup"
+            android:src="@drawable/ic_perfil"
+            app:tint="@color/gris"/>
     </LinearLayout>
 
     <ScrollView
@@ -222,7 +226,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_inicio"
+            android:drawableTop="@drawable/ic_inicio_footer"
             android:text="Inicio"
             android:textSize="12sp"
             android:textColor="@color/gris" />
@@ -246,7 +250,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTop="@drawable/ic_tareas_footer"
             android:text="Tareas"
             android:textSize="12sp"
             android:textColor="@color/gris" />
