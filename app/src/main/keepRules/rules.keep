@@ -1,25 +1,11 @@
-# Add project specific R8 rules here.
-# AGP will combine all keep rule files in src/main/keepRules to pass to R8
-#
-# For more details, see
-#   https://d.android.com/r/tools/r8/keep-rules
-
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
-#kotlinx.serialization
+# kotlinx.serialization
 -keepattributes RuntimeVisibleAnnotations,AnnotationDefault
 
-# conserva comp de serialzable
 -if @kotlinx.serialization.Serializable class **
 -keepclassmembers class <1> {
     static <1>$Companion Companion;
 }
 
-# Conserva el serializern companion
 -if @kotlinx.serialization.Serializable class ** {
     static **$* *;
 }
@@ -27,7 +13,6 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
-# Conserva el serializer de los serializable
 -if @kotlinx.serialization.Serializable class ** {
     public static ** INSTANCE;
 }
@@ -35,6 +20,3 @@
     public static <1> INSTANCE;
     kotlinx.serialization.KSerializer serializer(...);
 }
-
-#  el modelo de datos
--keep class com.example.sapiens.** { *; }
