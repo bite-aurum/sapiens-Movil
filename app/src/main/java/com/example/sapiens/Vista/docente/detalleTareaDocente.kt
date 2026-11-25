@@ -1,5 +1,6 @@
 package com.example.sapiens.Vista.docente
 
+import com.example.sapiens.Modelo.clsAjustesModelo
 import android.app.DownloadManager
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -49,6 +50,7 @@ class detalleTareaDocente : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_detalle_tarea_docente)
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

@@ -1,5 +1,6 @@
 package com.example.sapiens.Vista
 
+import com.example.sapiens.Modelo.clsAjustesModelo
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -83,6 +84,7 @@ class perfilUsuario : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_perfil_usuario)
+        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
