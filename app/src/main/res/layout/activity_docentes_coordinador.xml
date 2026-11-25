@@ -31,9 +31,10 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:layout_width="26dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
             android:background="@drawable/sombra_ic_sup"
-            android:layout_height="26dp"
             android:src="@drawable/ic_perfil"
             app:tint="@color/gris"/>
     </LinearLayout>
@@ -94,9 +95,10 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_icono_estadistica"
+                    android:background="@drawable/sombra_icono"
                     android:padding="12dp"
-                    android:src="@drawable/ic_docentes" />
+                    android:src="@drawable/ic_docentes"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -134,9 +136,10 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_icono_estadistica"
+                    android:background="@drawable/sombra_icono"
                     android:padding="12dp"
-                    android:src="@drawable/ic_docentes" />
+                    android:src="@drawable/ic_docentes"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -174,9 +177,10 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_icono_estadistica"
+                    android:background="@drawable/sombra_icono"
                     android:padding="12dp"
-                    android:src="@drawable/ic_proyectos" />
+                    android:src="@drawable/ic_proyectos"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
 
@@ -215,9 +219,10 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_icono_estadistica"
+                    android:background="@drawable/sombra_icono"
                     android:padding="12dp"
-                    android:src="@drawable/ic_llave" />
+                    android:src="@drawable/ic_llave"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
 

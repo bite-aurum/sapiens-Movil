@@ -31,9 +31,12 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_perfil" />
+            android:src="@drawable/ic_perfil"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="@drawable/sombra_ic_sup"
+            app:tint="@color/gris"/>
     </LinearLayout>
 
     <ScrollView
@@ -91,7 +94,7 @@
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:padding="10dp"
-                    android:background="@color/cafeClaro"
+                    android:background="@drawable/sombra_icono"
                     android:src="@drawable/ic_proyectos" />
             </LinearLayout>
 
@@ -131,8 +134,9 @@
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:padding="10dp"
-                    android:background="@color/cafeClaro"
-                    android:src="@drawable/ic_docentes" />
+                    android:background="@drawable/sombra_icono"
+                    android:src="@drawable/ic_docentes"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -171,7 +175,7 @@
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:padding="10dp"
-                    android:background="@color/cafeClaro"
+                    android:background="@drawable/sombra_icono"
                     android:src="@drawable/ic_reportes" />
             </LinearLayout>
 
@@ -212,8 +216,9 @@
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:padding="10dp"
-                    android:background="@color/cafeClaro"
-                    android:src="@drawable/ic_notificacion" />
+                    android:background="@drawable/sombra_icono"
+                    android:src="@drawable/ic_notificacion"
+                    app:tint="@color/white"/>
             </LinearLayout>
 
             <LinearLayout

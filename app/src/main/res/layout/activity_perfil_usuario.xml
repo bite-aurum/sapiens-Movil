@@ -19,10 +19,12 @@
 
         <ImageView
             android:id="@+id/btnNotificaciones"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
             android:src="@drawable/ic_notificacion"
-            app:tint="@color/black" />
+            app:tint="@color/gris"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="@drawable/sombra_ic_sup"/>
 
         <ImageView
             android:id="@+id/ivLogoSapiens"

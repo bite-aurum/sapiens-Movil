@@ -19,13 +19,17 @@
 
         <ImageView
             android:id="@+id/btnNotificaciones"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_notificacion" />
+            android:src="@drawable/ic_notificacion"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="@drawable/sombra_ic_sup"
+            app:tint="@color/gris"
+            />
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
-            android:layout_width="325dp"
+            android:layout_width="306dp"
             android:layout_height="38dp"
             android:adjustViewBounds="true"
             android:contentDescription="Logo Sapiens"
@@ -37,9 +41,13 @@
 
         <ImageView
             android:id="@+id/btnPerfil"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@drawable/ic_perfil" />
+            android:src="@drawable/ic_perfil"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="@drawable/sombra_ic_sup"
+            app:tint="@color/gris"
+            />
     </LinearLayout>
 
     <ScrollView

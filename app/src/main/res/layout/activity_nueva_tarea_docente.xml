@@ -19,14 +19,14 @@
             android:id="@+id/btnNotificaciones"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Notificaciones"
             android:padding="6dp"
             android:src="@drawable/ic_notificacion"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#4A4E4A" />
+            app:tint="@color/gris" />
 
         <ImageView
             android:id="@+id/ivLogoSapiens"
@@ -44,14 +44,14 @@
             android:id="@+id/btnPerfil"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/sombra_ic_sup"
             android:contentDescription="Perfil"
             android:padding="6dp"
             android:src="@drawable/ic_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#4A4E4A" />
+            app:tint="@color/gris" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView

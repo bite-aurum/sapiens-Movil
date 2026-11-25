@@ -43,7 +43,7 @@
             android:layout_height="26dp"
             android:background="@drawable/sombra_ic_sup"
             android:src="@drawable/ic_perfil"
-            app:tint="@color/gris"/>
+            app:tint="@color/gris" />
     </LinearLayout>
 
     <ScrollView
