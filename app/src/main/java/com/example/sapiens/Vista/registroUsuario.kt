@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.R
 import com.example.sapiens.Presentador.pRegistro
 import android.widget.*
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import com.example.sapiens.Modelo.clsAjustesModelo
 
@@ -19,6 +20,8 @@ class registroUsuario : AppCompatActivity() {
     private lateinit var edtCorreo: EditText
     private lateinit var edtContrasena: EditText
     private lateinit var edtConfirmar: EditText
+    private lateinit var imgVerContrasena: ImageView
+    private lateinit var imgVerConfirmar: ImageView
     private lateinit var btnRegistrarme: Button
     private lateinit var tvIniciarSesion: TextView
 
@@ -38,6 +41,8 @@ class registroUsuario : AppCompatActivity() {
         edtCorreo = findViewById(R.id.edtCorreoRegistro)
         edtContrasena = findViewById(R.id.edtContrasenaRegistro)
         edtConfirmar = findViewById(R.id.edtConfirmarContrasena)
+        imgVerContrasena = findViewById(R.id.imgVerContrasenaRegistro)
+        imgVerConfirmar = findViewById(R.id.imgVerConfirmarRegistro)
         btnRegistrarme = findViewById(R.id.btnRegistrarme)
         tvIniciarSesion = findViewById(R.id.tvIniciarSesion)
 
@@ -45,6 +50,8 @@ class registroUsuario : AppCompatActivity() {
 
         btnRegistrarme.setOnClickListener(this::ejecutarRegistro)
         tvIniciarSesion.setOnClickListener { finish() }
+        imgVerContrasena.setOnClickListener(this::ejecutarVerContrasena)
+        imgVerConfirmar.setOnClickListener(this::ejecutarVerConfirmar)
     }
 
     fun ejecutarRegistro(v: View) {
@@ -55,6 +62,14 @@ class registroUsuario : AppCompatActivity() {
             edtContrasena.text.toString(),
             edtConfirmar.text.toString()
         )
+    }
+
+    fun ejecutarVerContrasena(v: View) {
+        alternarContrasena(edtContrasena, imgVerContrasena)
+    }
+
+    fun ejecutarVerConfirmar(v: View) {
+        alternarContrasena(edtConfirmar, imgVerConfirmar)
     }
 
     fun activarBoton(activar: Boolean) {
@@ -68,5 +83,16 @@ class registroUsuario : AppCompatActivity() {
 
     fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+    }
+
+    private fun alternarContrasena(campo: EditText, icono: ImageView) {
+        if (campo.transformationMethod == null) {
+            campo.transformationMethod = PasswordTransformationMethod.getInstance()
+            icono.setImageResource(R.drawable.ic_ver)
+        } else {
+            campo.transformationMethod = null
+            icono.setImageResource(R.drawable.ic_ver_oculto)
+        }
+        campo.setSelection(campo.text.length)
     }
 }

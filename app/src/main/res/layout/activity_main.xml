@@ -88,18 +88,34 @@
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etContrasenaLogin"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_input_sapiens"
-                android:hint="••••••••"
-                android:inputType="textPassword"
-                android:paddingHorizontal="16dp"
-                android:textColor="#1F2421"
-                android:textColorHint="#9A9E99"
-                android:textSize="14sp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <EditText
+                    android:id="@+id/etContrasenaLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_input_sapiens"
+                    android:hint="••••••••"
+                    android:inputType="textPassword"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="48dp"
+                    android:textColor="#1F2421"
+                    android:textColorHint="#9A9E99"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/imgVerContrasenaLogin"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="14dp"
+                    android:contentDescription="Ver contraseña"
+                    android:src="@drawable/ic_ver"
+                    app:tint="@color/gris" />
+            </FrameLayout>
 
             <CheckBox
                 android:id="@+id/cbRecordarSesion"

@@ -102,16 +102,31 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/edtContrasenaRegistro"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/bg_input_sapiens"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp">
+
+            <EditText
+                android:id="@+id/edtContrasenaRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_sapiens"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="14dp"
+                android:paddingEnd="48dp" />
+
+            <ImageView
+                android:id="@+id/imgVerContrasenaRegistro"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="14dp"
+                android:contentDescription="Ver contraseña"
+                android:src="@drawable/ic_ver"
+                app:tint="@color/gris" />
+        </FrameLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -121,16 +136,31 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/edtConfirmarContrasena"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/bg_input_sapiens"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp">
+
+            <EditText
+                android:id="@+id/edtConfirmarContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_input_sapiens"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:paddingStart="14dp"
+                android:paddingEnd="48dp" />
+
+            <ImageView
+                android:id="@+id/imgVerConfirmarRegistro"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="14dp"
+                android:contentDescription="Ver contraseña"
+                android:src="@drawable/ic_ver"
+                app:tint="@color/gris" />
+        </FrameLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegistrarme"

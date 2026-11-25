@@ -171,15 +171,15 @@ class perfilUsuario : AppCompatActivity() {
 
 
     fun ejecutarVerContrasenaActual(v: View) {
-        alternarContrasena(edtContrasenaActual)
+        alternarContrasena(edtContrasenaActual, imgVerActual)
     }
 
     fun ejecutarVerNuevaContrasena(v: View) {
-        alternarContrasena(edtNuevaContrasena)
+        alternarContrasena(edtNuevaContrasena, imgVerNueva)
     }
 
     fun ejecutarVerConfirmar(v: View) {
-        alternarContrasena(edtConfirmar)
+        alternarContrasena(edtConfirmar, imgVerConfirmar)
     }
 
     fun ejecutarGuardarCambios(v: View) {
@@ -322,11 +322,13 @@ class perfilUsuario : AppCompatActivity() {
     }
 
 
-    private fun alternarContrasena(campo: EditText) {
+    private fun alternarContrasena(campo: EditText, icono: ImageView) {
         if (campo.transformationMethod == null) {
             campo.transformationMethod = PasswordTransformationMethod.getInstance()
+            icono.setImageResource(R.drawable.ic_ver)
         } else {
             campo.transformationMethod = null
+            icono.setImageResource(R.drawable.ic_ver_oculto)
         }
         campo.setSelection(campo.text.length)
     }
