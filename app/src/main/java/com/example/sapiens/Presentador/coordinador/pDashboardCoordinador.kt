@@ -32,6 +32,7 @@ class pDashboardCoordinador(private val vista: dashboardCoordinador) {
                 }
 
                 vista.mostrarBienvenida(respuesta.coordinador.nombre)
+                vista.mostrarFoto(respuesta.coordinador.foto)
                 vista.mostrarResumen(
                     conteos.totalProyectos,
                     conteos.totalDocentes,

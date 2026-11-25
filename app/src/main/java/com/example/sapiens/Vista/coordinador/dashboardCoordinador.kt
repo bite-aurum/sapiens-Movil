@@ -19,6 +19,8 @@ import com.example.sapiens.Presentador.coordinador.pDashboardCoordinador
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_coordinador.RendimientoDocentesAdaptador
+import com.bumptech.glide.Glide
+import com.example.sapiens.Network.RetrofitCliente
 
 class dashboardCoordinador : AppCompatActivity() {
 
@@ -35,6 +37,7 @@ class dashboardCoordinador : AppCompatActivity() {
     private lateinit var adapterDocentes: RendimientoDocentesAdaptador
     private var idCoordinador: Int = 0
     private lateinit var presentador: pDashboardCoordinador
+    private lateinit var imgFotoCoordinador: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,7 @@ class dashboardCoordinador : AppCompatActivity() {
         }
 
         clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
+        imgFotoCoordinador = findViewById(R.id.imgFotoCoordinador)
 
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idCoordinador = intent.getIntExtra("id_coordinador", prefs.getInt("id_usuario", 0))
@@ -97,6 +101,13 @@ class dashboardCoordinador : AppCompatActivity() {
 
     fun mostrarBienvenida(nombre: String) {
         tvBienvenida.text = "Bienvenid@, " + nombre
+    }
+    fun mostrarFoto(foto: String?) {
+        if (foto.isNullOrEmpty()) return
+        Glide.with(this)
+            .load(RetrofitCliente.SERVIDOR + foto)
+            .circleCrop()
+            .into(imgFotoCoordinador)
     }
 
     fun mostrarResumen(totalProyectos: Int, totalDocentes: Int, porcentajeATiempo: Int, enRetraso: Int) {
