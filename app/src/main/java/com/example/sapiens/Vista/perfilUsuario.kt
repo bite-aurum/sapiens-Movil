@@ -64,6 +64,11 @@ class perfilUsuario : AppCompatActivity() {
 
     private lateinit var imgFotoPerfil: ImageView
 
+    private lateinit var tarjetaCoordinador: LinearLayout
+    private lateinit var txtCoordinadorActual: TextView
+    private lateinit var edtCodigoVinculo: EditText
+    private lateinit var btnVincular: Button
+
     private val elegirFoto = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
             copiarYSubir(uri)
@@ -119,6 +124,10 @@ class perfilUsuario : AppCompatActivity() {
         navCooDocentes = findViewById(R.id.navCooDocentes)
         navCooProyectos = findViewById(R.id.navCooProyectos)
         imgFotoPerfil = findViewById(R.id.imgFotoPerfil)
+        tarjetaCoordinador = findViewById(R.id.tarjetaCoordinador)
+        txtCoordinadorActual = findViewById(R.id.txtCoordinadorActual)
+        edtCodigoVinculo = findViewById(R.id.edtCodigoVinculo)
+        btnVincular = findViewById(R.id.btnVincular)
 
         presentador = pPerfil(this)
 
@@ -131,6 +140,7 @@ class perfilUsuario : AppCompatActivity() {
         chkTemaOscuro.setOnClickListener(this::ejecutarTemaOscuro)
         btnCerrarSesion.setOnClickListener(this::ejecutarCerrarSesion)
         btnGuardarCambios.setOnClickListener(this::ejecutarGuardarCambios)
+        btnVincular.setOnClickListener(this::ejecutarVincular)
 
         navDocInicio.setOnClickListener(this::ejecutarInicioDocente)
         navDocProyectos.setOnClickListener(this::ejecutarProyectosDocente)
@@ -190,6 +200,13 @@ class perfilUsuario : AppCompatActivity() {
             edtContrasenaActual.text.toString(),
             edtNuevaContrasena.text.toString(),
             edtConfirmar.text.toString()
+        )
+    }
+
+    fun ejecutarVincular(v: View) {
+        presentador.vincularCoordinador(
+            idUsuario,
+            edtCodigoVinculo.text.toString().trim()
         )
     }
 
@@ -282,9 +299,20 @@ class perfilUsuario : AppCompatActivity() {
         edtConfirmar.setText("")
     }
 
+    fun mostrarCoordinador(nombre: String) {
+        txtCoordinadorActual.text = "Coordinador: " + nombre
+    }
+
+    fun coordinadorVinculado(mensaje: String, nombre: String) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+        mostrarCoordinador(nombre)
+        edtCodigoVinculo.setText("")
+    }
+
     fun activarBotones(activar: Boolean) {
         btnActualizar.isEnabled = activar
         btnGuardarCambios.isEnabled = activar
+        btnVincular.isEnabled = activar
     }
 
     fun mostrarError(mensaje: String) {
@@ -316,6 +344,7 @@ class perfilUsuario : AppCompatActivity() {
             barraAlumno.visibility = View.VISIBLE
         } else if (esDocente()) {
             barraDocente.visibility = View.VISIBLE
+            tarjetaCoordinador.visibility = View.VISIBLE
         } else {
             barraCoordinador.visibility = View.VISIBLE
         }
