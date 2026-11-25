@@ -21,7 +21,7 @@ import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_coordinador.ProyectosCoordinadorAdaptador
 
 class proyectosCoordinador : AppCompatActivity() {
-    private lateinit var btnNotificaciones: ImageView
+
     private lateinit var btnPerfil: ImageView
     private lateinit var txtProyectosTotales: TextView
     private lateinit var txtDocentesAsignados: TextView
@@ -46,7 +46,6 @@ class proyectosCoordinador : AppCompatActivity() {
 
         idCoordinador = intent.getIntExtra("id_coordinador", 0)
 
-        btnNotificaciones = findViewById(R.id.btnNotificaciones)
         btnPerfil = findViewById(R.id.btnPerfil)
         txtProyectosTotales = findViewById(R.id.txtProyectosTotales)
         txtDocentesAsignados = findViewById(R.id.txtDocentesAsignados)
@@ -62,7 +61,7 @@ class proyectosCoordinador : AppCompatActivity() {
 
         presentador = pProyectosCordinador(this)
 
-        btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
+
         btnPerfil.setOnClickListener(this::ejecutarPerfil)
         navDashboard.setOnClickListener(this::ejecutarDashboard)
         navDocentes.setOnClickListener(this::ejecutarDocentes)
@@ -72,9 +71,7 @@ class proyectosCoordinador : AppCompatActivity() {
         clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
 
-    fun ejecutarNotificaciones(v: View) {
-        // abrir(notificacionesCoordinador::class.java)  // pantalla pendiente
-    }
+
 
     fun ejecutarPerfil(v: View) {
         abrir(perfilUsuario::class.java)
