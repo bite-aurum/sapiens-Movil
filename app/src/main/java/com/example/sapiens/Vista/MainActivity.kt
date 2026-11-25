@@ -2,9 +2,11 @@ package com.example.sapiens.Vista
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var etCorreo: EditText
     private lateinit var etContrasena: EditText
+    private lateinit var imgVerContrasena: ImageView
     private lateinit var cbRecordar: CheckBox
     private lateinit var btnIniciarSesion: MaterialButton
     private lateinit var tvCrearCuenta: TextView
@@ -55,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         etCorreo = findViewById(R.id.etCorreoLogin)
         etContrasena = findViewById(R.id.etContrasenaLogin)
+        imgVerContrasena = findViewById(R.id.imgVerContrasenaLogin)
         cbRecordar = findViewById(R.id.cbRecordarSesion)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
         tvCrearCuenta = findViewById(R.id.tvCrearCuenta)
@@ -64,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
         btnIniciarSesion.setOnClickListener(this::ejecutarIniciarSesion)
         tvCrearCuenta.setOnClickListener(this::ejecutarCrearCuenta)
+        imgVerContrasena.setOnClickListener(this::ejecutarVerContrasena)
 
         clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
     }
@@ -76,6 +81,10 @@ class MainActivity : AppCompatActivity() {
 
     fun ejecutarCrearCuenta(v: View) {
         startActivity(Intent(this, registroUsuario::class.java))
+    }
+
+    fun ejecutarVerContrasena(v: View) {
+        alternarContrasena(etContrasena, imgVerContrasena)
     }
 
     fun mostrarCargando(mostrar: Boolean) {
@@ -123,5 +132,16 @@ class MainActivity : AppCompatActivity() {
 
     fun mostrarError(mensaje: String) {
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+    }
+
+    private fun alternarContrasena(campo: EditText, icono: ImageView) {
+        if (campo.transformationMethod == null) {
+            campo.transformationMethod = PasswordTransformationMethod.getInstance()
+            icono.setImageResource(R.drawable.ic_ver)
+        } else {
+            campo.transformationMethod = null
+            icono.setImageResource(R.drawable.ic_ver_oculto)
+        }
+        campo.setSelection(campo.text.length)
     }
 }
