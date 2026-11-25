@@ -78,6 +78,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="12dp"
+                    app:tint="@color/gris"
                     android:src="@drawable/ic_perfil" />
 
                 <TextView
@@ -119,10 +120,10 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:background="@drawable/bg_input_sapiens"
+                        android:background="@drawable/sombra_icono"
                         android:padding="8dp"
                         android:src="@drawable/ic_proyectos"
-                        app:tint="#4A4E4A" />
+                        app:tint="@color/white" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -163,10 +164,10 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:background="@drawable/bg_input_sapiens"
+                        android:background="@drawable/sombra_icono"
                         android:padding="8dp"
                         android:src="@drawable/ic_tareas"
-                        app:tint="#4A4E4A" />
+                        app:tint="@color/white" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -400,9 +401,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_proyectos"
+            android:drawableTop="@drawable/ic_proyecto_footer"
             android:gravity="center"
             android:text="Proyectos"
+            app:tint="@color/gris"
             android:textColor="@color/gris"
             android:textSize="12sp" />
 
@@ -411,7 +413,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTop="@drawable/ic_tareas_footer"
             android:gravity="center"
             android:text="Tareas"
             android:textColor="@color/gris"

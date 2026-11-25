@@ -345,7 +345,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_inicio"
+            android:drawableTop="@drawable/ic_inicio_footer"
             android:text="Inicio"
             android:textSize="12sp"
             android:textColor="@color/gris" />
@@ -369,7 +369,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_tareas"
+            android:drawableTop="@drawable/ic_tareas_footer"
             android:text="Tareas"
             android:textSize="12sp"
             android:textColor="@color/gris" />
@@ -380,7 +380,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:drawableTop="@drawable/ic_reportes"
+            android:drawableTop="@drawable/ic_reportes_footer"
             android:text="Reportes"
             android:textSize="12sp"
             android:textColor="@color/gris" />
