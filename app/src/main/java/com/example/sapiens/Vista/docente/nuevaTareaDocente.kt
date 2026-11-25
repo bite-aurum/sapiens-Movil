@@ -1,11 +1,13 @@
 package com.example.sapiens.Vista.docente
 
-import com.example.sapiens.Modelo.clsAjustesModelo
 import android.app.DatePickerDialog
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
@@ -39,7 +41,8 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     private lateinit var etTituloTarea: EditText
     private lateinit var etDescripcionTarea: EditText
     private lateinit var tvFechaLimite: TextView
-    private lateinit var spPrioridad: Spinner
+    private lateinit var layoutPrioridad: LinearLayout
+    private lateinit var tvPrioridad: TextView
 
     private lateinit var etTituloSubtarea: EditText
     private lateinit var etDescripcionSubtarea: EditText
@@ -58,6 +61,7 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
     private var listaProyectos: List<dataProyectosDocente> = emptyList()
     private val listaSubtareas = mutableListOf<SubtareaTemporal>()
     private var fechaSeleccionadaApi: String = ""
+    private var prioridadCalculada: String = ""
     private var idDocente: Int = 0
 
     private lateinit var presentador: pNuevaTarea
@@ -66,7 +70,6 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_nueva_tarea_docente)
-        clsAjustesModelo.cargarLogoEn(findViewById(R.id.ivLogoSapiens))
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -81,7 +84,8 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         etTituloTarea = findViewById(R.id.etTituloTarea)
         etDescripcionTarea = findViewById(R.id.etDescripcionTarea)
         tvFechaLimite = findViewById(R.id.tvFechaLimiteTarea)
-        spPrioridad = findViewById(R.id.spPrioridadTarea)
+        layoutPrioridad = findViewById(R.id.layoutPrioridad)
+        tvPrioridad = findViewById(R.id.tvPrioridadTarea)
 
         etTituloSubtarea = findViewById(R.id.etTituloSubtarea)
         etDescripcionSubtarea = findViewById(R.id.etDescripcionSubtarea)
@@ -103,8 +107,6 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         idDocente = intent.getIntExtra("id_docente", prefs.getInt("id_usuario", 1))
 
-        configurarSpinnerPrioridad()
-
         presentador = pNuevaTarea(this)
 
         btnNotificaciones.setOnClickListener(this::ejecutarNotificaciones)
@@ -120,13 +122,6 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         navReportes.setOnClickListener(this::ejecutarReportes)
 
         presentador.cargarProyectos(idDocente)
-    }
-
-    private fun configurarSpinnerPrioridad() {
-        val prioridades = listOf("Alta", "Media", "Baja")
-        val adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, prioridades)
-        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spPrioridad.adapter = adaptador
     }
 
     fun ejecutarNotificaciones(v: View) {
@@ -176,6 +171,43 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         val fechaVisible = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, mesReal, year)
         fechaSeleccionadaApi = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, mesReal, dayOfMonth)
         tvFechaLimite.text = fechaVisible
+
+        calcularPrioridad(year, month, dayOfMonth)
+    }
+
+    // Calcula la prioridad según los días que faltan para la fecha límite
+    private fun calcularPrioridad(year: Int, month: Int, dayOfMonth: Int) {
+        val hoy = Calendar.getInstance()
+        hoy.set(Calendar.HOUR_OF_DAY, 0)
+        hoy.set(Calendar.MINUTE, 0)
+        hoy.set(Calendar.SECOND, 0)
+        hoy.set(Calendar.MILLISECOND, 0)
+
+        val fechaElegida = Calendar.getInstance()
+        fechaElegida.set(year, month, dayOfMonth, 0, 0, 0)
+        fechaElegida.set(Calendar.MILLISECOND, 0)
+
+        val milisegundos = fechaElegida.timeInMillis - hoy.timeInMillis
+        val dias = Math.round(milisegundos / 86400000.0).toInt()
+
+        if (dias <= 3) {
+            prioridadCalculada = "alta"
+            tvPrioridad.text = "Alta"
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
+            tvPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+        } else if (dias <= 7) {
+            prioridadCalculada = "media"
+            tvPrioridad.text = "Media"
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
+            tvPrioridad.setTextColor(Color.parseColor("#9C7414"))
+        } else {
+            prioridadCalculada = "baja"
+            tvPrioridad.text = "Baja"
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
+            tvPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+        }
+
+        layoutPrioridad.visibility = View.VISIBLE
     }
 
     fun ejecutarAgregarSubtarea(v: View) {
@@ -214,14 +246,13 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
 
         val titulo = etTituloTarea.text.toString().trim()
         val descripcion = etDescripcionTarea.text.toString().trim()
-        val prioridad = spPrioridad.selectedItem.toString().lowercase()
 
         presentador.guardarNuevaTarea(
             idProyecto = idProyecto,
             titulo = titulo,
             descripcion = descripcion,
             fechaLimiteApi = fechaSeleccionadaApi,
-            prioridad = prioridad,
+            prioridad = prioridadCalculada,
             subtareas = listaSubtareas
         )
     }
