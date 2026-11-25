@@ -3,7 +3,6 @@ package com.example.sapiens.Vista.docente
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -18,22 +17,28 @@ import com.example.sapiens.Presentador.docente.pDashboardDocente
 import com.example.sapiens.R
 import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.adaptadores_docente.tareasRecientesAdaptador
-
+import com.google.android.material.card.MaterialCardView
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.example.sapiens.Network.RetrofitCliente
 
 class dashboardDocente : AppCompatActivity() {
     private lateinit var btnNotificaciones: ImageView
     private lateinit var btnPerfil: ImageView
     private lateinit var tvBienvenida: TextView
-    private lateinit var cardProyectos: LinearLayout
-    private lateinit var cardTareas: LinearLayout
-    private lateinit var cardReportes: LinearLayout
+    private lateinit var cardProyectos: MaterialCardView
+    private lateinit var cardTareas: MaterialCardView
+    private lateinit var cardReportes: MaterialCardView
     private lateinit var tvSinTareas: TextView
+    private lateinit var navInicio: LinearLayout
     private lateinit var navProyectos: LinearLayout
     private lateinit var navTareas: LinearLayout
     private lateinit var navReportes: LinearLayout
     private lateinit var recyclerTareas: RecyclerView
     private lateinit var adapterTareas: tareasRecientesAdaptador
     private var idDocente: Int = 0
+
+    private lateinit var imgFotoDocente: ImageView
 
     private lateinit var presentador: pDashboardDocente
 
@@ -57,9 +62,11 @@ class dashboardDocente : AppCompatActivity() {
         cardTareas = findViewById(R.id.cardTareas)
         cardReportes = findViewById(R.id.cardReportes)
         tvSinTareas = findViewById(R.id.tvSinTareas)
+        navInicio = findViewById(R.id.navInicio)
         navProyectos = findViewById(R.id.navProyectos)
         navTareas = findViewById(R.id.navTareas)
         navReportes = findViewById(R.id.navReportes)
+        imgFotoDocente = findViewById(R.id.imgFotoDocente)
 
         recyclerTareas = findViewById(R.id.rvTareasRecientes)
         recyclerTareas.layoutManager = LinearLayoutManager(this)
@@ -73,10 +80,12 @@ class dashboardDocente : AppCompatActivity() {
         cardProyectos.setOnClickListener(this::ejecutarProyectos)
         cardTareas.setOnClickListener(this::ejecutarTareas)
         cardReportes.setOnClickListener(this::ejecutarReportes)
+        navInicio.setOnClickListener(this::ejecutarInicio)
         navProyectos.setOnClickListener(this::ejecutarProyectos)
         navTareas.setOnClickListener(this::ejecutarTareas)
         navReportes.setOnClickListener(this::ejecutarReportes)
     }
+
     override fun onResume() {
         super.onResume()
         presentador.iniciar(idDocente)
@@ -94,6 +103,11 @@ class dashboardDocente : AppCompatActivity() {
         startActivity(intent)
     }
 
+
+    fun ejecutarInicio(v: View) {
+        presentador.iniciar(idDocente)
+    }
+
     fun ejecutarProyectos(v: View) {
         presentador.seleccionarProyectos()
     }
@@ -106,9 +120,16 @@ class dashboardDocente : AppCompatActivity() {
         presentador.seleccionarReportes()
     }
 
-
     fun mostrarBienvenida(nombre: String) {
-        tvBienvenida.text = "Bienvenid@, " + nombre
+        val nombreMostrar = if (nombre.isNotEmpty()) nombre else "Docente"
+        tvBienvenida.text = "Bienvenid@, " + nombreMostrar
+    }
+    fun mostrarFoto(foto: String?) {
+        if (foto.isNullOrEmpty()) return
+        Glide.with(this)
+            .load(RetrofitCliente.SERVIDOR + foto)
+            .circleCrop()
+            .into(imgFotoDocente)
     }
 
     fun mostrarTareasRecientes(tareas: List<dataTareaReciente>) {
