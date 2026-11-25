@@ -1,5 +1,7 @@
 package com.example.sapiens.Modelo
 
+import com.example.sapiens.Modelo.docente.dataObtenerCoordinador
+import com.example.sapiens.Modelo.docente.dataVincularCoordinador
 import com.example.sapiens.Network.RetrofitCliente
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -27,6 +29,14 @@ class clsPerfilModelo {
             rol, id, nombre, apellidoPaterno, apellidoMaterno, correo, contrasenaActual, nuevaContrasena
         )
     }
+    suspend fun obtenerCoordinador(idDocente: Int): dataObtenerCoordinador {
+        return RetrofitCliente.apiService.obtenerCoordinadorDocente(idDocente)
+    }
+
+    suspend fun vincularCoordinador(idDocente: Int, codigo: String): dataVincularCoordinador {
+        return RetrofitCliente.apiService.vincularCoordinador(idDocente, codigo)
+    }
+
     suspend fun subirFoto(rol: String, id: Int, archivo: File, tipoMime: String): dataSubirFoto {
         val texto = "text/plain".toMediaType()
         val rolParte = rol.toRequestBody(texto)

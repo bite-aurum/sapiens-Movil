@@ -30,6 +30,8 @@ import com.example.sapiens.Modelo.docente.dataTareaRespuesta
 import com.example.sapiens.Modelo.docente.dataTareasDocente
 import com.example.sapiens.Modelo.dataRegistroRespuesta
 import com.example.sapiens.Modelo.dataSubirFoto
+import com.example.sapiens.Modelo.docente.dataObtenerCoordinador
+import com.example.sapiens.Modelo.docente.dataVincularCoordinador
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -210,6 +212,18 @@ interface apiService {
         @Part("id") id: RequestBody,
         @Part foto: MultipartBody.Part
     ): dataSubirFoto
+
+    @GET("docente/obtener_coordinador.php")
+    suspend fun obtenerCoordinadorDocente(
+        @Query("id_docente") idDocente: Int
+    ): dataObtenerCoordinador
+
+    @FormUrlEncoded
+    @POST("docente/vincular_coordinador.php")
+    suspend fun vincularCoordinador(
+        @Field("id_docente") idDocente: Int,
+        @Field("codigo_vinculo") codigoVinculo: String
+    ): dataVincularCoordinador
 
     @GET("obtener_ajustes.php")
     suspend fun obtenerAjustes(): dataAjustes

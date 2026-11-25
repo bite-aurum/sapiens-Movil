@@ -27,6 +27,49 @@ class pPerfil (val vista: perfilUsuario) {
                 vista.mostrarError("Error: " + e.localizedMessage)
             }
         }
+        val rolMinusculas = rol.lowercase()
+        if (rolMinusculas == "docente" || rolMinusculas == "profesor") {
+            cargarCoordinador(id)
+        }
+    }
+
+    private fun cargarCoordinador(idDocente: Int) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val respuesta = modelo.obtenerCoordinador(idDocente)
+                val coordinador = respuesta.coordinador
+                if (coordinador != null) {
+                    val nombre = (coordinador.nombre + " " + coordinador.apellidoPaterno + " " + coordinador.apellidoMaterno).trim()
+                    vista.mostrarCoordinador(nombre)
+                }
+            } catch (e: Exception) {
+                vista.mostrarError("Error: " + e.localizedMessage)
+            }
+        }
+    }
+
+    fun vincularCoordinador(idDocente: Int, codigo: String) {
+        if (codigo == "") {
+            vista.mostrarError("Escribe el código de vinculación")
+            return
+        }
+
+        vista.activarBotones(false)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val respuesta = modelo.vincularCoordinador(idDocente, codigo)
+                val coordinador = respuesta.coordinador
+                var nombre = ""
+                if (coordinador != null) {
+                    nombre = (coordinador.nombre + " " + coordinador.apellidoPaterno + " " + coordinador.apellidoMaterno).trim()
+                }
+                vista.coordinadorVinculado(respuesta.mensaje, nombre)
+            } catch (e: Exception) {
+                vista.mostrarError("Error: " + e.localizedMessage)
+            }
+            vista.activarBotones(true)
+        }
     }
 
     fun guardarCambios(rol: String, id: Int, nombre: String, apellidos: String, correo: String) {
