@@ -1,7 +1,6 @@
 package com.example.sapiens.adaptadores_alumno
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,16 +44,16 @@ class TareasAlumnoAdaptador(private var listaTareas: List<dataTareaAlumno>) : Re
         holder.tvPrioridadTarea.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_prioridad)
         if (prioridad == "alta") {
             holder.tvPrioridadTarea.text = "Alta"
-            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#C93B3B"))
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.rojoClaro))
+            holder.tvPrioridadTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.rojoTexto))
         } else if (prioridad == "media") {
             holder.tvPrioridadTarea.text = "Media"
-            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#9C7414"))
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.tvPrioridadTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         } else {
             holder.tvPrioridadTarea.text = "Baja"
-            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvPrioridadTarea.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvPrioridadTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvPrioridadTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         }
 
 
@@ -62,16 +61,16 @@ class TareasAlumnoAdaptador(private var listaTareas: List<dataTareaAlumno>) : Re
         holder.tvEstadoTarea.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_estado)
         if (estado == "completada") {
             holder.tvEstadoTarea.text = "Completada"
-            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvEstadoTarea.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvEstadoTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else if (estado == "en progreso") {
             holder.tvEstadoTarea.text = "En progreso"
-            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-            holder.tvEstadoTarea.setTextColor(Color.parseColor("#0D7A6B"))
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeSuave))
+            holder.tvEstadoTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeAzul))
         } else {
             holder.tvEstadoTarea.text = "Pendiente"
-            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.tvEstadoTarea.setTextColor(Color.parseColor("#9C7414"))
+            holder.tvEstadoTarea.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.tvEstadoTarea.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         }
     }
 

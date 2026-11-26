@@ -201,13 +201,13 @@
                         android:backgroundTint="@color/verde"
                         android:text="Descargar reporte"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
+                        android:textColor="@color/blanco"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:cornerRadius="12dp"
                         app:icon="@drawable/ic_descargar"
                         app:iconGravity="textStart"
-                        app:iconTint="@color/white" />
+                        app:iconTint="@color/blanco" />
                 </LinearLayout>
 
                 <LinearLayout

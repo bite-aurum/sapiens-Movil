@@ -82,13 +82,11 @@ class proyectosAlumno : AppCompatActivity() {
         presentador.seleccionarProyecto(proyecto)
     }
 
-    //Salidas
     fun mostrarProyectos(proyectos: List<dataProyectosAlumno>) {
         adapterProyectos.actualizarLista(proyectos)
     }
 
     fun abrirDetalleProyecto(idProyecto: Int) {
-        // pantalla pendiente
         val intent = Intent(this, detalleProyectoAlumno::class.java)
         intent.putExtra("id_alumno", idAlumno)
         intent.putExtra("id_proyecto", idProyecto)

@@ -12,7 +12,6 @@ class pProyectosDocente(val vista: proyectosDocente) {
     private val modelo = clsProyectoDocenteModelo()
 
     fun iniciar(idDocente: Int) {
-        // Se usa un Scope simple para no bloquear la interfaz
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val proyectos = modelo.obtenerProyectosDocente(idDocente)

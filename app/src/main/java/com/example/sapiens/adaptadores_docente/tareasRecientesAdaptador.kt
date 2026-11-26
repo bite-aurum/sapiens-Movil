@@ -1,7 +1,6 @@
 package com.example.sapiens.adaptadores_docente
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,18 +42,18 @@ class tareasRecientesAdaptador(private var listaTareas: List<dataTareaReciente>)
         when (tarea.prioridad.lowercase()) {
             "alta" -> {
                 holder.tvPrioridad.text = "Alta"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.rojoClaro))
+                holder.tvPrioridad.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.rojoTexto))
             }
             "media" -> {
                 holder.tvPrioridad.text = "Media"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#9C7414"))
+                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+                holder.tvPrioridad.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
             }
             else -> {
                 holder.tvPrioridad.text = "Baja"
-                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-                holder.tvPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+                holder.tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+                holder.tvPrioridad.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
             }
         }
     }

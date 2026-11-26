@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sapiens.Modelo.alumno.dataAlumnoDashboard
-import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
+import com.example.sapiens.Modelo.alumno.dataProyectoAlumno
 import com.example.sapiens.Modelo.alumno.dataProximaEntrega
 import com.example.sapiens.Modelo.clsAjustesModelo
 import com.example.sapiens.Network.RetrofitCliente
@@ -159,7 +159,7 @@ class dashboardAlumno : AppCompatActivity() {
         }
     }
 
-    fun seleccionarProyecto(proyecto: dataProyectosAlumno) {
+    fun seleccionarProyecto(proyecto: dataProyectoAlumno) {
         val intent = Intent(this, detalleProyectoAlumno::class.java)
         intent.putExtra("id_alumno", idAlumno)
         intent.putExtra("id_proyecto", proyecto.idProyecto)
@@ -197,7 +197,7 @@ class dashboardAlumno : AppCompatActivity() {
         }
     }
 
-    fun mostrarProyectos(proyectos: List<dataProyectosAlumno>) {
+    fun mostrarProyectos(proyectos: List<dataProyectoAlumno>) {
         if (proyectos.isEmpty()) {
             tvSinProyectos.visibility = View.VISIBLE
             rvProyectos.visibility = View.GONE

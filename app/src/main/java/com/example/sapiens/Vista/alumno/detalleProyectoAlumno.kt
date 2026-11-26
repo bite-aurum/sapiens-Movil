@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import android.content.Intent
 import android.view.View
 import android.widget.ImageView
@@ -102,9 +103,15 @@ class detalleProyectoAlumno : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
+        val intent = Intent(this, notificacionesAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
     fun ejecutarInicio(v: View) {
@@ -114,7 +121,9 @@ class detalleProyectoAlumno : AppCompatActivity() {
     }
 
     fun ejecutarTareas(v: View) {
-        startActivity(Intent(this, misTareasAlumno::class.java))
+        val intent = Intent(this, misTareasAlumno::class.java)
+        intent.putExtra("id_alumno", idAlumno)
+        startActivity(intent)
     }
 
 

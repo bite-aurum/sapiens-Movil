@@ -1,7 +1,7 @@
 package com.example.sapiens.adaptadores_docente
 
+import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,19 +41,18 @@ class SubtareasDocenteAdaptador(
 
         holder.txtTitulo.text = subtarea.titulo
 
-        // Estado con su color
         if (subtarea.estado == "completada") {
             holder.txtEstado.text = "Completada"
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.txtEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else if (subtarea.estado == "en progreso") {
             holder.txtEstado.text = "En progreso"
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-            holder.txtEstado.setTextColor(Color.parseColor("#0D7A6B"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeSuave))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeAzul))
         } else {
             holder.txtEstado.text = "Pendiente"
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.txtEstado.setTextColor(Color.parseColor("#9C7414"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         }
 
         if (subtarea.archivos.isEmpty()) {

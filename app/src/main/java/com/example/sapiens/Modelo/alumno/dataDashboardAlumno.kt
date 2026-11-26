@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class dataDashboardAlumno(
     @SerialName("alumno") val alumno: dataAlumnoDashboard,
     @SerialName("proxima_entrega") val proximaEntrega: dataProximaEntrega? = null,
-    @SerialName("proyectos") val proyectos: List<dataProyectosAlumno> = emptyList()
+    @SerialName("proyectos") val proyectos: List<dataProyectoAlumno> = emptyList()
 )
 
 @Serializable

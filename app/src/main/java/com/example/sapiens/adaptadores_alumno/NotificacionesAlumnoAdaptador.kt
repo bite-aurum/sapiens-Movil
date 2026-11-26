@@ -1,7 +1,6 @@
 package com.example.sapiens.adaptadores_alumno
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,16 +48,16 @@ class NotificacionesAlumnoAdaptador(private var listaNotificaciones: List<dataNo
         holder.tvTipoNotificacion.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.bg_badge_prioridad)
         if (tipo == "recordatorio") {
             holder.tvTipoNotificacion.text = "Recordatorio"
-            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.tvTipoNotificacion.setTextColor(Color.parseColor("#9C7414"))
+            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.tvTipoNotificacion.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         } else if (tipo == "entrega") {
             holder.tvTipoNotificacion.text = "Entrega"
-            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvTipoNotificacion.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvTipoNotificacion.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else {
             holder.tvTipoNotificacion.text = "Aviso"
-            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#F3EFE6"))
-            holder.tvTipoNotificacion.setTextColor(Color.parseColor("#1F7A63"))
+            holder.tvTipoNotificacion.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.cafeClaro))
+            holder.tvTipoNotificacion.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verde))
         }
     }
 

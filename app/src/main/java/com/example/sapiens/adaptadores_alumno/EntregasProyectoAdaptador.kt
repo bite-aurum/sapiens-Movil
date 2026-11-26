@@ -1,5 +1,6 @@
 package com.example.sapiens.adaptadores_alumno
 
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sapiens.Modelo.alumno.dataEntregaProyecto
 import android.view.LayoutInflater
@@ -8,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.sapiens.R
 import android.content.res.ColorStateList
-import android.graphics.Color
 
 class EntregasProyectoAdaptador(
     private var listaEntregas: List<dataEntregaProyecto>
@@ -32,11 +32,11 @@ class EntregasProyectoAdaptador(
         holder.tvEstado.text = entrega.estado
 
         if (entrega.estado == "Entregado") {
-            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else {
-            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.tvEstado.setTextColor(Color.parseColor("#9C7414"))
+            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.tvEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         }
     }
 

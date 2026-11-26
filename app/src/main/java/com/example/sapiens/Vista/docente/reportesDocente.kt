@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import android.content.Intent
 import android.view.View
 import android.widget.*
@@ -101,9 +102,15 @@ class reportesDocente : AppCompatActivity() {
     }
 
     fun ejecutarNotificaciones(v: View) {
+        val intent = Intent(this, notificacionesDocente::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarPerfil(v: View) {
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarGenerar(v: View) {

@@ -1,7 +1,7 @@
 package com.example.sapiens.adaptadores_alumno
 
+import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,11 +32,11 @@ class SubtareasAlumnoAdaptador(
         holder.txtEstado.text = subtarea.estado
 
         if (subtarea.estado == "Completada") {
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.txtEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else {
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.txtEstado.setTextColor(Color.parseColor("#9C7414"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         }
     }
 

@@ -1,7 +1,7 @@
 package com.example.sapiens.adaptadores_coordinador
 
+import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,11 +33,11 @@ class ProyectosCoordinadorAdaptador(
         holder.txtEstado.text = proyecto.estado
 
         if (proyecto.estado == "En retraso") {
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            holder.txtEstado.setTextColor(Color.parseColor("#C93B3B"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.rojoClaro))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.rojoTexto))
         } else {
-            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.txtEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.txtEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         }
     }
 

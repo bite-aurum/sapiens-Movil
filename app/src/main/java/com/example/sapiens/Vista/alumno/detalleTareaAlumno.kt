@@ -1,8 +1,8 @@
 package com.example.sapiens.Vista.alumno
 
+import androidx.core.content.ContextCompat
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
@@ -151,22 +151,22 @@ class detalleTareaAlumno : AppCompatActivity() {
         txtProgreso.text = detalle.progreso.toString() + "%"
 
         if (detalle.prioridad == "Alta") {
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            txtPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.rojoClaro))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.rojoTexto))
         } else if (detalle.prioridad == "Media") {
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            txtPrioridad.setTextColor(Color.parseColor("#9C7414"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarilloClaro))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
         } else {
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            txtPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeChip))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.verdeTexto))
         }
 
         if (detalle.estado == "Completada") {
-            txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            txtEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeChip))
+            txtEstado.setTextColor(ContextCompat.getColor(this, R.color.verdeTexto))
         } else {
-            txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-            txtEstado.setTextColor(Color.parseColor("#0D7A6B"))
+            txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeSuave))
+            txtEstado.setTextColor(ContextCompat.getColor(this, R.color.verdeAzul))
         }
     }
 

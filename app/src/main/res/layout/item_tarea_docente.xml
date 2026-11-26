@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="14dp"
     app:cardElevation="0dp"
-    app:strokeColor="#E5E2D9"
+    app:strokeColor="@color/borde"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Diseño de interfaz"
-            android:textColor="#1F2421"
+            android:textColor="@color/texto"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="App Móvil Sapiens · Vence 2026-11-30"
-            android:textColor="#6B706B"
+            android:textColor="@color/grisMedio"
             android:textSize="12sp" />
 
         <LinearLayout
