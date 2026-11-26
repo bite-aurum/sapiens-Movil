@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sapiens.Modelo.alumno.dataProyectosAlumno
+import com.example.sapiens.Modelo.alumno.dataProyectoAlumno
 import com.example.sapiens.R
 import com.example.sapiens.Vista.alumno.dashboardAlumno
 
 class ProyectosDashboardAlumnoAdaptador(
     private var activity: dashboardAlumno,
-    private var listaProyectos: List<dataProyectosAlumno>
+    private var listaProyectos: List<dataProyectoAlumno>
 ) : RecyclerView.Adapter<ProyectosDashboardAlumnoAdaptador.ProyectoDashboardViewHolder>() {
 
     class ProyectoDashboardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,7 +31,7 @@ class ProyectosDashboardAlumnoAdaptador(
     override fun onBindViewHolder(holder: ProyectoDashboardViewHolder, position: Int) {
         val proyecto = listaProyectos[position]
 
-        holder.tvNombreProyecto.text = proyecto.nombre
+        holder.tvNombreProyecto.text = proyecto.titulo
         holder.pbProgreso.progress = proyecto.avance
         holder.tvPorcentaje.text = proyecto.avance.toString() + "%"
 
@@ -48,7 +48,7 @@ class ProyectosDashboardAlumnoAdaptador(
 
     override fun getItemCount(): Int = listaProyectos.size
 
-    fun actualizarLista(nuevaLista: List<dataProyectosAlumno>) {
+    fun actualizarLista(nuevaLista: List<dataProyectoAlumno>) {
         listaProyectos = nuevaLista
         notifyDataSetChanged()
     }

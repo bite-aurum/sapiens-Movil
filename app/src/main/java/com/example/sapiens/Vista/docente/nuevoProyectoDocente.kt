@@ -1,5 +1,6 @@
 package com.example.sapiens.Vista.docente
 
+import android.content.Intent
 import com.example.sapiens.Modelo.clsAjustesModelo
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -18,6 +19,7 @@ import com.example.sapiens.adaptadores_docente.AdaptadorAlumnosProyecto
 import com.example.sapiens.Modelo.docente.dataAlumno
 import com.example.sapiens.Presentador.docente.pNuevoProyectoDocente
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import java.util.Calendar
 
 class nuevoProyectoDocente : AppCompatActivity() {
@@ -69,13 +71,46 @@ class nuevoProyectoDocente : AppCompatActivity() {
 
         presenter = pNuevoProyectoDocente(this)
 
-        idDocente = intent.getIntExtra("ID_DOCENTE", 0)
+        idDocente = intent.getIntExtra("ID_DOCENTE", getSharedPreferences("SapiensPrefs", MODE_PRIVATE).getInt("id_usuario", 0))
 
         btnAgregarAlumno.setOnClickListener(this::ejecutarBuscarAlumno)
         btnGuardar.setOnClickListener(this::ejecutarGuardar)
         btnCancelar.setOnClickListener { finish() }
         edtFechaInicio.setOnClickListener { mostrarDatePicker(edtFechaInicio) }
         edtFechaFin.setOnClickListener { mostrarDatePicker(edtFechaFin) }
+
+        findViewById<View>(R.id.btnNotificaciones).setOnClickListener(this::ejecutarNotificaciones)
+        findViewById<View>(R.id.btnPerfil).setOnClickListener(this::ejecutarPerfil)
+        findViewById<View>(R.id.navInicio).setOnClickListener(this::ejecutarInicio)
+        findViewById<View>(R.id.navProyectos).setOnClickListener { finish() }
+        findViewById<View>(R.id.navTareas).setOnClickListener(this::ejecutarTareas)
+        findViewById<View>(R.id.navReportes).setOnClickListener(this::ejecutarReportes)
+    }
+
+    fun ejecutarNotificaciones(v: View) {
+        abrir(notificacionesDocente::class.java)
+    }
+
+    fun ejecutarPerfil(v: View) {
+        abrir(perfilUsuario::class.java)
+    }
+
+    fun ejecutarInicio(v: View) {
+        abrir(dashboardDocente::class.java)
+    }
+
+    fun ejecutarTareas(v: View) {
+        abrir(tareasDocente::class.java)
+    }
+
+    fun ejecutarReportes(v: View) {
+        abrir(reportesDocente::class.java)
+    }
+
+    private fun abrir(pantalla: Class<*>) {
+        val intent = Intent(this, pantalla)
+        intent.putExtra("id_docente", idDocente)
+        startActivity(intent)
     }
 
     fun ejecutarBuscarAlumno(v: View) {

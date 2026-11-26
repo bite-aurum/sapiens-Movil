@@ -41,7 +41,7 @@ class proyectosDocente : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        idDocente = intent.getIntExtra("id_docente", 0)
+        idDocente = intent.getIntExtra("id_docente", getSharedPreferences("SapiensPrefs", MODE_PRIVATE).getInt("id_usuario", 0))
 
         btnNotificaciones = findViewById(R.id.btnNotificaciones)
         btnPerfil = findViewById(R.id.btnPerfil)

@@ -1,8 +1,8 @@
 package com.example.sapiens.Vista.docente
 
+import androidx.core.content.ContextCompat
 import android.app.DatePickerDialog
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -175,7 +175,6 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         calcularPrioridad(year, month, dayOfMonth)
     }
 
-    // Calcula la prioridad según los días que faltan para la fecha límite
     private fun calcularPrioridad(year: Int, month: Int, dayOfMonth: Int) {
         val hoy = Calendar.getInstance()
         hoy.set(Calendar.HOUR_OF_DAY, 0)
@@ -193,18 +192,18 @@ class nuevaTareaDocente : AppCompatActivity(), DatePickerDialog.OnDateSetListene
         if (dias <= 3) {
             prioridadCalculada = "alta"
             tvPrioridad.text = "Alta"
-            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            tvPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.rojoClaro))
+            tvPrioridad.setTextColor(ContextCompat.getColor(this, R.color.rojoTexto))
         } else if (dias <= 7) {
             prioridadCalculada = "media"
             tvPrioridad.text = "Media"
-            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            tvPrioridad.setTextColor(Color.parseColor("#9C7414"))
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarilloClaro))
+            tvPrioridad.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
         } else {
             prioridadCalculada = "baja"
             tvPrioridad.text = "Baja"
-            tvPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            tvPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+            tvPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeChip))
+            tvPrioridad.setTextColor(ContextCompat.getColor(this, R.color.verdeTexto))
         }
 
         layoutPrioridad.visibility = View.VISIBLE

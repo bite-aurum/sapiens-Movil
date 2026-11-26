@@ -1,7 +1,7 @@
 package com.example.sapiens.Vista.docente.Adaptador
 
+import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,20 +36,20 @@ class NotificacionesDocenteAdaptador(
         val tipoMinus = item.tipo.lowercase()
         if (tipoMinus == "recordatorio") {
             holder.tvBadge.text = "Recordatorio"
-            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            holder.tvBadge.setTextColor(Color.parseColor("#9C7414"))
+            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.amarilloClaro))
+            holder.tvBadge.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.amarillo))
         } else if (tipoMinus == "entrega") {
             holder.tvBadge.text = "Entrega"
-            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvBadge.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvBadge.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else if (tipoMinus == "alerta") {
             holder.tvBadge.text = "Alerta"
-            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            holder.tvBadge.setTextColor(Color.parseColor("#C93B3B"))
+            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.rojoClaro))
+            holder.tvBadge.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.rojoTexto))
         } else {
             holder.tvBadge.text = item.tipo.ifEmpty { "Aviso" }
-            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#EFECE4"))
-            holder.tvBadge.setTextColor(Color.parseColor("#4A4E4A"))
+            holder.tvBadge.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.fondoChip))
+            holder.tvBadge.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.grisOscuro))
         }
 
         holder.tvEstado.text = "Enviado"

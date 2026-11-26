@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sistema de inventario"
-        android:textColor="#1F2421"
+        android:textColor="@color/texto"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:max="100"
             android:progress="65"
-            android:progressBackgroundTint="#E8E4D8"
+            android:progressBackgroundTint="@color/borde2"
             android:progressTint="@color/verde" />
 
         <TextView
@@ -50,6 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="12dp"
-        android:background="#EFECE4" />
+        android:background="@color/fondoChip" />
 
 </LinearLayout>

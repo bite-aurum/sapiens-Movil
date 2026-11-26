@@ -1,10 +1,10 @@
 package com.example.sapiens.Vista.docente
 
+import androidx.core.content.ContextCompat
 import com.example.sapiens.Modelo.clsAjustesModelo
 import android.app.DownloadManager
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -43,7 +43,6 @@ class detalleTareaDocente : AppCompatActivity() {
     private lateinit var adapterSubtareas: SubtareasDocenteAdaptador
     private var idDocente: Int = 0
     private var idTarea: Int = 0
-    //creamos nuestro objeto presentador
     private lateinit var presentador: pDetalleTareaDocente
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,8 +56,7 @@ class detalleTareaDocente : AppCompatActivity() {
             insets
         }
 
-        // Los manda la pantalla de Tareas
-        idDocente = intent.getIntExtra("id_docente", 0)
+        idDocente = intent.getIntExtra("id_docente", getSharedPreferences("SapiensPrefs", MODE_PRIVATE).getInt("id_usuario", 0))
         idTarea = intent.getIntExtra("id_tarea", 0)
 
         btnNotificaciones = findViewById(R.id.btnNotificaciones)
@@ -100,7 +98,6 @@ class detalleTareaDocente : AppCompatActivity() {
         abrir(perfilUsuario::class.java)
     }
 
-    // Regresa a la lista de Tareas
     fun ejecutarRegresar(v: View) {
         finish()
     }
@@ -133,30 +130,30 @@ class detalleTareaDocente : AppCompatActivity() {
 
         if (tarea.prioridad == "alta") {
             txtPrioridad.text = "Alta"
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FCE4E4"))
-            txtPrioridad.setTextColor(Color.parseColor("#C93B3B"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.rojoClaro))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.rojoTexto))
         } else if (tarea.prioridad == "media") {
             txtPrioridad.text = "Media"
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            txtPrioridad.setTextColor(Color.parseColor("#9C7414"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarilloClaro))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
         } else {
             txtPrioridad.text = "Baja"
-            txtPrioridad.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            txtPrioridad.setTextColor(Color.parseColor("#1B7F4B"))
+            txtPrioridad.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeChip))
+            txtPrioridad.setTextColor(ContextCompat.getColor(this, R.color.verdeTexto))
         }
 
         if (tarea.estado == "completada") {
             txtEstado.text = "Completada"
-            txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            txtEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeChip))
+            txtEstado.setTextColor(ContextCompat.getColor(this, R.color.verdeTexto))
         } else if (tarea.estado == "en progreso") {
             txtEstado.text = "En progreso"
-            txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E3F2EE"))
-            txtEstado.setTextColor(Color.parseColor("#0D7A6B"))
+            txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.verdeSuave))
+            txtEstado.setTextColor(ContextCompat.getColor(this, R.color.verdeAzul))
         } else {
             txtEstado.text = "Pendiente"
-            txtEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FDF2CE"))
-            txtEstado.setTextColor(Color.parseColor("#9C7414"))
+            txtEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.amarilloClaro))
+            txtEstado.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
         }
     }
 

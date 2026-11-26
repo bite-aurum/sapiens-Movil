@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="Entrega del avance este viernes"
-            android:textColor="#1F2421"
+            android:textColor="@color/texto"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -66,6 +66,6 @@
         android:id="@+id/separadorNotif"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#EFECE4" />
+        android:background="@color/fondoChip" />
 
 </LinearLayout>

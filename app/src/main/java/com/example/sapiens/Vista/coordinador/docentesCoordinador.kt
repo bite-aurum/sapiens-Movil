@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.R
+import com.example.sapiens.Vista.perfilUsuario
 import com.example.sapiens.Presentador.coordinador.pDocentesCoordinador
 import android.content.Intent
 import android.view.View
@@ -74,6 +75,9 @@ class docentesCoordinador : AppCompatActivity() {
 
 
     fun ejecutarPerfil(v: View) {
+        val intent = Intent(this, perfilUsuario::class.java)
+        intent.putExtra("id_coordinador", idCoordinador)
+        startActivity(intent)
     }
 
     fun ejecutarDashboard(v: View) {

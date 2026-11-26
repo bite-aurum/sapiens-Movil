@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F5EE">
+    android:background="@color/fondoSuave">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:text="Bienvenido"
-                android:textColor="#1F2421"
+                android:textColor="@color/texto"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Correo"
-                android:textColor="#1F2421"
+                android:textColor="@color/texto"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -75,8 +75,8 @@
                 android:hint="usuario@institucion.edu"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
-                android:textColor="#1F2421"
-                android:textColorHint="#9A9E99"
+                android:textColor="@color/texto"
+                android:textColorHint="@color/grisTexto"
                 android:textSize="14sp" />
 
             <TextView
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Contraseña"
-                android:textColor="#1F2421"
+                android:textColor="@color/texto"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -102,8 +102,8 @@
                     android:inputType="textPassword"
                     android:paddingStart="16dp"
                     android:paddingEnd="48dp"
-                    android:textColor="#1F2421"
-                    android:textColorHint="#9A9E99"
+                    android:textColor="@color/texto"
+                    android:textColorHint="@color/grisTexto"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -124,7 +124,7 @@
                 android:layout_marginTop="10dp"
                 android:buttonTint="@color/verde"
                 android:text="Recordar"
-                android:textColor="#4A4E4A"
+                android:textColor="@color/grisOscuro"
                 android:textSize="13sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -135,7 +135,7 @@
                 android:backgroundTint="@color/verde"
                 android:text="Iniciar sesión"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/blanco"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:cornerRadius="12dp" />

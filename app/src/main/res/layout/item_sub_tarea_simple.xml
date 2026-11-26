@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Título de la tarea"
-            android:textColor="#1F2421"
+            android:textColor="@color/texto"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -58,6 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginHorizontal="14dp"
-        android:background="#E5E2D9" />
+        android:background="@color/borde" />
 
 </LinearLayout>

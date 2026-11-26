@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sapiens.Modelo.LoginResponse
@@ -36,9 +37,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var presentador: sapiensPresentador
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
+        if (prefs.getBoolean("tema_oscuro", false)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         super.onCreate(savedInstanceState)
 
-        val prefs = getSharedPreferences("SapiensPrefs", MODE_PRIVATE)
         if (prefs.getBoolean("recordar_sesion", false)) {
             val rolGuardado = prefs.getString("rol", "") ?: ""
             val idGuardado = prefs.getInt("id_usuario", 0)

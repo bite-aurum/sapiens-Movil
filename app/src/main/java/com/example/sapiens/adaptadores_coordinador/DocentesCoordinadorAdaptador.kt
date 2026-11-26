@@ -1,7 +1,7 @@
 package com.example.sapiens.adaptadores_coordinador
 
+import androidx.core.content.ContextCompat
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,11 +36,11 @@ class DocentesCoordinadorAdaptador(
         holder.tvEstado.text = docente.estado
 
         if (docente.estado == "Activo") {
-            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#DDF6E8"))
-            holder.tvEstado.setTextColor(Color.parseColor("#1B7F4B"))
+            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.verdeChip))
+            holder.tvEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.verdeTexto))
         } else {
-            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ECE9E1"))
-            holder.tvEstado.setTextColor(Color.parseColor("#6B706B"))
+            holder.tvEstado.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.grisChip))
+            holder.tvEstado.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.grisMedio))
         }
 
         if (position == listaDocentes.size - 1) {

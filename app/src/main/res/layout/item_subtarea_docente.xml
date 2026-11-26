@@ -136,12 +136,12 @@
                 android:layout_marginStart="6dp"
                 app:backgroundTint="@color/verde"
                 android:drawableStart="@drawable/ic_descargar"
-                android:drawableTint="@color/white"
+                android:drawableTint="@color/blanco"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="Descargar"
                 android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:textColor="@color/blanco" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

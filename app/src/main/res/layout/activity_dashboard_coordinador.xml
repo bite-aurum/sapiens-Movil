@@ -130,7 +130,7 @@
                     android:background="@drawable/sombra_icono"
                     android:padding="12dp"
                     android:src="@drawable/ic_proyectos"
-                    app:tint="@color/white" />
+                    app:tint="@color/blanco" />
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +172,7 @@
                     android:background="@drawable/sombra_icono"
                     android:padding="12dp"
                     android:src="@drawable/ic_docentes"
-                    app:tint="@color/white" />
+                    app:tint="@color/blanco" />
             </LinearLayout>
 
             <LinearLayout
@@ -214,7 +214,7 @@
                     android:background="@drawable/sombra_icono"
                     android:padding="12dp"
                     android:src="@drawable/ic_tareas"
-                    app:tint="@color/white" />
+                    app:tint="@color/blanco" />
 
             </LinearLayout>
 
@@ -257,7 +257,7 @@
                     android:background="@drawable/sombra_icono"
                     android:padding="12dp"
                     android:src="@drawable/ic_reloj"
-                    app:tint="@color/white" />
+                    app:tint="@color/blanco" />
             </LinearLayout>
 
             <LinearLayout
